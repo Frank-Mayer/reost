@@ -1,0 +1,69 @@
+@media only screen and (max-device-width: 768px)
+  #navBar
+    bottom: 8px
+
+@media only screen and (min-device-width: 768px)
+  #navBar
+    top: 8px
+
+#navBar
+  --item-size: 42px
+  z-index: 10
+  position: fixed
+  left: 0
+  right: 0
+
+  > div
+    transition: all 250ms ease-in-out
+    width: fit-content
+    padding: 8px 16px
+    margin: 0 auto
+    border-radius: 8px
+    display: grid
+    grid:
+      gap: 4px
+      template:
+        rows: auto
+        columns: auto auto auto auto auto
+    justify:
+      content: space-evenly
+      items: center
+    align:
+      content: space-evenly
+      items: center
+    background: linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.05) 100%)
+    box-shadow: rgb(0 0 0 / 25%) 0px 10px 30px, rgb(255 255 255 / 25%) 1px 1px 0px inset, rgb(0 0 0 / 25%) 0px -1px 0px inset
+    -webkit-backdrop-filter: blur(20px)
+    backdrop-filter: blur(20px)
+
+    &:hover
+      grid-gap: 10px
+
+    > a
+      height: var(--item-size)
+      width: var(--item-size)
+      transition: all 100ms ease-in-out
+      image:
+        rendering: crisp-edges
+        rendering: pixelated
+      background:
+        repeat: no-repeat
+        size: contain
+
+      &:hover
+        transform: scale(1.45) translateY(10%)
+
+      &.home
+        background-image: url("img/logo.png")
+
+      &.discord
+        background-image: url("img/discord.png")
+
+      &.players
+        background-image: url("img/hammer.png")
+
+      &.rules
+        background-image: url("img/rules.png")
+
+      &.team
+        background-image: url("img/goldenApple.png")

@@ -1,0 +1,32 @@
+body
+  background:
+    image: url("img/options_background.png")
+    repeat: repeat
+    size: 128px
+
+.crisp, .crisp > img
+  image-rendering: auto
+  image-rendering: crisp-edges
+  image-rendering: pixelated
+
+.aa
+  image-renderinng: high-quality !important
+
+#content
+  padding:
+    left: max(8px, calc(50vw - 400px))
+    right: max(8px, calc(50vw - 400px))
+    bottom: 64px
+
+  h1
+    font-size: 64px
+  h2
+    font-size: 32px
+  h1, h2, hr
+    weight: bolder
+    margin:
+      top: 32px
+      bottom: 16px
+
+  ul
+    list-style-position: inside
