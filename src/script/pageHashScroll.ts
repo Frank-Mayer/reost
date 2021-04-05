@@ -1,29 +1,43 @@
-const updatePage = () => {
-  setTimeout(() => {
-    let element: HTMLElement | null = null;
+const frame = new HTMLFrame(
+  "#content",
+  location.href.replace(location.hash, "").replace("/index.html", "/") +
+    "content/"
+);
 
-    switch (location.hash) {
-      case "#spieler":
-        element = document.getElementById("players");
-        break;
-      case "#regeln":
-        element = document.getElementById("rules");
-        break;
-      case "#team":
-        element = document.getElementById("team");
-        break;
-      default:
-        element = document.getElementById("landingPage");
-        break;
-    }
+const updatePage = (hash: string) => {
+  let scroll = false;
 
-    if (element) {
-      element.scrollIntoView({
-        block: "start",
-        inline: "start",
-      });
-    }
-  }, 250);
+  switch (hash) {
+    case "#spieler":
+      frame.inject("players.html");
+      scroll = true;
+      break;
+    case "#regeln":
+      frame.inject("rules.html");
+      scroll = true;
+      break;
+    case "#team":
+      frame.inject("team.html");
+      scroll = true;
+      break;
+    default:
+      frame.inject("home.html");
+      break;
+  }
+
+  if (history.pushState) {
+    history.pushState(null, document.title, hash);
+  } else {
+    location.hash = hash;
+  }
+
+  if (scroll) {
+    frame.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "start",
+    });
+  }
 };
 
-updatePage();
+updatePage(location.hash);

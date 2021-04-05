@@ -7,4 +7,4 @@
 //   methods: {},
 // });
 
-alert("Webseite ist noch im Aufbau!");
+// alert("Webseite ist noch im Aufbau!");

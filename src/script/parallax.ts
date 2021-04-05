@@ -16,7 +16,7 @@ if (steve && motd) {
 
     steve.style.setProperty(
       "--velocity",
-      Math.min(50, Math.max(-30, velocity / 2)).toString()
+      Math.min(50, Math.max(-15, velocity / 2)).toString()
     );
   };
 
