@@ -21,10 +21,10 @@
     border-radius: 8px
     display: grid
     grid:
-      gap: 4px
+      gap: 6px
       template:
         rows: auto
-        columns: auto auto auto auto auto
+        columns: auto auto auto auto auto auto
     justify:
       content: space-evenly
       items: center
@@ -39,7 +39,8 @@
     &:hover
       grid-gap: 10px
 
-    > a
+    > abbr
+      cursor: pointer
       height: var(--item-size)
       width: var(--item-size)
       transition: all 100ms ease-in-out
@@ -54,16 +55,19 @@
         transform: scale(1.45) translateY(10%)
 
       &.home
-        background-image: url("img/logo.png")
+        background-image: url("img/logo.webp")
 
       &.discord
-        background-image: url("img/discord.png")
+        background-image: url("img/discord.webp")
 
       &.players
-        background-image: url("img/hammer.png")
+        background-image: url("img/iron_axe.webp")
 
       &.rules
-        background-image: url("img/rules.png")
+        background-image: url("img/book_written.webp")
 
       &.team
-        background-image: url("img/goldenApple.png")
+        background-image: url("img/apple_golden.webp")
+
+      &.shop
+        background-image: url("img/gold_ingot.webp")

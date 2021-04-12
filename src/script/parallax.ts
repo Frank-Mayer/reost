@@ -1,23 +1,23 @@
-const steve = document.getElementById("steve");
-const motd = document.getElementById("motd");
-let prePos = window.pageYOffset;
+const mapContainer = document.getElementById("mapContainer");
+const title = document.getElementById("title");
 
-if (steve && motd) {
+if (mapContainer && title) {
   const onScroll = () => {
-    const scrollYOffset = window.pageYOffset;
-    const velocity = prePos - scrollYOffset;
-    prePos = scrollYOffset;
+    const scrollYOffset = window.pageYOffset / window.innerHeight;
 
-    motd.style.transform = `translateY(calc(50vh + ${Math.round(
-      scrollYOffset / 5
-    )}px))`;
+    const titleTranslate = scrollYOffset * 250;
 
-    // steve.style.transform = `translateY(-${Math.round(scrollYOffset / 50)}px)`;
+    const mapAngle = Math.pow(0.9 - scrollYOffset, 2) * 100;
+    const mapTranslate =
+      Math.pow(1.125 * (2 * scrollYOffset) - 1, 2) * 500 + 128;
 
-    steve.style.setProperty(
-      "--velocity",
-      Math.min(50, Math.max(-15, velocity / 2)).toString()
-    );
+    for (let i = 0; i < title.childElementCount; i++) {
+      (<HTMLElement>(
+        title.children[i]
+      )).style.transform = `translateY(${titleTranslate}px)`;
+    }
+    mapContainer.style.setProperty("--map-angle", `${mapAngle}deg`);
+    mapContainer.style.setProperty("--map-translate", `${mapTranslate}px`);
   };
 
   onScroll();

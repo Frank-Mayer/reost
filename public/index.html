@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="loading">
   <head>
     <link rel="preload" href="style.css" as="style" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -14,31 +14,54 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
     <title>Reost</title>
+    <!-- <link rel="shortcut icon" href="img/logo.webp" type="image/webp" /> -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="crisp">
-    <div id="navBar" class="aa">
-      <div>
-        <a class="home" title="Reost.de" onclick="updatePage('#')"></a>
-        <a class="discord" title="Discord" onclick="updatePage('#discord')"></a>
-        <a class="players" title="Spieler" onclick="updatePage('#spieler')"></a>
-        <a class="rules" title="Regeln" onclick="updatePage('#regeln')"></a>
-        <a class="team" title="Team" onclick="updatePage('#team')"></a>
+  <body>
+    <div id="loader">
+      <div class="container">
+        <div class="dash uno"></div>
+        <div class="dash dos"></div>
+        <div class="dash tres"></div>
+        <div class="dash cuatro"></div>
       </div>
     </div>
-    <div id="landingPage" class="aa">
-      <h1 id="motd">Lorem ipsum dolor sit amet</h1>
-      <img src="img/scroll.svg" alt="scroll down" />
+
+    <div id="navBar">
+      <div>
+        <abbr class="home" title="Reost.de" onclick="updatePage('#')"></abbr>
+        <abbr
+          class="discord"
+          title="Discord"
+          onclick="updatePage('#discord')"
+        ></abbr>
+        <abbr
+          class="players"
+          title="Spieler"
+          onclick="updatePage('#spieler')"
+        ></abbr>
+        <abbr
+          class="rules"
+          title="Regeln"
+          onclick="updatePage('#regeln')"
+        ></abbr>
+        <abbr class="team" title="Team" onclick="updatePage('#team')"></abbr>
+        <abbr class="shop" title="Shop" onclick="updatePage('#shop')"></abbr>
+      </div>
     </div>
-    <div id="steve" class="crisp">
-      <img class="face" alt="steve face" src="img/face.png" />
-      <img class="body" alt="steve body" src="img/body.png" />
-      <img class="left arm" alt="steve left arm" src="img/arm.png" />
-      <img class="right arm" alt="steve right arm" src="img/arm.png" />
-      <img class="left leg" alt="steve left leg" src="img/leg.png" />
-      <img class="right leg" alt="steve right leg" src="img/leg.png" />
+
+    <div id="title">
+      <h1>Reost</h1>
+      <p>Jetzt auf Minecraft 1.16 spielen!</p>
     </div>
-    <div id="content"></div>
+
+    <section id="mapContainerContainer">
+      <section id="mapContainer">
+        <img class="steve left arm" alt="steve left arm" src="img/arm.webp" />
+        <img class="steve right arm" alt="steve right arm" src="img/arm.webp" />
+        <div id="content" class="down"></div>
+      </section>
+    </section>
     <script defer src="rocket.js"></script>
     <script defer src="app.js"></script>
     <link

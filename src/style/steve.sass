@@ -1,52 +1,17 @@
-@media only screen and (max-device-width: 1024px)
-  #steve, #steve *
-    display: none !important
+.steve.arm
+  --pixel-size: max(26px, 3vmax)
+  image:
+    rendering: crisp-edges
+    rendering: pixelated
+  position: fixed
+  width: calc(4 * var(--pixel-size))
+  height: calc(12 * var(--pixel-size))
+  bottom: calc(-1 * var(--pixel-size) + 32vh)
 
-@media only screen and (min-device-width: 1024px)
-  #steve
-    --pixel-size: 6px
+  &.left
+    left: min(40vw, max(0px, calc(var(--map-margin) - 32px)))
+    transform: rotateZ(190deg)
 
-    *
-      position: absolute
-
-    .face
-      top: calc(100vh - calc(12 * var(--pixel-size)))
-      width: calc(8 * var(--pixel-size))
-      height: calc(8 * var(--pixel-size))
-      right: calc(8 * var(--pixel-size))
-
-    .body, .arm
-      top: calc(100vh - 4 * var(--pixel-size))
-
-    .body
-      width: calc(8 * var(--pixel-size))
-      height: calc(12 * var(--pixel-size))
-      right: calc(8 * var(--pixel-size))
-
-    .arm, .leg
-      transition: transform 100ms ease-in-out
-      width: calc(4 * var(--pixel-size))
-      height: calc(12 * var(--pixel-size))
-
-    .arm.left
-      right: calc(16 * var(--pixel-size))
-      transform: rotate(calc(10deg + 1deg * var(--velocity)))
-      transform-origin: 50% 0%
-
-    .arm.right
-      right: calc(4 * var(--pixel-size))
-      transform: rotate(calc(-10deg + -1deg * var(--velocity)))
-      transform-origin: 50% 0%
-
-    .leg
-      top: calc(100vh + 8 * var(--pixel-size))
-
-    .leg.left
-      right: calc(12 * var(--pixel-size))
-      transform: rotate(calc(10deg + 1deg * var(--velocity)))
-      transform-origin: 50% 0%
-
-    .leg.right
-      right: calc(8 * var(--pixel-size))
-      transform: rotate(calc(-10deg + -1deg * var(--velocity)))
-      transform-origin: 50% 0%
+  &.right
+    right: min(40vw, max(0px, calc(var(--map-margin) - 32px)))
+    transform: rotateZ(170deg)
