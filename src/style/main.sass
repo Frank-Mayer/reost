@@ -1,5 +1,6 @@
 :root
-  --anchor-hover: #00bec5
+  --anchor-hover: #00AA00
+  --selection: #ffffff88
 
 html,
 body
@@ -14,7 +15,12 @@ body
       size: 3vh
 
 a:hover
-  color: var(--anchor-hover)
+  color: var(--anchor-hover) !important
+
+::-moz-selection
+  background-color: var(--selection)
+::selection
+  background-color: var(--selection)
 
 *
   margin: 0
