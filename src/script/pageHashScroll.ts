@@ -30,6 +30,9 @@ const updatePage = async (hash: string, scroll = true) => {
     case "#shop":
       await frame.inject("shop.html");
       break;
+    case "#karte":
+      await frame.inject("map.html");
+      break;
     default:
       await frame.inject("home.html");
       break;
