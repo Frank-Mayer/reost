@@ -19,14 +19,13 @@
     padding: 8px 16px
     margin: 0 auto
     border-radius: 8px
-    display: grid
-    grid:
-      gap: 6px
-      template:
-        rows: auto
-        columns: auto auto auto auto auto auto
+    display: flex
+    flex:
+      direction: row
+      wrap: nowrap
+    grid-gap: 6px
     justify:
-      content: space-evenly
+      content: space-between
       items: center
     align:
       content: space-evenly
@@ -39,7 +38,7 @@
     &:hover
       grid-gap: 10px
 
-    > abbr
+    > *
       cursor: pointer
       height: var(--item-size)
       width: var(--item-size)
