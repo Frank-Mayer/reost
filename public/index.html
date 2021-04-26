@@ -33,27 +33,27 @@
 
     <div id="navBar">
       <div>
-        <div class="home" title="Reost.de" onclick="updatePage('#')"></div>
+        <div class="home" title="Reost.de" onclick="updateBook('#')"></div>
         <div
           class="discord"
           title="Discord"
-          onclick="updatePage('#discord')"
+          onclick="updateBook('#discord')"
         ></div>
         <div
           class="players"
           title="Spieler"
-          onclick="updatePage('#spieler')"
+          onclick="updateBook('#spieler')"
         ></div>
-        <div class="rules" title="Regeln" onclick="updatePage('#regeln')"></div>
-        <div class="team" title="Team" onclick="updatePage('#team')"></div>
-        <div class="shop" title="Shop" onclick="updatePage('#shop')"></div>
-        <div class="map" title="Karte" onclick="updatePage('#karte')"></div>
+        <div class="rules" title="Regeln" onclick="updateBook('#regeln')"></div>
+        <div class="team" title="Team" onclick="updateBook('#team')"></div>
+        <div class="shop" title="Shop" onclick="updateBook('#shop')"></div>
+        <div class="map" title="Karte" onclick="updateBook('#karte')"></div>
       </div>
     </div>
 
     <div id="title">
       <h1>Reost</h1>
-      <p>Jetzt auf Minecraft 1.16 spielen!</p>
+      <p>Bald für Minecraft 1.16.5 verfügbar!</p>
     </div>
 
     <section id="mapContainerContainer">
@@ -63,12 +63,16 @@
         <div id="content" class="down"></div>
       </section>
     </section>
-    <script defer src="rocket.js"></script>
-    <script defer src="app.js"></script>
     <link
-      async
+      defer
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script
+      defer
+      src="https://cdn.kuerbisskraft.de/yule.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="app.js"></script>
   </body>
 </html>

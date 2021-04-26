@@ -1,0 +1,20 @@
+#discordOnlineList
+  overflow-y: auto
+  .member
+    img
+      height: 1em
+      width: 1em
+      border:
+        radius: 50%
+        width: 2px
+        style: solid
+
+    &.online
+      img
+        border-color: #00AA00
+    &.idle
+      img
+        border-color: #FFAA00
+    &.dnd
+      img
+        border-color: #AA0000
