@@ -11,7 +11,7 @@
   bottom: calc(64px + 50vh)
   filter: sepia(0.125)
   padding:
-    top: 6vmin
+    top: 8vmin
     right: 6vmin
     bottom: 6vmin
     left: 8vmin
@@ -31,6 +31,8 @@
     font-weight: 700
   h1
     font-size: 5vh
+    margin:
+      bottom: 1em
   h2
     font-size: 4vh
 
@@ -47,9 +49,13 @@
   #mapContainer
     &:not(.down)
       animation: slideUpMobile 250ms
+      -moz-transform: rotateX(var(--map-angle)) translateY(calc(var(--map-translate) - 128px))
+      -o-transform: rotateX(var(--map-angle)) translateY(calc(var(--map-translate) - 128px))
       transform: rotateX(var(--map-angle)) translateY(calc(var(--map-translate) - 128px))
     &.down
       animation: slideDownMobile 250ms
+      -moz-transform: rotateX(var(--map-angle)) translateY(200vh)
+      -o-transform: rotateX(var(--map-angle)) translateY(200vh)
       transform: rotateX(var(--map-angle)) translateY(200vh)
 
 @media only screen and (min-device-width: 769px)

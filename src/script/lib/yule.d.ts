@@ -24,7 +24,7 @@ declare namespace Yule {
 declare namespace Yule {
     class ImmutableList<T> {
         protected readonly bucket: Array<T>;
-        protected readonly length: number;
+        readonly length: number;
         constructor(...value: Array<Array<T> | ImmutableList<T> | T>);
         [Symbol.iterator](): T[];
         value(): Array<T>;
@@ -37,7 +37,8 @@ declare namespace Yule {
     class indexedDB<T> {
         protected readonly dbName: string;
         protected readonly dbVersion: number;
-        constructor(dbName: string, version?: number);
+        onupgradeneeded?: (this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any;
+        constructor(dbName: string, version?: number, onupgradeneeded?: (this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any);
         get(id: string): Promise<T>;
         select(callback: (cursor: IDBCursorWithValue) => void): Promise<void>;
         delete(id: string): Promise<boolean>;
@@ -97,6 +98,9 @@ declare namespace Yule {
 }
 declare namespace Yule {
     function as<T extends object, R>(target: T, callback: (this: T) => R): R;
+}
+declare namespace Yule {
+    function copy(text: string): Promise<boolean>;
 }
 declare namespace Yule {
     function delay(ms: number): Promise<void>;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de" class="loading">
   <head>
-    <link rel="canonical" href="https://reost.de/test" />
+    <link rel="canonical" href="https://reost.de" />
     <link rel="preload" href="style.css" as="style" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -9,39 +9,40 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
       as="style"
     />
+    <meta name="og:url" content="https://reost.de" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
 
-    <meta name="description" content="Reost Minecraft MMO RPG Server 1.16" />
+    <meta
+      name="description"
+      content="Rießiges Mittelalter Rollplay für Minecraft 1.16.5"
+    />
     <meta
       property="og:description"
-      content="Reost Minecraft MMO RPG Server 1.16"
+      content="Rießiges Mittelalter Rollplay für Minecraft 1.16.5"
     />
-    <meta property="og:title" content="Minecraft Reost" />
+    <meta property="og:title" content="Reost - Minecraft MMORPG" />
+    <meta property="twitter:title" content="Reost - Minecraft MMORPG" />
+    <meta property="og:site_name" content="Reost - Minecraft MMORPG" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
     <meta
       name="keywords"
-      content="minecraft server, minecraft reost, 1.16 server, minecraft mmo rpg, minecraft rpg server"
+      content="deutsch, minecraft server, minecraft reost, minecraft 1.16 server, minecraft mmo rpg, minecraft rpg server"
     />
     <meta name="google" content="nositelinkssearchbox" />
 
-    <title>Reost</title>
+    <title>Reost - Minecraft MMORPG</title>
+
+    <link rel="canonical" href="https://reost.de" />
+
     <link rel="shortcut icon" href="img/logo.webp" type="image/webp" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <span id="wip" onclick="this.remove()">
-      Diese Seite ist derzeit in Bearbeitung!
-      <hr />
-      <a href="https://forms.gle/j4PokWsoyQehiQiw9" target="_blank">
-        Möchtest Du etwas zu dieser Webseite beitragen?
-      </a>
-    </span>
-
     <div id="loader">
       <div class="container">
         <div class="dash uno"></div>
@@ -67,13 +68,17 @@
         <div class="rules" title="Regeln" onclick="updateBook('#regeln')"></div>
         <div class="team" title="Team" onclick="updateBook('#team')"></div>
         <div class="shop" title="Shop" onclick="updateBook('#shop')"></div>
-        <div class="map" title="Karte" onclick="updateBook('#karte')"></div>
+        <div
+          class="map noMobile"
+          title="Karte"
+          onclick="updateBook('#karte')"
+        ></div>
       </div>
     </div>
 
     <div id="title">
       <h1>Reost</h1>
-      <p>Bald für Minecraft 1.16.5 verfügbar!</p>
+      <p>Rießiges Deutsches Mittelalter-Rollplay für Minecraft 1.16.5</p>
     </div>
 
     <section id="mapContainerContainer">
@@ -91,6 +96,10 @@
     <script
       defer
       src="https://cdn.kuerbisskraft.de/yule.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/903b711bd2.js"
       crossorigin="anonymous"
     ></script>
     <script defer src="app.js"></script>

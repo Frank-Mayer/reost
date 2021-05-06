@@ -44,6 +44,10 @@ class Book {
       case "#karte":
         await this.frame.inject("map.html");
         break;
+      case "":
+        await this.frame.inject("home.html");
+        window.scrollTo(0, 0);
+        return;
       default:
         await this.frame.inject("home.html");
         break;
