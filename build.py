@@ -121,7 +121,7 @@ if sass:
 
 if deploy:
     title("deploy")
-    os.system("scp -rp public/* root@148.251.151.2:/var/www/html/reost")
+    os.system("firebase deploy")
     hr()
 
 title("Done!")
