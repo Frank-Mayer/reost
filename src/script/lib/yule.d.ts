@@ -1,5 +1,94 @@
-/// <reference path="../tsSource/Extensions/Array/Array.d.ts" />
-/// <reference path="../tsSource/Extensions/Math/Math.d.ts" />
+declare type Class<T extends object> = new (...arguments: any[]) => T;
+
+interface Array<T> {
+  /**
+   * Fisher-Yates Shuffle
+   */
+  shuffle: () => Array<T>;
+
+  clear: () => Array<T>;
+
+  searchFor: (comparator: (x: T) => boolean) => T;
+}
+
+interface Math {
+  /**
+   * Bitwise rotate a 32-bit number to the left.
+   */
+  bitRotateLeft: (num: number, cnt: number) => number;
+
+  /**
+   * @returns >=min & <=max
+   * @param value The value to be clamped
+   * @param min The lower bound of the result
+   * @param max The upper bound of the result
+   */
+  clamp: <T extends number | bigint>(value: T, min: T, max: T) => T;
+
+  /**
+   * Calculates the Nth Fibonacci
+   * @param n
+   * @returns fib
+   */
+  fibonacci: (n: number) => bigint;
+
+  /**
+   * Euclidean algorithm
+   */
+  gcd: (a: number, b: number) => number;
+
+  /**
+   * Checks if a number is prime
+   * @param n Number to check
+   * @returns TRUE if prime; otherwise FALSE
+   */
+  isPrime: (n: bigint) => boolean;
+
+  /**
+   * Calculates the Nth prime number
+   * @param n How many prime
+   * @returns Prime
+   */
+  nthPrime: (n: number) => bigint;
+
+  /**
+   * Calculates the next prime number
+   * @param start Number to start from
+   * @returns Prime
+   */
+  nextPrime: (n: bigint) => bigint;
+
+  /**
+   * Round to a specified precition
+   */
+  roundOff: (x: number, precision: number) => number;
+
+  /**
+   * Add integers, wrapping at 2^32.
+   * This uses 16-bit operations internally to work around bugs in interpreters.
+   *
+   * @param a First integer
+   * @param b Second integer
+   * @returns Sum
+   */
+  safeAdd: (a: number, b: number) => number;
+
+  /**
+   * Square root of a positive bigint
+   */
+  sqrtBigInt: (value: bigint) => bigint;
+}
+
+declare namespace Yule {
+    class CircularBuffer<T> {
+        private readonly buffer;
+        cursor: number;
+        readonly size: number;
+        constructor(size?: number, defaultValues?: Array<T>);
+        push(value: T): void;
+        pop(): void;
+    }
+}
 declare namespace Yule {
     function httpGet(url: string, cached?: boolean): Promise<string>;
     function httpGetParsed<T>(url: string, cached?: boolean): Promise<T>;
@@ -11,6 +100,7 @@ declare namespace Yule {
         private current?;
         constructor(selector: string, basePath?: string);
         inject(path: string): Promise<boolean>;
+        clear(): void;
         scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
         getBoundingClientRect(): DOMRect;
         getClientRects(): DOMRectList;
@@ -100,10 +190,17 @@ declare namespace Yule {
     function as<T extends object, R>(target: T, callback: (this: T) => R): R;
 }
 declare namespace Yule {
-    function copy(text: string): Promise<boolean>;
+    function copy(text: string): Promise<void>;
 }
 declare namespace Yule {
     function delay(ms: number): Promise<void>;
+    function retriggerableDelay(delayId: string, ms: number, callback: Function): void;
+}
+declare namespace Yule {
+    function doOnce(callback: Function, id?: string): any;
+}
+declare namespace Yule {
+    function range(head: number, tail: number, stepSize?: number): number[];
 }
 declare namespace Yule {
     function require(src: string): Promise<Event | void>;

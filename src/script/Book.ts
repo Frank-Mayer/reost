@@ -16,7 +16,7 @@ class Book {
     this.dataWriter = dataWriter;
   }
 
-  async updatePage(hash: string, scroll = true) {
+  async updatePage(hash: string, scroll: boolean) {
     const doAnimation = this.hash != hash;
 
     if (doAnimation) {
