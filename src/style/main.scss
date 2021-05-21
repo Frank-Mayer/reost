@@ -1,0 +1,48 @@
+:root {
+  --anchor-hover: #00aa00;
+  --selection: #ffffff88;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  * {
+    text-rendering: geometricPrecision;
+    shape-rendering: geometricPrecision;
+    font-family: "Quicksand", "Segoe UI", sans-serif;
+    font-weight: 400;
+    font-size: min(3vh, 5vw);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a:hover * {
+  color: var(--anchor-hover) !important;
+}
+
+::-moz-selection {
+  background-color: var(--selection);
+}
+
+::selection {
+  background-color: var(--selection);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-user-drag: none;
+  box-sizing: border-box;
+  color: white;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,25 @@
+#discordOnlineList {
+  overflow-y: auto;
+
+  .member {
+    img {
+      height: 1em;
+      width: 1em;
+      border-radius: 50%;
+      border-width: 2px;
+      border-style: solid;
+    }
+
+    img.online {
+      border-color: #00aa00;
+    }
+
+    img.idle {
+      border-color: #ffaa00;
+    }
+
+    img.dnd {
+      border-color: #aa0000;
+    }
+  }
+}
