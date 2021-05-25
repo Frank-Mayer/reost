@@ -1,36 +1,68 @@
 @keyframes slideDownDesktop {
   from {
+    -webkit-transform: rotateX(var(--map-angle))
+      translateY(var(--map-translate));
+    -o-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
+    -moz-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
     transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
   }
   to {
+    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
     transform: rotateX(var(--map-angle)) translateY(200vh);
   }
 }
 
 @keyframes slideUpDesktop {
   from {
+    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
     transform: rotateX(var(--map-angle)) translateY(200vh);
   }
   to {
+    -webkit-transform: rotateX(var(--map-angle))
+      translateY(var(--map-translate));
+    -moz-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
+    -o-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
     transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
   }
 }
 
 @keyframes slideDownMobile {
   from {
+    -webkit-transform: rotateX(var(--map-angle))
+      translateY(calc(var(--map-translate) - 128px));
+    -moz-transform: rotateX(var(--map-angle))
+      translateY(calc(var(--map-translate) - 128px));
+    -o-transform: rotateX(var(--map-angle))
+      translateY(calc(var(--map-translate) - 128px));
     transform: rotateX(var(--map-angle))
       translateY(calc(var(--map-translate) - 128px));
   }
   to {
+    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
     transform: rotateX(var(--map-angle)) translateY(200vh);
   }
 }
 
 @keyframes slideUpMobile {
   from {
+    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
+    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
     transform: rotateX(var(--map-angle)) translateY(200vh);
   }
   to {
+    -webkit-transform: rotateX(var(--map-angle))
+      translateY(calc(var(--map-translate) - 128px));
+    -moz-transform: rotateX(var(--map-angle))
+      translateY(calc(var(--map-translate) - 128px));
+    -o-transform: rotateX(var(--map-angle))
+      translateY(calc(var(--map-translate) - 128px));
     transform: rotateX(var(--map-angle))
       translateY(calc(var(--map-translate) - 128px));
   }
@@ -42,6 +74,7 @@
 }
 
 #content {
+  z-index: 9 !important;
   height: calc(var(--map-width) * 1.23103448276);
   width: var(--map-width);
   position: fixed;
@@ -147,11 +180,18 @@
   #mapContainer {
     &:not(.down) {
       animation: slideUpDesktop 250ms;
+      -webkit-transform: rotateX(var(--map-angle))
+        translateY(var(--map-translate));
+      -moz-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
+      -o-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
       transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
     }
 
     &.down {
       animation: slideDownDesktop 250ms;
+      -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
+      -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
+      -o-transform: rotateX(var(--map-angle)) translateY(200vh);
       transform: rotateX(var(--map-angle)) translateY(200vh);
     }
   }

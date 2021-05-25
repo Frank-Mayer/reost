@@ -1,4 +1,5 @@
 .steve.arm {
+  z-index: 8 !important;
   --pixel-size: max(26px, 3vmax);
   image-rendering: crisp-edges;
   image-rendering: pixelated;
@@ -10,10 +11,16 @@
 
 .steve.arm.left {
   left: min(40vw, max(0px, calc(var(--map-margin) - 32px)));
+  -webkit-transform: rotateZ(190deg);
+  -moz-transform: rotateZ(190deg);
+  -o-transform: rotateZ(190deg);
   transform: rotateZ(190deg);
 }
 
 .steve.arm.right {
   right: min(40vw, max(0px, calc(var(--map-margin) - 32px)));
+  -webkit-transform: rotateZ(170deg);
+  -moz-transform: rotateZ(170deg);
+  -o-transform: rotateZ(170deg);
   transform: rotateZ(170deg);
 }
