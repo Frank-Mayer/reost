@@ -1,198 +1,102 @@
-@keyframes slideDownDesktop {
-  from {
-    -webkit-transform: rotateX(var(--map-angle))
-      translateY(var(--map-translate));
-    -o-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-    -moz-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-    transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-  }
-  to {
-    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
-    transform: rotateX(var(--map-angle)) translateY(200vh);
-  }
-}
+$transitionDuration: 250ms;
 
-@keyframes slideUpDesktop {
-  from {
-    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
-    transform: rotateX(var(--map-angle)) translateY(200vh);
-  }
-  to {
-    -webkit-transform: rotateX(var(--map-angle))
-      translateY(var(--map-translate));
-    -moz-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-    -o-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-    transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-  }
-}
+#bookContainerContainer {
+  transition: all $transitionDuration ease-in-out;
 
-@keyframes slideDownMobile {
-  from {
-    -webkit-transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-    -moz-transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-    -o-transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-    transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-  }
-  to {
-    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
-    transform: rotateX(var(--map-angle)) translateY(200vh);
-  }
-}
-
-@keyframes slideUpMobile {
-  from {
-    -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
-    -o-transform: rotateX(var(--map-angle)) translateY(200vh);
-    transform: rotateX(var(--map-angle)) translateY(200vh);
-  }
-  to {
-    -webkit-transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-    -moz-transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-    -o-transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-    transform: rotateX(var(--map-angle))
-      translateY(calc(var(--map-translate) - 128px));
-  }
-}
-
-:root {
-  --map-width: min(101vw, calc(100vh - 42px));
-  --map-margin: max(0px, calc(50vw - (var(--map-width) / 2)));
-}
-
-#content {
-  z-index: 9 !important;
-  height: calc(var(--map-width) * 1.23103448276);
-  width: var(--map-width);
-  position: fixed;
-  left: var(--map-margin);
-  right: var(--map-margin);
-  bottom: calc(64px + 50vh);
-  filter: sepia(0.125);
-  padding-top: 8vmin;
-  padding-right: 6vmin;
-  padding-bottom: 6vmin;
-  padding-left: 8vmin;
-  background-image: url("img/book.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-
-  * {
-    image-rendering: high-quality !important;
-    color: black;
-  }
-
-  ul {
-    list-style-position: inside;
-  }
-
-  ol {
-    list-style-position: inside;
-  }
-
-  b {
-    font-weight: 700;
-  }
-
-  h1 {
-    font-weight: 700;
-    font-size: 5vh;
-    margin-bottom: 1em;
-  }
-
-  h2 {
-    font-weight: 700;
-    font-size: 4vh;
-  }
-
-  h3 {
-    font-weight: 700;
-  }
-
-  h4 {
-    font-weight: 700;
-  }
-
-  h5 {
-    font-weight: 700;
-  }
-
-  h6 {
-    font-weight: 700;
-  }
-}
-
-#mapContainer {
-  transform-style: preserve-3d;
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 150vh;
-  left: 0;
-  overflow: visible;
-}
-
-#mapContainerContainer {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  perspective: 150vh;
-}
+  z-index: 2;
+  perspective: 1000px;
 
-@media only screen and (max-device-width: 768px) {
-  #mapContainer {
-    &:not(.down) {
-      animation: slideUpMobile 250ms;
-      -moz-transform: rotateX(var(--map-angle))
-        translateY(calc(var(--map-translate) - 128px));
-      -o-transform: rotateX(var(--map-angle))
-        translateY(calc(var(--map-translate) - 128px));
-      transform: rotateX(var(--map-angle))
-        translateY(calc(var(--map-translate) - 128px));
-    }
+  #bookContainer {
+    transition: all $transitionDuration ease-in-out;
 
-    &.down {
-      animation: slideDownMobile 250ms;
-      -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
-      -o-transform: rotateX(var(--map-angle)) translateY(200vh);
-      transform: rotateX(var(--map-angle)) translateY(200vh);
+    background-image: url("img/book.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: top;
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+
+    #content {
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 100%;
+      height: 100%;
     }
   }
-}
-@media only screen and (min-device-width: 769px) {
-  #mapContainer {
-    &:not(.down) {
-      animation: slideUpDesktop 250ms;
-      -webkit-transform: rotateX(var(--map-angle))
-        translateY(var(--map-translate));
-      -moz-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-      -o-transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-      transform: rotateX(var(--map-angle)) translateY(var(--map-translate));
-    }
 
-    &.down {
-      animation: slideDownDesktop 250ms;
-      -webkit-transform: rotateX(var(--map-angle)) translateY(200vh);
-      -moz-transform: rotateX(var(--map-angle)) translateY(200vh);
-      -o-transform: rotateX(var(--map-angle)) translateY(200vh);
-      transform: rotateX(var(--map-angle)) translateY(200vh);
+  $dof: 2px;
+
+  &.tilted #bookContainer,
+  &.down #bookContainer {
+    -webkit-filter: blur($dof);
+    filter: blur($dof);
+  }
+
+  &:not(.tilted):not(.down) {
+    -webkit-backdrop-filter: blur($dof);
+    backdrop-filter: blur($dof);
+  }
+
+  $transformRotateX: 75deg;
+  &.tilted:not(.down) #bookContainer {
+    $transformTranslateY: 85%;
+    -o-transform: rotateX($transformRotateX) translateY($transformTranslateY);
+    -ms-transform: rotateX($transformRotateX) translateY($transformTranslateY);
+    -moz-transform: rotateX($transformRotateX) translateY($transformTranslateY);
+    -webkit-transform: rotateX($transformRotateX)
+      translateY($transformTranslateY);
+    transform: rotateX($transformRotateX) translateY($transformTranslateY);
+  }
+
+  &.down #bookContainer {
+    $transformTranslateY: 150vh;
+    -o-transform: rotateX($transformRotateX) translateY($transformTranslateY) !important;
+    -ms-transform: rotateX($transformRotateX) translateY($transformTranslateY) !important;
+    -moz-transform: rotateX($transformRotateX) translateY($transformTranslateY) !important;
+    -webkit-transform: rotateX($transformRotateX)
+      translateY($transformTranslateY) !important;
+    transform: rotateX($transformRotateX) translateY($transformTranslateY) !important;
+  }
+
+  // Landscape
+  $landscapeMinWidth: 100vh/357 * 290;
+  @media only screen and (min-width: $landscapeMinWidth) {
+    #bookContainer {
+      $space: 5vh;
+      $height: 100vh - $space;
+      $width: $height / 357 * 290;
+      $left: $width / 2;
+
+      height: $height;
+      width: $width;
+      left: calc(50vw - #{$left});
+      padding: 7.5vh;
+    }
+  }
+
+  // Portrait
+  $portraitMinHeight: 100vw / 290 * 357;
+  @media only screen and (min-height: $portraitMinHeight) {
+    #bookContainer {
+      $space: 5vw;
+      $width: 100vw - $space;
+      $height: $width / 290 * 357;
+      $left: 50vw - $width / 2;
+
+      height: $height;
+      width: $width;
+      left: $left;
+      right: $left;
+      padding: 7.5vw;
     }
   }
 }

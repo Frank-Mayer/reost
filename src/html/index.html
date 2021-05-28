@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" class="loading">
+<html lang="de">
   <head>
     <link rel="canonical" href="https://reost.de" />
     <link rel="preload" href="style.css" as="style" />
@@ -39,62 +39,71 @@
 
     <link rel="canonical" href="https://reost.de" />
 
-    <link rel="shortcut icon" href="img/logo.webp" type="image/webp" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/icon.webp" type="image/webp" />
   </head>
   <body>
-    <div id="loader">
-      <div class="container">
-        <img width="128" src="img/iron_pickaxe.webp" alt="Laden..." />
-      </div>
+    <div id="splash">
+      <img src="img/iron_pickaxe.webp" alt="loading..." />
+      <style>
+        @keyframes pick {
+          0% {
+            -webkit-transform: rotate(-20deg);
+            -moz-transform: rotate(-20deg);
+            -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+          }
+          25% {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+          100% {
+            -webkit-transform: rotate(-20deg);
+            -moz-transform: rotate(-20deg);
+            -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+          }
+        }
+        #splash {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: linear-gradient(#0d0d0d, #1a1a1a);
+        }
+        #splash > img {
+          max-width: 50vw;
+          min-width: 10vw;
+          width: 64px;
+          max-height: 50vw;
+          min-height: 10vw;
+          height: 64px;
+          transform-origin: 10% 90%;
+          -o-animation: pick 1000ms linear infinite;
+          -moz-animation: pick 1000ms linear infinite;
+          -webkit-animation: pick 1000ms linear infinite;
+          animation: pick 1000ms linear infinite;
+          image-rendering: crisp-edges;
+          image-rendering: pixelated;
+        }
+      </style>
     </div>
-
-    <div id="navBar">
-      <div>
-        <div class="home" title="Reost.de" onclick="updateBook('#')"></div>
-        <div
-          class="discord"
-          title="Discord"
-          onclick="updateBook('#discord')"
-        ></div>
-        <div
-          class="players"
-          title="Spieler"
-          onclick="updateBook('#spieler')"
-        ></div>
-        <div class="rules" title="Regeln" onclick="updateBook('#regeln')"></div>
-        <div class="team" title="Team" onclick="updateBook('#team')"></div>
-        <div class="shop" title="Shop" onclick="updateBook('#shop')"></div>
-        <div
-          class="map noMobile"
-          title="Karte"
-          onclick="updateBook('#karte')"
-        ></div>
-      </div>
-    </div>
-
-    <div id="title">
-      <h1>Reost</h1>
-      <p>Rießiges Deutsches Mittelalter-Rollplay für Minecraft 1.16.5</p>
-    </div>
-
-    <section id="mapContainerContainer">
-      <section id="mapContainer">
-        <img class="steve left arm" alt="steve left arm" src="img/arm.webp" />
-        <img class="steve right arm" alt="steve right arm" src="img/arm.webp" />
-        <div id="content" class="down"></div>
-      </section>
-    </section>
-    <link
-      defer
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <div id="root"></div>
     <script
       defer
       src="https://cdn.frank-mayer.tech/yule.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/903b711bd2.js"
       crossorigin="anonymous"

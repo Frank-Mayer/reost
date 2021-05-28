@@ -99,7 +99,7 @@ declare namespace Yule {
         private readonly basePath;
         private current?;
         constructor(selector: string, basePath?: string);
-        inject(path: string): Promise<boolean>;
+        inject(content: string | Array<HTMLElement>): Promise<boolean>;
         clear(): void;
         scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
         getBoundingClientRect(): DOMRect;
@@ -185,6 +185,9 @@ declare namespace Yule {
         registerFactory<T_1 extends object>(constructor: () => T_1, C: string | Class<T_1>): () => T_1;
         inject<T_2 extends object>(C: string | Class<T_2>): T_2;
     };
+}
+declare namespace Yule {
+    function ESSupport(ecmaScriptVersion: "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020"): boolean;
 }
 declare namespace Yule {
     function as<T extends object, R>(target: T, callback: (this: T) => R): R;

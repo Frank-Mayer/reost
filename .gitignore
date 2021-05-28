@@ -1,6 +1,4 @@
-*.css
-*.js
-*.map
 temp/
+bin/
 firebase-debug.log
 *.cache

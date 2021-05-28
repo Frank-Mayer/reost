@@ -1,3 +1,5 @@
+/// <reference path="./lib/discord.d.ts" />
+
 class DataWriter {
   public async discordOnlineList() {
     const dol = document.getElementById("discordOnlineList");
@@ -55,39 +57,20 @@ class DataWriter {
             return txt;
           })()
         );
-        let displayedCounter = 0;
-        let moreCounter = 0;
         const moreDiv = document.createElement("div");
         moreDiv.classList.add("member");
         for (const member of data.members) {
-          if (displayedCounter < 10) {
-            const div = document.createElement("div");
-            div.classList.add("member");
-            const img = document.createElement("img");
-            img.classList.add(member.status);
-            img.src = member.avatar_url;
-            const name = document.createElement("span");
-            name.innerText = member.username;
-            div.appendChild(img);
-            div.appendChild(name);
+          const div = document.createElement("div");
+          div.classList.add("member");
+          const img = document.createElement("img");
+          img.classList.add(member.status);
+          img.src = member.avatar_url;
+          const name = document.createElement("span");
+          name.innerText = member.username;
+          div.appendChild(img);
+          div.appendChild(name);
 
-            dol.appendChild(div);
-
-            displayedCounter++;
-          } else {
-            const img = document.createElement("img");
-            img.src = member.avatar_url;
-            img.classList.add(member.status);
-            moreDiv.appendChild(img);
-            moreCounter++;
-          }
-        }
-
-        if (moreCounter > 0) {
-          const txt = document.createElement("span");
-          txt.innerText = `+${moreCounter} weitere...`;
-          moreDiv.prepend(txt);
-          dol.appendChild(moreDiv);
+          dol.appendChild(div);
         }
       }
     }

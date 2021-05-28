@@ -1,26 +1,32 @@
 class Book {
-  private mapContainer: HTMLElement;
+  private bookContainer: HTMLElement;
+  private bookContainerContainer: HTMLElement;
   private frame: Yule.DomFrame;
 
   private hash = location.hash;
 
   private dataWriter: DataWriter;
 
+  private scrollY = 0;
+  private scrollPos = 0;
+
   constructor(
-    mapContainer: HTMLElement,
+    bookContainer: HTMLElement,
     frame: Yule.DomFrame,
     dataWriter: DataWriter
   ) {
-    this.mapContainer = mapContainer;
+    this.bookContainer = bookContainer;
+    this.bookContainerContainer = this.bookContainer.parentElement!;
     this.frame = frame;
     this.dataWriter = dataWriter;
+    window.addEventListener("scroll", () => this.onScroll());
   }
 
   async updatePage(hash: string, scroll: boolean) {
     const doAnimation = this.hash != hash;
 
     if (doAnimation) {
-      this.mapContainer.classList.add("down");
+      this.bookContainerContainer.classList.add("down");
       await Yule.delay(250);
     }
 
@@ -55,7 +61,7 @@ class Book {
 
     this.replaceHash(hash);
 
-    this.mapContainer.classList.remove("down");
+    this.bookContainerContainer.classList.remove("down");
 
     if (scroll) {
       window.scrollTo(0, document.body.scrollHeight);
@@ -68,6 +74,41 @@ class Book {
     } else {
       location.hash = hash;
     }
+
     this.hash = hash;
+
+    const className = hash.replace("#", "");
+    const rootEl = document.getElementById("root");
+    if (rootEl) {
+      rootEl.className = className || "home";
+    }
+  }
+
+  private onScroll() {
+    const newScrollY = document.documentElement.scrollTop;
+
+    if (newScrollY > this.scrollY && this.scrollPos != 1) {
+      this.scrollPos = 1;
+      this.updateBookContainerAngle();
+      window.scrollTo({
+        behavior: "smooth",
+        left: 0,
+        top: document.body.scrollHeight,
+      });
+    } else if (newScrollY < this.scrollY && this.scrollPos != 0) {
+      this.scrollPos = 0;
+      this.updateBookContainerAngle();
+      window.scrollTo({ behavior: "smooth", left: 0, top: 0 });
+    }
+
+    this.scrollY = newScrollY;
+  }
+
+  private updateBookContainerAngle() {
+    if (this.scrollPos == 0) {
+      this.bookContainerContainer.classList.add("tilted");
+    } else {
+      this.bookContainerContainer.classList.remove("tilted");
+    }
   }
 }
