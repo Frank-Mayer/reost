@@ -12,6 +12,12 @@ body {
   background-repeat: no-repeat;
 }
 
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
 * {
   text-rendering: geometricPrecision;
   shape-rendering: geometricPrecision;
@@ -45,4 +51,21 @@ a {
 ::selection {
   background-color: $accent;
   color: white;
+}
+
+.copy {
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    &:not(:active) {
+      -webkit-filter: drop-shadow(1px 2px 4px black);
+      filter: drop-shadow(1px 2px 4px black);
+    }
+    &:active {
+      -webkit-filter: drop-shadow(1px 2px 8px black);
+      filter: drop-shadow(1px 2px 8px black);
+    }
+    transform: translate(-1px, -2px);
+  }
 }

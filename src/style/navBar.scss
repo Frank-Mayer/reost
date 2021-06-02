@@ -39,14 +39,18 @@ $defaultBannerBack: url("img/wool_colored_gray.webp");
   z-index: 10;
   display: flex;
 
+  * {
+    image-rendering: auto !important;
+    image-rendering: crisp-edges !important;
+    image-rendering: pixelated !important;
+  }
+
   > div > * {
     transition: all ease-in-out 150ms;
     color: white;
     cursor: pointer;
     background-image: $defaultBannerBack;
     background-size: $letterWidth;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
 
     > img {
       width: $iconWidth;

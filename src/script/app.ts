@@ -2,7 +2,6 @@
 
 class App {
   private bookContent: Yule.DomFrame;
-  // private book: Book;
 
   constructor() {
     this.bookContent = new Yule.DomFrame(
@@ -25,13 +24,20 @@ class App {
 
 var updateBook: Function;
 
-// Boot the application
-root.inject("app.html").then(() => {
-  new App();
-  const book = Yule.DI.inject(Book);
-  updateBook = (hash: string, scroll = true) => {
-    book.updatePage(hash, scroll);
-  };
-  updateBook(location.hash || "#", location.hash.length > 0);
-  document.getElementById("splash")?.remove();
-});
+// Boot the application async
+setTimeout(() => {
+  root.inject("app.html").then(() => {
+    new App();
+    const book = Yule.DI.inject(Book);
+
+    updateBook = (hash: string, scroll = true) => {
+      book.updatePage(hash, scroll);
+    };
+
+    // if hash is "" then "#" should be used instead, "" is falsey
+    updateBook(location.hash || "#", location.hash.length > 0);
+
+    // Remove the splash screen
+    document.getElementById("splash")?.remove();
+  });
+}, 500);

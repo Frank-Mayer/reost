@@ -2,13 +2,12 @@ class Book {
   private bookContainer: HTMLElement;
   private bookContainerContainer: HTMLElement;
   private frame: Yule.DomFrame;
-
-  private hash = location.hash;
-
   private dataWriter: DataWriter;
 
-  private scrollY = 0;
-  private scrollPos = 0;
+  private hash: string;
+
+  private scrollPos: number;
+  private touchStartPos: number;
 
   constructor(
     bookContainer: HTMLElement,
@@ -19,7 +18,15 @@ class Book {
     this.bookContainerContainer = this.bookContainer.parentElement!;
     this.frame = frame;
     this.dataWriter = dataWriter;
-    window.addEventListener("scroll", () => this.onScroll());
+
+    this.hash = location.hash;
+    this.touchStartPos = -1;
+    this.scrollPos = 0;
+
+    window.addEventListener("touchstart", (ev) => this.onTouchStart(ev));
+    window.addEventListener("touchmove", (ev) => this.onTouchMove(ev));
+    window.addEventListener("wheel", (ev) => this.onWheel(ev));
+    window.addEventListener("keydown", (ev) => this.onKeyDown(ev));
   }
 
   async updatePage(hash: string, scroll: boolean) {
@@ -52,7 +59,7 @@ class Book {
         break;
       case "":
         await this.frame.inject("home.html");
-        window.scrollTo(0, 0);
+        this.scrollUp(false);
         return;
       default:
         await this.frame.inject("home.html");
@@ -64,7 +71,7 @@ class Book {
     this.bookContainerContainer.classList.remove("down");
 
     if (scroll) {
-      window.scrollTo(0, document.body.scrollHeight);
+      this.scrollDown(true, true);
     }
   }
 
@@ -84,24 +91,75 @@ class Book {
     }
   }
 
-  private onScroll() {
-    const newScrollY = document.documentElement.scrollTop;
+  private onTouchStart(ev: TouchEvent) {
+    this.touchStartPos = ev.touches[0].pageY;
+  }
 
-    if (newScrollY > this.scrollY && this.scrollPos != 1) {
+  private onTouchMove(ev: TouchEvent) {
+    if (ev.touches.length == 1) {
+      if (ev.touches[0].pageY < this.touchStartPos) {
+        this.scrollDown();
+      } else if (ev.touches[0].pageY > this.touchStartPos) {
+        this.scrollUp();
+      }
+    }
+  }
+
+  private onWheel(ev: WheelEvent) {
+    if (ev.deltaY > 0) {
+      this.scrollDown();
+    } else {
+      this.scrollUp();
+    }
+  }
+
+  private onKeyDown(ev: KeyboardEvent) {
+    switch (ev.key) {
+      case "ArrowUp":
+      case "Home":
+      case "PageUp":
+        try {
+          ev.preventDefault();
+        } finally {
+          this.scrollUp();
+        }
+        break;
+      case "ArrowDown":
+      case "End":
+      case "PageDown":
+      case "NextCandidate":
+      case "PreviousCandidate":
+        try {
+          ev.preventDefault();
+        } finally {
+          this.scrollDown();
+        }
+        break;
+    }
+  }
+
+  private scrollDown(smooth = true, force = false) {
+    if (this.scrollPos != 1 || force) {
       this.scrollPos = 1;
       this.updateBookContainerAngle();
       window.scrollTo({
-        behavior: "smooth",
+        behavior: smooth ? "smooth" : "auto",
         left: 0,
         top: document.body.scrollHeight,
       });
-    } else if (newScrollY < this.scrollY && this.scrollPos != 0) {
+    }
+  }
+
+  private scrollUp(smooth = true, force = false) {
+    if (this.scrollPos != 0 || force) {
       this.scrollPos = 0;
       this.updateBookContainerAngle();
-      window.scrollTo({ behavior: "smooth", left: 0, top: 0 });
+      window.scrollTo({
+        behavior: smooth ? "smooth" : "auto",
+        left: 0,
+        top: 0,
+      });
     }
-
-    this.scrollY = newScrollY;
   }
 
   private updateBookContainerAngle() {

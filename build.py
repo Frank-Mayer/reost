@@ -118,8 +118,7 @@ if html:
 
 if deploy:
     title("deploy")
-    info("no deploy setup!")
+    os.system("firebase deploy")
     hr()
-
 title("Done!")
 exit()
