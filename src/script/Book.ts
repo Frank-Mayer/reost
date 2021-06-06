@@ -1,10 +1,5 @@
-class Book {
-  private bookContainer: HTMLElement;
-  private bookContainerContainer: HTMLElement;
-  private frame: Yule.DomFrame;
+class Book extends Yule.SubPageManager {
   private dataWriter: DataWriter;
-
-  private hash: string;
 
   private scrollPos: number;
   private touchStartPos: number;
@@ -14,14 +9,18 @@ class Book {
     frame: Yule.DomFrame,
     dataWriter: DataWriter
   ) {
-    this.bookContainer = bookContainer;
-    this.bookContainerContainer = this.bookContainer.parentElement!;
-    this.frame = frame;
-    this.dataWriter = dataWriter;
+    super(
+      frame,
+      ["discord", "home", "map", "players", "rules", "shop", "team"],
+      "home",
+      "home",
+      bookContainer
+    );
 
-    this.hash = location.hash;
     this.touchStartPos = -1;
     this.scrollPos = 0;
+
+    this.dataWriter = dataWriter;
 
     window.addEventListener("touchstart", (ev) => this.onTouchStart(ev));
     window.addEventListener("touchmove", (ev) => this.onTouchMove(ev));
@@ -29,65 +28,39 @@ class Book {
     window.addEventListener("keydown", (ev) => this.onKeyDown(ev));
   }
 
-  async updatePage(hash: string, scroll: boolean) {
-    const doAnimation = this.hash != hash;
+  protected getCurrentSubPageName(): string {
+    return location.pathname.substr(1);
+  }
+
+  protected pageTitleToPath(newPage: string): string {
+    return `content/${newPage}.html`;
+  }
+
+  async setPage(newPage: string, scroll: boolean, doPushState?: boolean) {
+    const doAnimation = this.lastLocation != newPage;
 
     if (doAnimation) {
-      this.bookContainerContainer.classList.add("down");
+      this.siteNameClassPushElement.classList.add("down");
       await Yule.delay(250);
     }
 
-    switch (hash) {
-      case "#discord":
-        await this.frame.inject("discord.html");
-        await this.dataWriter.discordOnlineList();
-        break;
-      case "#spieler":
-        await this.frame.inject("players.html");
-        break;
-      case "#regeln":
-        await this.frame.inject("rules.html");
-        break;
-      case "#team":
-        await this.frame.inject("team.html");
-        break;
-      case "#shop":
-        await this.frame.inject("shop.html");
-        break;
-      case "#karte":
-        await this.frame.inject("map.html");
-        break;
-      case "":
-        await this.frame.inject("home.html");
-        this.scrollUp(false);
-        return;
-      default:
-        await this.frame.inject("home.html");
-        break;
+    await super.setPage(newPage, doPushState);
+
+    if (doAnimation) {
+      this.siteNameClassPushElement.classList.remove("down");
+      await Yule.delay(250);
     }
-
-    this.replaceHash(hash);
-
-    this.bookContainerContainer.classList.remove("down");
 
     if (scroll) {
       this.scrollDown(true, true);
     }
   }
 
-  private replaceHash(hash: string) {
-    if (history.replaceState) {
-      history.replaceState(null, document.title, hash);
-    } else {
-      location.hash = hash;
-    }
-
-    this.hash = hash;
-
-    const className = hash.replace("#", "");
-    const rootEl = document.getElementById("root");
-    if (rootEl) {
-      rootEl.className = className || "home";
+  protected specialContent(newPage: string) {
+    switch (newPage) {
+      case "discord":
+        this.dataWriter.discordOnlineList();
+        break;
     }
   }
 
@@ -164,9 +137,9 @@ class Book {
 
   private updateBookContainerAngle() {
     if (this.scrollPos == 0) {
-      this.bookContainerContainer.classList.add("tilted");
+      this.siteNameClassPushElement.classList.add("tilted");
     } else {
-      this.bookContainerContainer.classList.remove("tilted");
+      this.siteNameClassPushElement.classList.remove("tilted");
     }
   }
 }

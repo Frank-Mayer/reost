@@ -17,11 +17,11 @@ $defaultBannerBack: url("img/wool_colored_gray.webp");
 
 #root.home #navBar .home,
 #root.discord #navBar .discord,
-#root.spieler #navBar .spieler,
-#root.regeln #navBar .regeln,
+#root.players #navBar .players,
+#root.rules #navBar .rules,
 #root.team #navBar .team,
 #root.shop #navBar .shop,
-#root.karte #navBar .karte {
+#root.map #navBar .map {
   transform: unset !important;
   cursor: default !important;
   background-image: $selectedBannerBack !important;
