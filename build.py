@@ -16,20 +16,16 @@ deploy = False
 
 
 def hr():
-    print("================================")
-
+    print("\033[90m================================")
 
 def title(t):
-    print('\033[95m'+str(t)+'\033[0m')
-
+    print('\033[36m'+str(t)+'\033[90m')
 
 def info(i):
-    print('\033[0m'+str(i)+'\033[0m')
-
+    print('\033[90m'+str(i))
 
 def error(e):
-    print('\033[91m'+str(e)+'\033[0m')
-
+    print('\033[91m'+str(e)+'\033[90m')
 
 for arg in sys.argv:
     if arg == "-all":
@@ -37,7 +33,6 @@ for arg in sys.argv:
         sass = True
         html = True
         assets = True
-        deploy = True
     else:
         if arg == "-tsc":
             tsc = True

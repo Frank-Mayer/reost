@@ -4,17 +4,13 @@ class App {
   private bookContent: Yule.DomFrame;
 
   constructor() {
-    this.bookContent = new Yule.DomFrame(
-      "#content",
-      location.href.split("#")[0].split("?")[0].replace("/index.html", "/") +
-        "content/"
-    );
+    this.bookContent = new Yule.DomFrame("#content");
 
     Yule.DI.registerSingle(new DataWriter());
 
     Yule.DI.registerSingle(
       new Book(
-        document.getElementById("bookContainer")!,
+        document.getElementById("bookContainerContainer")!,
         this.bookContent,
         Yule.DI.inject(DataWriter)
       )
@@ -28,16 +24,17 @@ var updateBook: Function;
 setTimeout(() => {
   root.inject("app.html").then(() => {
     new App();
+
     const book = Yule.DI.inject(Book);
 
-    updateBook = (hash: string, scroll = true) => {
-      book.updatePage(hash, scroll);
+    updateBook = (newPage: string, scroll = true) => {
+      book.setPage(newPage, scroll);
     };
 
-    // if hash is "" then "#" should be used instead, "" is falsey
-    updateBook(location.hash || "#", location.hash.length > 0);
-
     // Remove the splash screen
-    document.getElementById("splash")?.remove();
+    const splash = document.getElementById("splash");
+    if (splash) {
+      splash.remove();
+    }
   });
 }, 500);
