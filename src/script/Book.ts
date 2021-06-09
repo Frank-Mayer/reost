@@ -1,21 +1,32 @@
 class Book extends Yule.SubPageManager {
-  private dataWriter: DataWriter;
+  private readonly dataWriter: DataWriter;
 
   private scrollPos: number;
   private touchStartPos: number;
+
+  private readonly bookContainer: HTMLElement;
 
   constructor(
     bookContainer: HTMLElement,
     frame: Yule.DomFrame,
     dataWriter: DataWriter
   ) {
-    super(
+    super({
       frame,
-      ["discord", "home", "map", "players", "rules", "shop", "team"],
-      "home",
-      "home",
-      bookContainer
-    );
+      sitemap: new Set([
+        "discord",
+        "home",
+        "map",
+        "players",
+        "rules",
+        "shop",
+        "team",
+      ]),
+      homeSite: "home",
+      homeAsEmpty: true,
+      setWindowTitle: "Reost - %s",
+    });
+    this.bookContainer = bookContainer;
 
     this.touchStartPos = -1;
     this.scrollPos = 0;
@@ -39,15 +50,15 @@ class Book extends Yule.SubPageManager {
   async setPage(newPage: string, scroll: boolean, doPushState?: boolean) {
     const doAnimation = this.lastLocation != newPage;
 
-    if (doAnimation) {
-      this.siteNameClassPushElement.classList.add("down");
+    if (doAnimation && this.bookContainer) {
+      this.bookContainer.classList.add("down");
       await Yule.delay(250);
     }
 
     await super.setPage(newPage, doPushState);
 
-    if (doAnimation) {
-      this.siteNameClassPushElement.classList.remove("down");
+    if (this.bookContainer && this.bookContainer.classList.contains("down")) {
+      this.bookContainer.classList.remove("down");
       await Yule.delay(250);
     }
 
@@ -137,9 +148,9 @@ class Book extends Yule.SubPageManager {
 
   private updateBookContainerAngle() {
     if (this.scrollPos == 0) {
-      this.siteNameClassPushElement.classList.add("tilted");
+      this.bookContainer.classList.add("tilted");
     } else {
-      this.siteNameClassPushElement.classList.remove("tilted");
+      this.bookContainer.classList.remove("tilted");
     }
   }
 }
