@@ -15,13 +15,13 @@ $sizePortrait: $paddingBackH + $paddingBack + $iconWidth;
 $selectedBannerBack: url("img/wool_colored_green.webp");
 $defaultBannerBack: url("img/wool_colored_gray.webp");
 
-#root.home #navBar .home,
-#root.discord #navBar .discord,
-#root.players #navBar .players,
-#root.rules #navBar .rules,
-#root.team #navBar .team,
-#root.shop #navBar .shop,
-#root.map #navBar .map {
+.home #navBar .home,
+.discord #navBar .discord,
+.players #navBar .players,
+.rules #navBar .rules,
+.team #navBar .team,
+.shop #navBar .shop,
+.map #navBar .map {
   transform: unset !important;
   cursor: default !important;
   background-image: $selectedBannerBack !important;
