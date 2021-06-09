@@ -1,5 +1,4 @@
 import os
-from posixpath import basename
 import sys
 from pathlib import Path
 import re
