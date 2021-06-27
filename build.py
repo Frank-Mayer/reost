@@ -1,7 +1,6 @@
 import os
 import sys
 from pathlib import Path
-import re
 import shutil
 from distutils.dir_util import copy_tree
 
