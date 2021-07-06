@@ -1,4 +1,4 @@
-class Book extends Yule.SubPageManager {
+class Book extends Yule.Router {
   private readonly dataWriter: DataWriter;
 
   private scrollPos: number;
@@ -24,7 +24,9 @@ class Book extends Yule.SubPageManager {
       ]),
       homeSite: "home",
       homeAsEmpty: true,
-      setWindowTitle: "Reost - %s",
+      setWindowTitle: (newPage) => {
+        return `Reost - ${newPage}`;
+      },
     });
     this.bookContainer = bookContainer;
 
@@ -67,7 +69,7 @@ class Book extends Yule.SubPageManager {
     }
   }
 
-  protected specialContent(newPage: string) {
+  protected onInject(newPage: string) {
     switch (newPage) {
       case "discord":
         this.dataWriter.discordOnlineList();
