@@ -37,6 +37,58 @@
     <link rel="shortcut icon" href="./assets/img/icon.webp" type="image/webp" />
   </head>
   <body>
+    <section id="splash">
+      <img src="./assets/img/iron_pickaxe.webp" alt="loading..." />
+      <style>
+        @keyframes pick {
+          0% {
+            -webkit-transform: rotate(-20deg);
+            -moz-transform: rotate(-20deg);
+            -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+          }
+          25% {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+          100% {
+            -webkit-transform: rotate(-20deg);
+            -moz-transform: rotate(-20deg);
+            -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+          }
+        }
+        #splash {
+          position: fixed;
+          z-index: 1000;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: linear-gradient(#0d0d0d, #1a1a1a);
+        }
+        #splash > img {
+          max-width: 50vw;
+          min-width: 10vw;
+          width: 64px;
+          max-height: 50vw;
+          min-height: 10vw;
+          height: 64px;
+          transform-origin: 10% 90%;
+          -o-animation: pick 1000ms linear infinite;
+          -moz-animation: pick 1000ms linear infinite;
+          -webkit-animation: pick 1000ms linear infinite;
+          animation: pick 1000ms linear infinite;
+          image-rendering: pixelated;
+        }
+      </style>
+    </section>
+
     <section id="snap">
       <div id="title">
         <h1>Reost</h1>
@@ -51,58 +103,7 @@
 
       <div id="book-perspective">
         <div id="book">
-          <div id="content">
-            <section id="splash">
-              <img src="./assets/img/iron_pickaxe.webp" alt="loading..." />
-              <style>
-                @keyframes pick {
-                  0% {
-                    -webkit-transform: rotate(-20deg);
-                    -moz-transform: rotate(-20deg);
-                    -o-transform: rotate(-20deg);
-                    transform: rotate(-20deg);
-                  }
-                  25% {
-                    -webkit-transform: rotate(45deg);
-                    -moz-transform: rotate(45deg);
-                    -o-transform: rotate(45deg);
-                    transform: rotate(45deg);
-                  }
-                  100% {
-                    -webkit-transform: rotate(-20deg);
-                    -moz-transform: rotate(-20deg);
-                    -o-transform: rotate(-20deg);
-                    transform: rotate(-20deg);
-                  }
-                }
-                #splash {
-                  position: fixed;
-                  top: 0;
-                  right: 0;
-                  bottom: 0;
-                  left: 0;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  background: linear-gradient(#0d0d0d, #1a1a1a);
-                }
-                #splash > img {
-                  max-width: 50vw;
-                  min-width: 10vw;
-                  width: 64px;
-                  max-height: 50vw;
-                  min-height: 10vw;
-                  height: 64px;
-                  transform-origin: 10% 90%;
-                  -o-animation: pick 1000ms linear infinite;
-                  -moz-animation: pick 1000ms linear infinite;
-                  -webkit-animation: pick 1000ms linear infinite;
-                  animation: pick 1000ms linear infinite;
-                  image-rendering: pixelated;
-                }
-              </style>
-            </section>
-          </div>
+          <div id="content"></div>
         </div>
       </div>
     </section>

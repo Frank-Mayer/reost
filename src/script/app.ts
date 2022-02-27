@@ -35,6 +35,11 @@ router.addEventListener("injected", (ev) => {
   if (ev.value !== "home") {
     contentEl.scrollIntoView({ behavior: "smooth" });
   }
+
+  const splashEl = document.getElementById("splash");
+  if (splashEl) {
+    splashEl.remove();
+  }
 });
 
 const snapEl = document.getElementById("snap")!;
