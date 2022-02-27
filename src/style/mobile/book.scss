@@ -1,0 +1,26 @@
+#book {
+  background-image: url(../assets/img/book.webp);
+  background-repeat: no-repeat;
+  background-size: contain;
+  $width: 100vw;
+  $height: math.div($width, 290) * 357;
+  width: $width !important;
+  height: $height !important;
+  padding: #{$height * 0.04} 0 0 #{$width * 0.09};
+  margin: 0 auto;
+  width: fit-content;
+
+  #content {
+    width: calc(#{$width} - #{$width * 0.15});
+    height: calc(#{$height} - #{$height * 0.1});
+    overflow: auto;
+    padding: 0 0 $padding 0;
+
+    display: flex;
+    flex-flow: column;
+    > * {
+      height: fit-content;
+      overflow: visible;
+    }
+  }
+}

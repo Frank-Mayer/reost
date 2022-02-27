@@ -2,8 +2,10 @@ import { Router, DomFrame } from "@frank-mayer/photon";
 import { capitalize } from "@frank-mayer/magic";
 import { DiscordWidget } from "./DiscordWidget";
 
+const contentEl = document.getElementById("content")!;
+
 export const router = new Router({
-  frame: new DomFrame({ element: document.getElementById("content")! }),
+  frame: new DomFrame({ element: contentEl }),
   sitemap: new Set([
     "home",
     "discord",
@@ -29,15 +31,28 @@ router.addEventListener("injected", (ev) => {
       router.element.appendChild(html);
     });
   }
+
+  if (ev.value !== "home") {
+    contentEl.scrollIntoView({ behavior: "smooth" });
+  }
 });
 
 const snapEl = document.getElementById("snap")!;
-snapEl.addEventListener("scroll", (ev) => {
-  const scrollPercentage =
-    snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
+snapEl.addEventListener(
+  "scroll",
+  () => {
+    const scrollPercentage =
+      snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
-  snapEl.style.setProperty(
-    "--scroll-percentage",
-    scrollPercentage.toPrecision(4)
-  );
-});
+    snapEl.style.setProperty(
+      "--scroll-percentage",
+      scrollPercentage.toPrecision(4)
+    );
+
+    contentEl.style.overflow = scrollPercentage > 0.5 ? "auto" : "hidden";
+  },
+  {
+    passive: true,
+    capture: false,
+  }
+);
