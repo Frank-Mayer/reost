@@ -35,6 +35,7 @@ a[route] {
   cursor: pointer;
 }
 
+// #book
 #snap {
   --scroll-percentage: 0;
   scroll-snap-type: y mandatory;
@@ -69,6 +70,20 @@ a[route] {
         translateY(calc((1 - var(--scroll-percentage)) * -50vh));
       filter: blur(calc((1 - var(--scroll-percentage)) * 4px));
       transform-origin: bottom center;
+    }
+  }
+}
+
+// #navBar
+@each $nav in "home", "discord", "players", "rules", "team", "shop", "map" {
+  body.#{$nav} #navBar > a {
+    &[route="#{$nav}"] {
+      transform: unset !important;
+      background-image: url(../assets/img/wool_colored_green.webp) !important;
+    }
+
+    &:not([route="#{$nav}"]) {
+      background-image: url(../assets/img/wool_colored_gray.webp) !important;
     }
   }
 }
