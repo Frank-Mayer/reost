@@ -75,6 +75,10 @@ a[route] {
 }
 
 // #navBar
+#navBar {
+  filter: contrast(0.95) sepia(0.2);
+}
+
 @each $nav in "home", "discord", "players", "rules", "team", "shop", "map" {
   body.#{$nav} #navBar > a {
     &[route="#{$nav}"] {

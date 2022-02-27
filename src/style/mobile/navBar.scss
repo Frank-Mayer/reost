@@ -9,7 +9,6 @@
   grid-auto-columns: minmax(0, 1fr);
   grid-auto-flow: column;
   gap: $padding;
-  filter: contrast(0.95) sepia(0.2);
 
   > * {
     background: {
@@ -17,6 +16,7 @@
       position: 0 #{$padding * -4};
       repeat: repeat;
     }
+    height: 25vw;
     padding: 24px 4px 24px 4px;
     clip-path: polygon(100% 0%, 100% 100%, 50% calc(100% - 16px), 0 100%, 0 0);
     transition: transform 0.2s ease-out;
