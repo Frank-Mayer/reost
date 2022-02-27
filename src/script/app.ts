@@ -1,40 +1,43 @@
-/// <reference path="root.ts" />
+import { Router, DomFrame } from "@frank-mayer/photon";
+import { capitalize } from "@frank-mayer/magic";
+import { DiscordWidget } from "./DiscordWidget";
 
-class App {
-  private bookContent: Yule.DomFrame;
+export const router = new Router({
+  frame: new DomFrame({ element: document.getElementById("content")! }),
+  sitemap: new Set([
+    "home",
+    "discord",
+    "players",
+    "rules",
+    "team",
+    "shop",
+    "map",
+  ]),
+  fallbackSite: "home",
+  homeSite: "home",
+  homeAsEmpty: true,
+  setWindowTitle: (newPage) => `Reost – ${capitalize(newPage)}`,
+});
 
-  constructor() {
-    this.bookContent = new Yule.DomFrame("#content");
-
-    Yule.DI.registerSingle(new DataWriter());
-
-    Yule.DI.registerSingle(
-      new Book(
-        document.getElementById("bookContainerContainer")!,
-        this.bookContent,
-        Yule.DI.inject(DataWriter)
-      )
+router.addEventListener("injected", (ev) => {
+  if (ev.value === "discord") {
+    const discordWidget = new DiscordWidget(
+      "https://discord.com/api/guilds/467053516066652160/widget.json"
     );
+
+    discordWidget.generateHTML().then((html) => {
+      router.element.appendChild(html);
+    });
   }
-}
+});
 
-var updateBook: Function;
+const snapEl = document.getElementById("snap")!;
+snapEl.addEventListener("scroll", (ev) => {
+  const scrollPercentage =
+    snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
-// Boot the application async
-setTimeout(() => {
-  root.inject("app.html").then(() => {
-    new App();
-
-    const book = Yule.DI.inject(Book);
-
-    updateBook = (newPage: string, scroll = true) => {
-      book.setPage(newPage, scroll);
-    };
-
-    // Remove the splash screen
-    const splash = document.getElementById("splash");
-    if (splash) {
-      splash.remove();
-    }
-  });
-}, 500);
+  snapEl.style.setProperty(
+    "--scroll-percentage",
+    scrollPercentage.toPrecision(4)
+  );
+});

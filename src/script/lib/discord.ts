@@ -1,4 +1,4 @@
-declare type discordWidget = {
+export interface DiscordWidgetData {
   message?: string;
   code?: number;
   id?: string;
@@ -14,4 +14,4 @@ declare type discordWidget = {
     avatar_url: string;
   }>;
   presence_count?: number;
-};
+}

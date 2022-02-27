@@ -1,0 +1,59 @@
+@import "../../node_modules/normalize.css/normalize.css";
+
+@import "globals";
+@import "discordWidget";
+
+// bootstrap icons
+img.bi {
+  height: 1em;
+  width: auto;
+  image-rendering: optimizeQuality !important;
+}
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+  image-rendering: pixelated;
+  shape-rendering: geometricPrecision;
+  box-sizing: border-box;
+}
+
+*[onclick],
+a[href],
+a[route] {
+  cursor: pointer;
+}
+
+#snap {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+
+  > #title,
+  > #book-perspective {
+    scroll-snap-align: start;
+    flex-flow: column;
+    scroll-snap-stop: always;
+  }
+
+  > #title > * {
+    z-index: 1;
+    will-change: transform;
+    transition: transform 0.2s ease-out;
+    transform: translateY(calc(var(--scroll-percentage) * 15vh));
+  }
+
+  > #book-perspective {
+    perspective: 1000px;
+
+    > #book {
+      z-index: 2;
+      will-change: transform, filter;
+      transition: transform 0.2s ease-out;
+      transform: rotateX(calc((1 - var(--scroll-percentage)) * 45deg))
+        translateY(calc((1 - var(--scroll-percentage)) * -50vh));
+      filter: blur(calc((1 - var(--scroll-percentage)) * 4px));
+      transform-origin: bottom center;
+    }
+  }
+}

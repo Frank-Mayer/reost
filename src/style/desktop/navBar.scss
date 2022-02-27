@@ -1,0 +1,42 @@
+#navBar {
+  position: fixed;
+  left: 0;
+  $count: 7;
+  --height: min(100vh, 500px);
+  --item-height: calc(
+    var(--height) / #{$count} - #{math.div(($count - 1) * $padding, $count)}
+  );
+  height: var(--height);
+  top: calc(50vh - (var(--height) / 2));
+  width: fit-content;
+  display: grid;
+  gap: $padding;
+  grid-template-rows: repeat(#{$count}, var(--item-height));
+
+  > * {
+    background: {
+      image: url(../assets/img/wool_colored_green.webp);
+      size: var(--item-height);
+      position: #{$padding * -4} 0;
+      repeat: repeat;
+    }
+    padding: 8px 64px 8px 32px;
+    clip-path: polygon(
+      100% 0,
+      calc(100% - 32px) 50%,
+      100% 100%,
+      0% 100%,
+      0% 0%
+    );
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+
+    > img {
+      height: 100%;
+    }
+
+    &:not(:hover) {
+      transform: translateX(-16px);
+    }
+  }
+}
