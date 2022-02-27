@@ -3,6 +3,16 @@
 @import "globals";
 @import "discordWidget";
 
+:root {
+  background: {
+    color: black;
+    image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+      url(../assets/img/wallpaper.webp);
+    repeat: no-repeat;
+    size: cover;
+  }
+}
+
 // bootstrap icons
 img.bi {
   height: 1em;
@@ -25,6 +35,7 @@ a[route] {
 }
 
 #snap {
+  --scroll-percentage: 0;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
@@ -36,18 +47,21 @@ a[route] {
     scroll-snap-stop: always;
   }
 
-  > #title > * {
+  > #title {
     z-index: 1;
-    will-change: transform;
-    transition: transform 0.2s ease-out;
-    transform: translateY(calc(var(--scroll-percentage) * 15vh));
+
+    > * {
+      will-change: transform;
+      transition: transform 0.2s ease-out;
+      transform: translateY(calc(var(--scroll-percentage) * 15vh));
+    }
   }
 
   > #book-perspective {
     perspective: 1000px;
+    z-index: 2;
 
     > #book {
-      z-index: 2;
       will-change: transform, filter;
       transition: transform 0.2s ease-out;
       transform: rotateX(calc((1 - var(--scroll-percentage)) * 45deg))
