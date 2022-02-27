@@ -8,12 +8,13 @@
   );
   height: var(--height);
   top: calc(50vh - (var(--height) / 2));
-  width: fit-content;
+  width: 25vh;
   display: grid;
   gap: $padding;
   grid-template-rows: repeat(#{$count}, var(--item-height));
 
   > * {
+    width: 25vh;
     background: {
       image: url(../assets/img/wool_colored_gray.webp);
       size: var(--item-height);

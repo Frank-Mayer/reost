@@ -39,7 +39,7 @@ a[route] {
 #snap {
   --scroll-percentage: 0;
   scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  overflow-y: auto !important;
   height: 100vh;
 
   > #title,
