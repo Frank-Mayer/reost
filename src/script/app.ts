@@ -1,40 +1,58 @@
-/// <reference path="root.ts" />
+import { Router, DomFrame } from "@frank-mayer/photon";
+import { capitalize } from "@frank-mayer/magic";
+import { DiscordWidget } from "./DiscordWidget";
 
-class App {
-  private bookContent: Yule.DomFrame;
+const contentEl = document.getElementById("content")!;
 
-  constructor() {
-    this.bookContent = new Yule.DomFrame("#content");
+export const router = new Router({
+  frame: new DomFrame({ element: contentEl }),
+  sitemap: new Set([
+    "home",
+    "discord",
+    "players",
+    "rules",
+    "team",
+    "shop",
+    "map",
+  ]),
+  fallbackSite: "home",
+  homeSite: "home",
+  homeAsEmpty: true,
+  setWindowTitle: (newPage) => `Reost – ${capitalize(newPage)}`,
+});
 
-    Yule.DI.registerSingle(new DataWriter());
-
-    Yule.DI.registerSingle(
-      new Book(
-        document.getElementById("bookContainerContainer")!,
-        this.bookContent,
-        Yule.DI.inject(DataWriter)
-      )
+router.addEventListener("injected", (ev) => {
+  if (ev.value === "discord") {
+    const discordWidget = new DiscordWidget(
+      "https://discord.com/api/guilds/467053516066652160/widget.json"
     );
+
+    discordWidget.generateHTML().then((html) => {
+      router.element.appendChild(html);
+    });
   }
-}
 
-var updateBook: Function;
+  if (ev.value !== "home") {
+    contentEl.scrollIntoView({ behavior: "smooth" });
+  }
+});
 
-// Boot the application async
-setTimeout(() => {
-  root.inject("app.html").then(() => {
-    new App();
+const snapEl = document.getElementById("snap")!;
+snapEl.addEventListener(
+  "scroll",
+  () => {
+    const scrollPercentage =
+      snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
-    const book = Yule.DI.inject(Book);
+    snapEl.style.setProperty(
+      "--scroll-percentage",
+      scrollPercentage.toPrecision(4)
+    );
 
-    updateBook = (newPage: string, scroll = true) => {
-      book.setPage(newPage, scroll);
-    };
-
-    // Remove the splash screen
-    const splash = document.getElementById("splash");
-    if (splash) {
-      splash.remove();
-    }
-  });
-}, 500);
+    contentEl.style.overflow = scrollPercentage > 0.5 ? "auto" : "hidden";
+  },
+  {
+    passive: true,
+    capture: false,
+  }
+);

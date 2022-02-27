@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <link rel="canonical" href="https://reost.de" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="og:url" content="https://reost.de" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+
+    <meta
+      name="description"
+      content="Rießiges Mittelalter Rollplay für Minecraft 1.18"
+    />
+    <meta
+      property="og:description"
+      content="Rießiges Mittelalter Rollplay für Minecraft 1.18"
+    />
+    <meta property="og:title" content="Reost - Minecraft MMORPG" />
+    <meta property="twitter:title" content="Reost - Minecraft MMORPG" />
+    <meta property="og:site_name" content="Reost - Minecraft MMORPG" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta
+      name="keywords"
+      content="deutsch, minecraft server, minecraft reost, minecraft 1.18 server, minecraft mmo rpg, minecraft rpg server"
+    />
+    <meta name="google" content="nositelinkssearchbox" />
+
+    <title>Reost</title>
+
+    <link rel="canonical" href="https://reost.de" />
+
+    <link rel="shortcut icon" href="./assets/img/icon.webp" type="image/webp" />
+  </head>
+  <body>
+    <section id="snap">
+      <div id="title">
+        <h1>Reost</h1>
+        <p>Rießiges Deutsches Mittelalter-Rollplay für Minecraft 1.18</p>
+        <p>
+          <img
+            src="../node_modules/bootstrap-icons/icons/chevron-double-down.svg"
+            class="bi"
+          />
+        </p>
+      </div>
+
+      <div id="book-perspective">
+        <div id="book">
+          <div id="content">
+            <section id="splash">
+              <img src="./assets/img/iron_pickaxe.webp" alt="loading..." />
+              <style>
+                @keyframes pick {
+                  0% {
+                    -webkit-transform: rotate(-20deg);
+                    -moz-transform: rotate(-20deg);
+                    -o-transform: rotate(-20deg);
+                    transform: rotate(-20deg);
+                  }
+                  25% {
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: rotate(45deg);
+                    -o-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                  }
+                  100% {
+                    -webkit-transform: rotate(-20deg);
+                    -moz-transform: rotate(-20deg);
+                    -o-transform: rotate(-20deg);
+                    transform: rotate(-20deg);
+                  }
+                }
+                #splash {
+                  position: fixed;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background: linear-gradient(#0d0d0d, #1a1a1a);
+                }
+                #splash > img {
+                  max-width: 50vw;
+                  min-width: 10vw;
+                  width: 64px;
+                  max-height: 50vw;
+                  min-height: 10vw;
+                  height: 64px;
+                  transform-origin: 10% 90%;
+                  -o-animation: pick 1000ms linear infinite;
+                  -moz-animation: pick 1000ms linear infinite;
+                  -webkit-animation: pick 1000ms linear infinite;
+                  animation: pick 1000ms linear infinite;
+                  image-rendering: pixelated;
+                }
+              </style>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav id="navBar">
+      <a route="home">
+        <img src="./assets/img/icon.webp" alt="Reost" />
+      </a>
+      <a route="discord">
+        <img src="./assets/img/discord.webp" alt="Discord" />
+      </a>
+      <a route="players">
+        <img src="./assets/img/iron_axe.webp" alt="Spieler" />
+      </a>
+      <a route="rules">
+        <img src="./assets/img/book_written.webp" alt="Regeln" />
+      </a>
+      <a route="team">
+        <img src="./assets/img/apple_golden.webp" alt="Team" />
+      </a>
+      <a route="shop">
+        <img src="./assets/img/gold_ingot.webp" alt="Shop" />
+      </a>
+      <a route="map">
+        <img src="./assets/img/map.webp" alt="Karte" />
+      </a>
+    </nav>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style/style.scss" />
+    <link
+      rel="stylesheet"
+      href="./style/desktop.scss"
+      media="all and (orientation: landscape)"
+    />
+    <link
+      rel="stylesheet"
+      href="./style/mobile.scss"
+      media="all and (orientation: portrait)"
+    />
+
+    <script defer type="module" src="./script/app.ts"></script>
+  </body>
+</html>
