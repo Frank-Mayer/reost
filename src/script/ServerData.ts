@@ -1,0 +1,61 @@
+import { mcColorCssMap } from "./lib/mcapi";
+import type { MCApi } from "./lib/mcapi";
+
+export class ServerData {
+  private readonly apiUrl: string;
+  private static data: MCApi | null = null;
+
+  constructor(ip: string) {
+    this.apiUrl = `https://mcapi.us/server/status?ip=${ip}`;
+  }
+
+  private async getData() {
+    if (ServerData.data) {
+      return ServerData.data;
+    } else {
+      const response = await fetch(this.apiUrl);
+      if (response.status === 200) {
+        ServerData.data = await response.json();
+        if (ServerData.data) {
+          return ServerData.data;
+        } else {
+          throw new Error("No data found");
+        }
+      } else {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+    }
+  }
+
+  public async setMotd(el: HTMLElement) {
+    el.innerHTML = "";
+
+    for (const motdEl of (await this.getData()).motd_json.extra) {
+      const span = document.createElement("span");
+      span.style.color = mcColorCssMap.get(motdEl.color)!;
+      span.innerText = motdEl.text;
+      el.appendChild(span);
+    }
+  }
+
+  public async generatePlayerList(): Promise<HTMLElement> {
+    const ul = document.createElement("ul");
+    for (const player of (await this.getData()).players.sample) {
+      if (player.id === "00000000-0000-0000-0000-000000000000") {
+        continue;
+      }
+
+      const li = document.createElement("li");
+      li.innerText = player.name;
+      ul.appendChild(li);
+    }
+    return ul;
+  }
+
+  public async generatePlayerCounter(): Promise<HTMLElement> {
+    const el = document.createElement("b");
+    const { players } = await this.getData();
+    el.innerText = `Aktive Spieler: ${players.now} von ${players.max}`;
+    return el;
+  }
+}

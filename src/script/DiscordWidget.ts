@@ -2,26 +2,27 @@ import type { DiscordWidgetData } from "./lib/discord";
 
 export class DiscordWidget {
   private readonly uri: string;
+  private data: DiscordWidgetData | null = null;
 
-  constructor(uri: string) {
-    this.uri = uri;
+  constructor(apiKey: string) {
+    this.uri = `https://discord.com/api/guilds/${apiKey}/widget.json`;
   }
 
-  private getData() {
-    return new Promise<DiscordWidgetData>((resolve) => {
-      fetch(this.uri).then((response) => {
-        if (response.status === 200) {
-          response.json().then((data) => {
-            resolve(data);
-          });
-        } else {
-          resolve({
-            code: response.status,
-            message: response.statusText,
-          });
+  private async getData() {
+    if (this.data) {
+      return this.data;
+    } else {
+      const response = await fetch(this.uri);
+      if (response.status === 200) {
+        this.data = await response.json();
+        if (this.data) {
+          return this.data;
         }
-      });
-    });
+        throw new Error("No data found");
+      } else {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+    }
   }
 
   public async generateHTML() {

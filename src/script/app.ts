@@ -1,6 +1,15 @@
 import { Router, DomFrame } from "@frank-mayer/photon";
 import { capitalize } from "@frank-mayer/magic";
 import { DiscordWidget } from "./DiscordWidget";
+import { ServerData } from "./ServerData";
+
+const minecraftServerData = new ServerData("reost.de");
+const discordWidget = new DiscordWidget("467053516066652160");
+
+const motd = document.getElementById("motd");
+if (motd) {
+  minecraftServerData.setMotd(motd);
+}
 
 const contentEl = document.getElementById("content")!;
 
@@ -22,14 +31,23 @@ export const router = new Router({
 });
 
 router.addEventListener("injected", (ev) => {
-  if (ev.value === "discord") {
-    const discordWidget = new DiscordWidget(
-      "https://discord.com/api/guilds/467053516066652160/widget.json"
-    );
+  switch (ev.value) {
+    case "discord":
+      discordWidget.generateHTML().then((html) => {
+        router.element.appendChild(html);
+      });
+      break;
 
-    discordWidget.generateHTML().then((html) => {
-      router.element.appendChild(html);
-    });
+    case "players":
+      Promise.all([
+        minecraftServerData.generatePlayerCounter(),
+        minecraftServerData.generatePlayerList(),
+      ]).then((htmls) => {
+        for (const html of htmls) {
+          router.element.appendChild(html);
+        }
+      });
+      break;
   }
 
   if (ev.value !== "home") {
