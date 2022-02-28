@@ -52,10 +52,17 @@ export class ServerData {
     return ul;
   }
 
-  public async generatePlayerCounter(): Promise<HTMLElement> {
-    const el = document.createElement("b");
-    const { players } = await this.getData();
-    el.innerText = `Aktive Spieler: ${players.now} von ${players.max}`;
-    return el;
+  public async fillPlaceholders(root: HTMLElement) {
+    for (const el of root.getElementsByClassName("now-players")) {
+      (el as HTMLElement).innerText = (
+        await this.getData()
+      ).players.now.toString();
+    }
+
+    for (const el of root.getElementsByClassName("max-players")) {
+      (el as HTMLElement).innerText = (
+        await this.getData()
+      ).players.max.toString();
+    }
   }
 }

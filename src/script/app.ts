@@ -39,16 +39,13 @@ router.addEventListener("injected", (ev) => {
       break;
 
     case "players":
-      Promise.all([
-        minecraftServerData.generatePlayerCounter(),
-        minecraftServerData.generatePlayerList(),
-      ]).then((htmls) => {
-        for (const html of htmls) {
-          router.element.appendChild(html);
-        }
+      minecraftServerData.generatePlayerList().then((html) => {
+        router.element.appendChild(html);
       });
       break;
   }
+
+  minecraftServerData.fillPlaceholders(router.element);
 
   if (ev.value !== "home") {
     contentEl.scrollIntoView({ behavior: "smooth" });
