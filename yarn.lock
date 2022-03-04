@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@frank-mayer/magic@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@frank-mayer/magic/-/magic-1.4.0.tgz#244df1cc90d556c84be9f301f9dd5cca7d6fe355"
-  integrity sha512-NUqKF1bud7jc5fgT4Wn0ayb/zk1wsYB00gx8LL/ITTPF2dXsb98CPYsp5l1fkg2Tm0V2fbT0DtD1KMiyKdGE/Q==
+"@frank-mayer/magic@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@frank-mayer/magic/-/magic-1.5.0.tgz#93e64d7bf3408a8ad3707ce2c8114586bfa3380b"
+  integrity sha512-z9NG1uVwwdmFn8QeKzbKpwugdi3Aw0tb5iFg54IRzRloZsDd5qObcba3ziFzyrr2ZJX5VJC8kuyJMOCjXVUMfQ==
 
 "@frank-mayer/photon@^1.2.1":
   version "1.2.1"
