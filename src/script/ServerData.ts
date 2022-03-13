@@ -14,7 +14,7 @@ export class ServerData {
       return ServerData.data;
     } else {
       const response = await fetch(this.apiUrl);
-      if (response.status === 200) {
+      if (response.ok) {
         ServerData.data = await response.json();
         if (ServerData.data) {
           return ServerData.data;

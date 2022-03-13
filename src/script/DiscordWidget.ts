@@ -13,7 +13,7 @@ export class DiscordWidget {
       return this.data;
     } else {
       const response = await fetch(this.uri);
-      if (response.status === 200) {
+      if (response.ok) {
         this.data = await response.json();
         if (this.data) {
           return this.data;
