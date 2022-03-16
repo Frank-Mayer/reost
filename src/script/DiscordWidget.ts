@@ -83,6 +83,8 @@ export class DiscordWidget {
         const div = document.createElement("div");
         div.classList.add("member");
         const img = document.createElement("img");
+        img.setAttribute("loading", "lazy");
+        img.setAttribute("decoding", "async");
         img.classList.add(member.status);
         img.src = member.avatar_url;
         const name = document.createElement("span");
