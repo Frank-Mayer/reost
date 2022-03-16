@@ -70,6 +70,14 @@ a[route] {
         translateY(calc((1 - var(--scroll-percentage)) * -50vh));
       filter: blur(calc((1 - var(--scroll-percentage)) * 4px));
       transform-origin: bottom center;
+
+      > #content:not(.readable) {
+        overflow: clip !important;
+        pointer-events: none !important;
+        * {
+          user-select: none !important;
+        }
+      }
     }
   }
 }

@@ -58,21 +58,22 @@ router.addEventListener("injected", (ev) => {
 });
 
 const snapEl = document.getElementById("snap")!;
-snapEl.addEventListener(
-  "scroll",
-  () => {
-    const scrollPercentage =
-      snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
-    snapEl.style.setProperty(
-      "--scroll-percentage",
-      scrollPercentage.toPrecision(4)
-    );
+const updateSnapElState = () => {
+  const scrollPercentage =
+    snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
-    contentEl.style.overflow = scrollPercentage > 0.5 ? "auto" : "hidden";
-  },
-  {
-    passive: true,
-    capture: false,
-  }
-);
+  snapEl.style.setProperty(
+    "--scroll-percentage",
+    scrollPercentage.toPrecision(4)
+  );
+
+  contentEl.classList.toggle("readable", scrollPercentage > 0.5);
+};
+
+snapEl.addEventListener("scroll", updateSnapElState, {
+  passive: true,
+  capture: false,
+});
+
+setTimeout(updateSnapElState, 250);
