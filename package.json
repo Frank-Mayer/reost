@@ -22,7 +22,7 @@
     "build": "parcel build ./src/index.html ./src/**/*.html --no-source-maps --no-cache"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "2.3.2",
+    "@parcel/transformer-sass": "2.4.0",
     "autoprefixer": "^10.4.4",
     "parcel": "^2.3.2",
     "postcss": "^8.4.12",
