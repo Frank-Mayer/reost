@@ -15,6 +15,7 @@ const contentEl = document.getElementById("content")!;
 
 const onRouted = (route: string) => {
   document.title = `Reost – ${route.capitalize()}`;
+  document.body.className = route;
 
   switch (route) {
     case "discord":

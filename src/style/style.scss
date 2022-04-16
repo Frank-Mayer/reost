@@ -107,12 +107,12 @@ a[route] {
 
 @each $nav in "home", "discord", "players", "rules", "team", "shop", "map" {
   body.#{$nav} #navBar > a {
-    &[route="#{$nav}"] {
+    &[data-route="/#{$nav}"] {
       transform: unset !important;
       background-image: url(../assets/img/wool_colored_green.webp) !important;
     }
 
-    &:not([route="#{$nav}"]) {
+    &:not([data-route="/#{$nav}"]) {
       background-image: url(../assets/img/wool_colored_gray.webp) !important;
     }
   }
