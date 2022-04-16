@@ -104,35 +104,41 @@
 
       <div id="book-perspective">
         <div id="book">
-          <div id="content"></div>
+          <div
+            id="content"
+            photon-router
+            data-content="/content"
+            data-default="/home"
+            data-fallback="/home"
+          ></div>
         </div>
       </div>
     </section>
 
     <nav id="navBar">
-      <a route="home">
+      <a data-route="/home">
         <img decoding="async" src="./assets/img/icon.webp" alt="Reost" />
       </a>
-      <a route="discord">
+      <a data-route="/discord">
         <img decoding="async" src="./assets/img/discord.webp" alt="Discord" />
       </a>
-      <a route="players">
+      <a data-route="/players">
         <img decoding="async" src="./assets/img/iron_axe.webp" alt="Spieler" />
       </a>
-      <a route="rules">
+      <a data-route="/rules">
         <img
           decoding="async"
           src="./assets/img/book_written.webp"
           alt="Regeln"
         />
       </a>
-      <a route="team">
+      <a data-route="/team">
         <img decoding="async" src="./assets/img/apple_golden.webp" alt="Team" />
       </a>
-      <a route="shop">
+      <a data-route="/shop">
         <img decoding="async" src="./assets/img/gold_ingot.webp" alt="Shop" />
       </a>
-      <a route="map">
+      <a data-route="/map">
         <img decoding="async" src="./assets/img/map.webp" alt="Karte" />
       </a>
     </nav>
@@ -153,7 +159,13 @@
       media="all and (orientation: portrait)"
     />
 
-    <script defer type="module" src="./script/app.ts"></script>
+    <script
+      defer
+      async
+      type="module"
+      src="../node_modules/photon-re/core.js"
+    ></script>
+    <script defer type="module" src="./script/index.ts"></script>
     <script
       defer
       async

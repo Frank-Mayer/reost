@@ -23,17 +23,21 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@frank-mayer/magic@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@frank-mayer/magic/-/magic-2.0.1.tgz#9ea4f4fc1881a8c1972fad0ab0471930ce04d9d7"
-  integrity sha512-k9sGsV2a3RNL1r+h1vSha/yWcWxKyF5GvL6hV1y3/uIPB74D7eSCmWl0BPjrctw40CyZTNJ58AGNm1sGqGrcgA==
+"@frank-mayer/dom-serializer@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@frank-mayer/dom-serializer/-/dom-serializer-2.0.2.tgz#159492e2ed696831a3036c986b3d88238c775491"
+  integrity sha512-IOWi4xD5OwsT/1q5O+MWEFqIo6IOuT+tpIUfX4fkezoxN2OzSnoqePlXeAgY0+T9Fr2UHZmdbpSQJn7GUOIRyg==
+  dependencies:
+    domelementtype "^2.2.0"
+    domhandler "^4.3.0"
+    entities "^3.0.1"
+
+"@frank-mayer/magic@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@frank-mayer/magic/-/magic-3.0.0.tgz#76141e694a95091320b3452375b04c2231d4dfae"
+  integrity sha512-Eo3ibnQweACq+xJkax9t1wBooP2k0Be5gy/smRmY4be0MPJkdS1k2Htaj9YCma+yU3Al1VpvmiUkdZVDwFfIPA==
   dependencies:
     tslib "^2.3.1"
-
-"@frank-mayer/photon@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@frank-mayer/photon/-/photon-1.2.1.tgz#2d941aeb85e28e98a083a7fff39e06408a6eac23"
-  integrity sha512-II6hLspgHM66H29hJXQ/0zYfLY79lSY9G9rZfOI34PtYEmF3K0nyhT175GWxwpm+1U9jfrfknJ/53oJCbuQsXA==
 
 "@parcel/bundler-default@2.3.2":
   version "2.3.2"
@@ -485,7 +489,7 @@
     "@parcel/plugin" "2.3.2"
     json5 "^2.2.0"
 
-"@parcel/transformer-postcss@2.3.2":
+"@parcel/transformer-postcss@2.3.2", "@parcel/transformer-postcss@2.3.x":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-postcss/-/transformer-postcss-2.3.2.tgz#a428c81569dd66758c5fab866dca69b4c6e59743"
   integrity sha512-Rpdxc1rt2aJFCh/y/ccaBc9J1crDjNY5o44xYoOemBoUNDMREsmg5sR5iO81qKKO5GxfoosGb2zh59aeTmywcg==
@@ -527,7 +531,7 @@
     "@parcel/utils" "2.3.2"
     react-refresh "^0.9.0"
 
-"@parcel/transformer-sass@2.3.2":
+"@parcel/transformer-sass@2.3.x":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-sass/-/transformer-sass-2.3.2.tgz#ee124d02acb1f44417f0d78d366302dd68aa412b"
   integrity sha512-jVDdhyzfCYLY/91gOfMAT0Cj3a3czETD71WpvnXhzfctnhZZ/lhC1aFUJxlhIF1hkVNyZ1b9USCCBAD4fje2Jg==
@@ -1036,7 +1040,7 @@ htmlnano@^2.0.0:
     posthtml "^0.16.5"
     timsort "^0.3.0"
 
-htmlparser2@^7.1.1:
+htmlparser2@^7.1.1, htmlparser2@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-7.2.0.tgz#8817cdea38bbc324392a90b1990908e81a65f5a5"
   integrity sha512-H7MImA4MS6cw7nbyURtLPO1Tms7C5H602LRETv95z1MxO/7CP7rDVROehUYeYBUYEON94NXXDEPmZuq+hX4sog==
@@ -1233,7 +1237,7 @@ ordered-binary@^1.2.4:
   resolved "https://registry.yarnpkg.com/ordered-binary/-/ordered-binary-1.2.4.tgz#51d3a03af078a0bdba6c7bc8f4fedd1f5d45d83e"
   integrity sha512-A/csN0d3n+igxBPfUrjbV5GC69LWj2pjZzAAeeHXLukQ4+fytfP4T1Lg0ju7MSPSwq7KtHkGaiwO8URZN5IpLg==
 
-parcel@^2.3.2:
+parcel@2.3.x:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/parcel/-/parcel-2.3.2.tgz#d1cb475f27edae981edea7a7104e04d3a35a87ca"
   integrity sha512-4jhgoBcQaiGKmnmBvNyKyOvZrxCgzgUzdEoVup/fRCOP99hNmvYIN5IErIIJxsU9ObcG/RGCFF8wa4kVRsWfIg==
@@ -1274,6 +1278,24 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+photon-cli@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/photon-cli/-/photon-cli-0.4.0.tgz#7c5d0f3d15ce8644f8fff47bc1ed82b1425756f6"
+  integrity sha512-SmSOSoeIRs/DlPt4vDnZm/EwDHDbz4at/7SwbAfvcoAS7tAhXNeaSx3o8dN6EE5OrE/myAfiu4SNMC8sUS/5eQ==
+  dependencies:
+    "@frank-mayer/dom-serializer" "^2.0.2"
+    domhandler "^4.3.0"
+    domutils "^2.8.0"
+    htmlparser2 "^7.2.0"
+
+photon-re@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/photon-re/-/photon-re-0.3.3.tgz#0f3f88291de2c4cfadab1ef452c2a47b2051a39f"
+  integrity sha512-JH8/WL3NR4LPTEZpcSc8f3aWgjl0HYNPVHBda53yqe7Zpgxym/RVQSCAXT2z7+V16BpdPdcnDV9GFkFZvdpbVQ==
+  dependencies:
+    "@frank-mayer/magic" "^3.0.0"
+    tslib "^2.3.1"
 
 picocolors@^1.0.0:
   version "1.0.0"
@@ -1559,10 +1581,19 @@ safe-buffer@^5.0.1:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
-sass@^1.38.0, sass@^1.49.9:
+sass@^1.38.0:
   version "1.49.9"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.49.9.tgz#b15a189ecb0ca9e24634bae5d1ebc191809712f9"
   integrity sha512-YlYWkkHP9fbwaFRZQRXgDi3mXZShslVmmo+FVK3kHLUELHHEYrCmL1x6IUjC7wLS6VuJSAFXRQS/DxdsC4xL1A==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
+sass@^1.50.0:
+  version "1.50.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.50.0.tgz#3e407e2ebc53b12f1e35ce45efb226ea6063c7c8"
+  integrity sha512-cLsD6MEZ5URXHStxApajEh7gW189kkjn4Rc8DQweMyF+o5HF5nfEz8QYLMlPsTOD88DknatTmBWkOcw5/LnJLQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
