@@ -13,35 +13,35 @@ if (motd) {
 
 const contentEl = document.getElementById("content")!;
 
+const onRouted = (route: string) => {
+  document.title = `Reost – ${route.capitalize()}`;
+
+  switch (route) {
+    case "discord":
+      discordWidget.generateHTML().then((html) => {
+        contentEl.appendChild(html);
+      });
+      break;
+
+    case "players":
+      minecraftServerData.generatePlayerList().then((html) => {
+        contentEl.appendChild(html);
+      });
+      break;
+  }
+
+  minecraftServerData.fillPlaceholders(contentEl);
+
+  if (route !== "home") {
+    contentEl.scrollIntoView({ behavior: "smooth" });
+  }
+
+  removeSplash();
+};
+
 contentEl.addEventListener(
   "routed",
-  (ev) => {
-    const route = (ev as RoutedEvent).detail.route.join("/");
-
-    document.title = `Reost – ${route.capitalize()}`;
-
-    switch (route) {
-      case "discord":
-        discordWidget.generateHTML().then((html) => {
-          contentEl.appendChild(html);
-        });
-        break;
-
-      case "players":
-        minecraftServerData.generatePlayerList().then((html) => {
-          contentEl.appendChild(html);
-        });
-        break;
-    }
-
-    minecraftServerData.fillPlaceholders(contentEl);
-
-    if (route !== "home") {
-      contentEl.scrollIntoView({ behavior: "smooth" });
-    }
-
-    removeSplash();
-  },
+  (ev) => onRouted((ev as RoutedEvent).detail.route.join("/")),
   {
     passive: true,
   }
@@ -74,4 +74,8 @@ const removeSplash = () => {
     splashEl.remove();
   }
 };
-removeSplash();
+
+setTimeout(() => {
+  onRouted(contentEl.dataset.route!.split("/").filter(Boolean).join("/"));
+  removeSplash();
+});
