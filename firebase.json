@@ -12,7 +12,7 @@
           },
           {
             "key": "Access-Control-Allow-Origin",
-            "value": "self,*.frank-mayer.io,frank-mayer.io"
+            "value": "self,*.reost.de,reost.de"
           }
         ]
       },
@@ -51,7 +51,7 @@
           },
           {
             "key": "Access-Control-Allow-Origin",
-            "value": "self,*.frank-mayer.io,frank-mayer.io"
+            "value": "self,*.reost.de,reost.de"
           }
         ]
       },
@@ -64,7 +64,7 @@
           },
           {
             "key": "Access-Control-Allow-Origin",
-            "value": "self,*.frank-mayer.io,frank-mayer.io"
+            "value": "self,*.reost.de,reost.de"
           }
         ]
       }
