@@ -23,7 +23,7 @@
     "pb": "photon './dist'"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "2.3.x",
+    "@parcel/transformer-sass": "2.4.x",
     "@parcel/transformer-postcss": "2.3.x",
     "autoprefixer": "^10.4.4",
     "parcel": "2.3.x",
