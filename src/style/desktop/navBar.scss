@@ -14,7 +14,7 @@
   grid-template-rows: repeat(#{$count}, var(--item-height));
 
   > * {
-    width: 100%;
+    width: calc(var(--item-height) * 2);
     background: {
       image: url(../assets/img/wool_colored_gray.webp);
       size: var(--item-height);
