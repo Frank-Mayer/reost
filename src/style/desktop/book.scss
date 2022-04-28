@@ -22,5 +22,16 @@
       height: fit-content;
       overflow: visible;
     }
+
+    a[href],
+    *[onclick] {
+      cursor: pointer;
+      color: black !important;
+      text-decoration: none !important;
+
+      &:hover {
+        color: green !important;
+      }
+    }
   }
 }
