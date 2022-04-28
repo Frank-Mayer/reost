@@ -1,6 +1,6 @@
-@import "../../node_modules/normalize.css/normalize.css";
+@use "globals";
 
-@import "globals";
+@import "../../node_modules/normalize.css/normalize.css";
 @import "discordWidget";
 
 // bootstrap icons

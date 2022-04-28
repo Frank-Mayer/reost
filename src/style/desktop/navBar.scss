@@ -1,16 +1,22 @@
+@use "../globals";
+@use "sass:math";
+
 #navBar {
   position: fixed;
   left: 0;
   $count: 7;
   --height: min(100vh, 500px);
   --item-height: calc(
-    var(--height) / #{$count} - #{math.div(($count - 1) * $padding, $count)}
+    var(--height) / #{$count} - #{math.div(
+        ($count - 1) * globals.$padding,
+        $count
+      )}
   );
   height: var(--height);
   top: calc(50vh - (var(--height) / 2));
   width: calc(2 * var(--item-height));
   display: grid;
-  gap: $padding;
+  gap: globals.$padding;
   grid-template-rows: repeat(#{$count}, var(--item-height));
 
   > * {
@@ -18,7 +24,7 @@
     background: {
       image: url(../assets/img/wool_colored_gray.webp);
       size: var(--item-height);
-      position: #{$padding * -4} 0;
+      position: #{globals.$padding * -4} 0;
       repeat: repeat;
     }
     padding: 8px 64px 8px 32px;

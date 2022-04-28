@@ -1,3 +1,5 @@
+@use "./globals";
+
 .discordOnlineList {
   overflow-y: auto;
 
@@ -11,15 +13,15 @@
     }
 
     img.online {
-      border-color: #00aa00;
+      border-color: globals.$dark-green;
     }
 
     img.idle {
-      border-color: #ffaa00;
+      border-color: globals.$gold;
     }
 
     img.dnd {
-      border-color: #aa0000;
+      border-color: globals.$dark-red;
     }
   }
 }

@@ -1,3 +1,6 @@
+@use "../globals";
+@use "sass:math";
+
 #book {
   background-image: url(../assets/img/book.webp);
   background-repeat: no-repeat;
@@ -14,7 +17,7 @@
     width: calc(#{$width} - #{$width * 0.15});
     height: calc(#{$height} - #{$height * 0.1});
     overflow: auto;
-    padding: 0 0 $padding 0;
+    padding: 0 0 globals.$padding 0;
 
     display: flex;
     flex-flow: column;
