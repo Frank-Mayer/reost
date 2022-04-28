@@ -1,4 +1,5 @@
 @use "globals";
+@use "sass:math";
 
 @import "../../node_modules/normalize.css/normalize.css";
 @import "discordWidget";
@@ -155,13 +156,33 @@ a[route] {
 
 @each $nav in "home", "discord", "players", "rules", "team", "shop", "map" {
   body.#{$nav} #navBar > a {
-    &[data-route="/#{$nav}"] {
+    &[data-route="../#{$nav}"] {
       transform: unset !important;
       background-image: url(../assets/img/wool_colored_green.webp) !important;
     }
 
-    &:not([data-route="/#{$nav}"]) {
+    &:not([data-route="../#{$nav}"]) {
       background-image: url(../assets/img/wool_colored_gray.webp) !important;
     }
   }
+}
+
+fieldset {
+  border: none;
+  padding: globals.$padding;
+  margin: 0;
+
+  > label {
+    display: block;
+    margin: 0 0 0 globals.$padding;
+    padding: math.div(globals.$padding, 2);
+  }
+
+  * {
+    outline: none !important;
+  }
+}
+
+lt-mirror {
+  display: none !important;
 }

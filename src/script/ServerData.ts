@@ -53,13 +53,13 @@ export class ServerData {
   }
 
   public async fillPlaceholders(root: HTMLElement) {
-    for (const el of root.getElementsByClassName("now-players")) {
+    for (const el of Array.from(root.getElementsByClassName("now-players"))) {
       (el as HTMLElement).innerText = (
         await this.getData()
       ).players.now.toString();
     }
 
-    for (const el of root.getElementsByClassName("max-players")) {
+    for (const el of Array.from(root.getElementsByClassName("max-players"))) {
       (el as HTMLElement).innerText = (
         await this.getData()
       ).players.max.toString();

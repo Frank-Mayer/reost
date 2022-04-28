@@ -1,0 +1,55 @@
+<form action="./" method="post" id="contact">
+  <fieldset id="reason">
+    <legend>Warum möchtest Du Kontakt aufnehmen?</legend>
+
+    <label>
+      <input name="reason" type="radio" value="emergency-message" required />
+      Dringende Meldung
+    </label>
+
+    <label>
+      <input name="reason" type="radio" value="application" required />
+      Bewerbung
+    </label>
+  </fieldset>
+
+  <fieldset data-reason="emergency-message" hidden>
+    <legend>Was möchtest Du uns mitteilen?</legend>
+
+    <textarea
+      name="emergency-message-content"
+      placeholder="Was möchtest Du uns mitteilen?"
+      style="width: 100%; resize: none"
+      required
+    ></textarea>
+  </fieldset>
+
+  <fieldset data-reason="application" hidden>
+    <legend>Bewerbung</legend>
+
+    <label>
+      Stelle
+      <select name="application-job" required>
+        <optgroup label="IT">
+          <option value="developer">Software Entwickler</option>
+          <option value="administrator">Administrator</option>
+          <option value="graphic-design">Grafik Designer</option>
+        </optgroup>
+        <optgroup label="In Game (Minecraft)">
+          <option value="builder" selected>Bauarbeiter</option>
+          <option value="moderator">Moderator</option>
+          <option value="content-creator">Content Creator</option>
+        </optgroup>
+        <option value="other">Sonstiges</option>
+      </select>
+    </label>
+
+    <textarea
+      name="application-content"
+      placeholder="Bemerkung"
+      style="width: 100%; resize: none"
+    ></textarea>
+  </fieldset>
+
+  <input type="submit" value="Absenden" />
+</form>
