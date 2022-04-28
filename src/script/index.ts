@@ -1,5 +1,7 @@
 import "@frank-mayer/magic";
+import { disposeNode } from "@frank-mayer/magic";
 import type { RoutedEvent } from "photon-re";
+import { Contact } from "./Contact";
 import { DiscordWidget } from "./DiscordWidget";
 import { ServerData } from "./ServerData";
 
@@ -29,6 +31,9 @@ const onRouted = (route: string) => {
         contentEl.appendChild(html);
       });
       break;
+
+    case "contact":
+      Contact();
   }
 
   minecraftServerData.fillPlaceholders(contentEl);
@@ -43,6 +48,16 @@ const onRouted = (route: string) => {
 contentEl.addEventListener(
   "routed",
   (ev) => onRouted((ev as RoutedEvent).detail.route.join("/")),
+  {
+    passive: true,
+  }
+);
+
+contentEl.addEventListener(
+  "route",
+  () => {
+    disposeNode(contentEl, false);
+  },
   {
     passive: true,
   }
