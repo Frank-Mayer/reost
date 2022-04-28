@@ -17,9 +17,9 @@
     "last 3 safari versions"
   ],
   "scripts": {
-    "dev": "parcel serve src/**/*.html",
+    "dev": "parcel serve \"src/**/*.html\"",
     "clean": "rm -rf ./.parcel-cache && rm -rf ./dist",
-    "build": "parcel build src/index.html src/**/*.html src/hotlink-io/* --no-source-maps --no-cache --public-url https://reost.de/",
+    "build": "parcel build \"src/index.html\" \"src/**/*.html\" \"src/hotlink-io/*\" --no-source-maps --no-cache --public-url \"https://reost.de/\"",
     "pb": "photon './dist'"
   },
   "devDependencies": {
