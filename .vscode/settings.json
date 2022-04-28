@@ -1,0 +1,10 @@
+{
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  }
+}

@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "ms-vscode.vscode-typescript-next",
     "syler.sass-indented",
-    "toba.vsfire"
+    "toba.vsfire",
+    "rvest.vs-code-prettier-eslint"
   ]
 }
