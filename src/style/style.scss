@@ -154,7 +154,7 @@ a[route] {
   }
 }
 
-@each $nav in "home", "discord", "players", "rules", "team", "shop", "map" {
+@each $nav in "home", "discord", "players", "rules", "team", "shop", "contact" {
   body.#{$nav} #navBar > a {
     &[data-route="../#{$nav}"] {
       transform: unset !important;
