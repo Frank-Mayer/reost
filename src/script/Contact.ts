@@ -22,7 +22,7 @@ const update = (values: Map<string, string>) => {
   }
 };
 
-export const Contact = () => {
+export const contact = () => {
   const contactEl = document.getElementById("contact") as HTMLFormElement;
 
   if (!contactEl) {

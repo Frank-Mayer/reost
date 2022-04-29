@@ -1,4 +1,8 @@
-<form action="./" method="post" id="contact">
+<form
+  action="https://us-central1-reost-mc.cloudfunctions.net/message"
+  method="post"
+  id="contact"
+>
   <fieldset id="reason">
     <legend>Warum möchtest Du Kontakt aufnehmen?</legend>
 
@@ -11,6 +15,20 @@
       <input name="reason" type="radio" value="application" required />
       Bewerbung
     </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Wie können wir Dich erreichen?</legend>
+
+    <label
+      >E-Mail <input type="email" name="email" placeholder="max@mustermann.de"
+    /></label>
+    <label
+      >Telefon <input type="tel" name="phone" placeholder="+49 123 4567890"
+    /></label>
+    <label
+      >Discord <input type="text" name="discord" placeholder="username#1234"
+    /></label>
   </fieldset>
 
   <fieldset data-reason="emergency-message" hidden>

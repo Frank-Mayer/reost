@@ -58,6 +58,8 @@
     "require-jsdoc": "off",
     "curly": "error",
     "object-curly-newline": ["error", { "multiline": true }],
-    "comma-style": "error"
+    "comma-style": "error",
+    "keyword-spacing": "error",
+    "space-infix-ops": "error"
   }
 }
