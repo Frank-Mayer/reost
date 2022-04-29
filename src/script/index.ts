@@ -1,7 +1,6 @@
-import "@frank-mayer/magic";
 import { disposeNode } from "@frank-mayer/magic";
 import type { RoutedEvent } from "photon-re";
-import { Contact } from "./Contact";
+import { Contact as contact } from "./Contact";
 import { DiscordWidget } from "./DiscordWidget";
 import { ServerData } from "./ServerData";
 
@@ -33,7 +32,7 @@ const onRouted = (route: string) => {
       break;
 
     case "contact":
-      Contact();
+      contact();
   }
 
   minecraftServerData.fillPlaceholders(contentEl);
@@ -46,21 +45,17 @@ const onRouted = (route: string) => {
 };
 
 contentEl.addEventListener(
-  "routed",
-  (ev) => onRouted((ev as RoutedEvent).detail.route.join("/")),
-  {
-    passive: true,
-  }
+    "routed",
+    (ev) => onRouted((ev as RoutedEvent).detail.route.join("/")),
+    { passive: true }
 );
 
 contentEl.addEventListener(
-  "route",
-  () => {
-    disposeNode(contentEl, false);
-  },
-  {
-    passive: true,
-  }
+    "route",
+    () => {
+      disposeNode(contentEl, false);
+    },
+    { passive: true }
 );
 
 const snapEl = document.getElementById("snap")!;
@@ -70,8 +65,8 @@ const updateSnapElState = () => {
     snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
   snapEl.style.setProperty(
-    "--scroll-percentage",
-    scrollPercentage.toPrecision(4)
+      "--scroll-percentage",
+      scrollPercentage.toPrecision(4)
   );
 
   contentEl.classList.toggle("readable", scrollPercentage > 0.5);
