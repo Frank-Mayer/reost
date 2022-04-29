@@ -58,6 +58,16 @@ contentEl.addEventListener(
     { passive: true }
 );
 
+contentEl.addEventListener(
+  "route",
+  () => {
+    disposeNode(contentEl, false);
+  },
+  {
+    passive: true,
+  }
+);
+
 const snapEl = document.getElementById("snap")!;
 
 const updateSnapElState = () => {

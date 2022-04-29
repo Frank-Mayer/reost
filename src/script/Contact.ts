@@ -13,7 +13,7 @@ const update = (values: Map<string, string>) => {
         }
       } else {
         for (const reqEl of Array.from(
-            el.querySelectorAll("[data-required]")
+          el.querySelectorAll("[data-required]")
         )) {
           (reqEl as HTMLInputElement).required = true;
         }
@@ -22,7 +22,7 @@ const update = (values: Map<string, string>) => {
   }
 };
 
-export const Contact = () => {
+export const contact = () => {
   const contactEl = document.getElementById("contact") as HTMLFormElement;
 
   if (!contactEl) {

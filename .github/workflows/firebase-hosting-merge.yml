@@ -15,6 +15,11 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: yarn pb
+      - uses: jwsi/secret-parser@v1
+        with:
+          filename: "functions/src/index.ts"
+          secret-name: "MAILGUN"
+          secret-value: "${{ secrets.MAILGUN }}"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
