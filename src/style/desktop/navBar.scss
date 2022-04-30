@@ -4,8 +4,8 @@
 #navBar {
   position: fixed;
   left: 0;
-  $count: 7;
-  --height: min(100vh, 500px);
+  $count: 5;
+  --height: min(100vh, #{$count * 75}px);
   --item-height: calc(
     var(--height) / #{$count} - #{math.div(
         ($count - 1) * globals.$padding,

@@ -17,8 +17,9 @@
       image: url(../assets/img/wool_colored_gray.webp);
       position: 0 #{globals.$padding * -4};
       repeat: repeat;
+      size: 20vw;
     }
-    height: 25vw;
+    height: 27.5vw;
     padding: 24px 4px 24px 4px;
     clip-path: polygon(100% 0%, 100% 100%, 50% calc(100% - 16px), 0 100%, 0 0);
     transition: transform 0.2s ease-out;

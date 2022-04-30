@@ -17,13 +17,21 @@
     width: calc(#{$width} - #{$width * 0.15});
     height: calc(#{$height} - #{$height * 0.1});
     overflow: auto;
-    padding: 0 0 globals.$padding 0;
+    padding: globals.$padding 0 globals.$padding 0;
 
     display: flex;
     flex-flow: column;
+
     > * {
       height: fit-content;
       overflow: visible;
+    }
+
+    a[href],
+    *[onclick] {
+      cursor: pointer;
+      color: black !important;
+      text-decoration: none !important;
     }
   }
 }
