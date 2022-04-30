@@ -46,11 +46,11 @@ declare interface CookieStore {
   };
 }
 
-declare const cookieStore: CookieStore|undefined;
+declare const cookieStore: CookieStore | undefined;
 
 // #endregion CookieStore
 
-(async()=>{
+(async() => {
   if (cookieStore) {
     const allowCookies = await cookieStore.get("allow-cookies");
 
@@ -99,8 +99,7 @@ declare const cookieStore: CookieStore|undefined;
 
   dialogEl.showModal();
 
-  dialogEl.addEventListener("close", ()=>{
+  dialogEl.addEventListener("close", () => {
     disposeNode(dialogEl);
   });
-}
-)();
+})();
