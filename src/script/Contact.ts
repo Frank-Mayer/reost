@@ -33,7 +33,7 @@ export const contact = () => {
 
   const fieldsets = contactEl.getElementsByTagName("fieldset");
   for (let i = 0; i < fieldsets.length; i++) {
-    const fieldset = fieldsets[i]!;
+    const fieldset = fieldsets[i] as HTMLFieldSetElement;
     const inputs = document.getElementsByName(fieldset.id);
     for (let j = 0; j < inputs.length; j++) {
       const input = inputs[j] as HTMLInputElement;

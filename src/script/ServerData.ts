@@ -32,7 +32,7 @@ export class ServerData {
 
     for (const motdEl of (await this.getData()).motd_json.extra) {
       const span = document.createElement("span");
-      span.style.color = mcColorCssMap.get(motdEl.color)!;
+      span.style.color = mcColorCssMap.get(motdEl.color) ?? "black";
       span.innerText = motdEl.text;
       el.appendChild(span);
     }

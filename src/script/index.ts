@@ -1,6 +1,6 @@
 import { disposeNode } from "@frank-mayer/magic";
 import type { RoutedEvent } from "photon-re";
-import { Contact as contact } from "./Contact";
+import { contact } from "./Contact";
 import { DiscordWidget } from "./DiscordWidget";
 import { ServerData } from "./ServerData";
 
@@ -12,27 +12,27 @@ if (motd) {
   minecraftServerData.setMotd(motd);
 }
 
-const contentEl = document.getElementById("content")!;
+const contentEl = document.getElementById("content") as HTMLElement;
 
 const onRouted = (route: string) => {
   document.title = `Reost – ${route.capitalize()}`;
   document.body.className = route;
 
   switch (route) {
-    case "discord":
-      discordWidget.generateHTML().then((html) => {
-        contentEl.appendChild(html);
-      });
-      break;
+  case "discord":
+    discordWidget.generateHTML().then((html) => {
+      contentEl.appendChild(html);
+    });
+    break;
 
-    case "players":
-      minecraftServerData.generatePlayerList().then((html) => {
-        contentEl.appendChild(html);
-      });
-      break;
+  case "players":
+    minecraftServerData.generatePlayerList().then((html) => {
+      contentEl.appendChild(html);
+    });
+    break;
 
-    case "contact":
-      contact();
+  case "contact":
+    contact();
   }
 
   minecraftServerData.fillPlaceholders(contentEl);
@@ -45,17 +45,9 @@ const onRouted = (route: string) => {
 };
 
 contentEl.addEventListener(
-    "routed",
-    (ev) => onRouted((ev as RoutedEvent).detail.route.join("/")),
-    { passive: true }
-);
-
-contentEl.addEventListener(
-    "route",
-    () => {
-      disposeNode(contentEl, false);
-    },
-    { passive: true }
+  "routed",
+  (ev) => onRouted((ev as RoutedEvent).detail.route.join("/")),
+  { passive: true }
 );
 
 contentEl.addEventListener(
@@ -63,20 +55,26 @@ contentEl.addEventListener(
   () => {
     disposeNode(contentEl, false);
   },
-  {
-    passive: true,
-  }
+  { passive: true }
 );
 
-const snapEl = document.getElementById("snap")!;
+contentEl.addEventListener(
+  "route",
+  () => {
+    disposeNode(contentEl, false);
+  },
+  { passive: true }
+);
+
+const snapEl = document.getElementById("snap") as HTMLElement;
 
 const updateSnapElState = () => {
   const scrollPercentage =
     snapEl.scrollTop / (snapEl.scrollHeight - snapEl.clientHeight);
 
   snapEl.style.setProperty(
-      "--scroll-percentage",
-      scrollPercentage.toPrecision(4)
+    "--scroll-percentage",
+    scrollPercentage.toPrecision(4)
   );
 
   contentEl.classList.toggle("readable", scrollPercentage > 0.5);
@@ -97,6 +95,6 @@ const removeSplash = () => {
 };
 
 setTimeout(() => {
-  onRouted(contentEl.dataset.route!.split("/").filter(Boolean).join("/"));
+  onRouted((contentEl.dataset.route as string).split("/").filter(Boolean).join("/"));
   removeSplash();
 });

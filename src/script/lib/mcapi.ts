@@ -36,11 +36,14 @@ export const mcColorCssMap = new Map<mcColor, string>([
 ]);
 
 export interface MCApi {
-  /** the status of the request, typically success unless a poor request is made or my server is having internal troubles. if this is not success, assume the data is bad and should not be used. */
+  /** the status of the request, typically success
+   * unless a poor request is made or my server is having internal troubles.
+   * if this is not success, assume the data is bad and should not be used. */
   status: "success" | "error";
   /** if the server is online or not */
   online: boolean;
-  /** the server description, also known as the message of the day. some strange formatting may be in this, there are various libraries available for formatting this. */
+  /** the server description, also known as the message of the day.
+   * Some strange formatting may be in this, there are various libraries available for formatting this. */
   motd: string;
   motd_json: {
     extra: [
@@ -52,7 +55,11 @@ export interface MCApi {
     text: string;
   };
   favicon: string;
-  /** error message from the request. if you forget the IP the error will be `missing data`. if it is an invalid IP, the error will be `invalid hostname or port`. if an error starts with `internal server error`, it means something is wrong with my server. empty means no error. */
+  /** Error message from the request.
+   * If you forget the IP the error will be `missing data`.
+   * If it is an invalid IP, the error will be `invalid hostname or port`.
+   * If an error starts with `internal server error`, it means something is wrong with my server.
+   * Empty means no error. */
   error?: "missing data" | "invalid hostname or port" | "internal server error";
   players: {
     /** number of players that the server will allow */
@@ -72,9 +79,12 @@ export interface MCApi {
     /** server version protocol */
     protocol: number;
   };
-  /** the date the server was last recorded online. if empty, it has never been online. it is a unix timestamp in string form. if this has the same value as last_updated, it means that it is currently online. */
+  /** the date the server was last recorded online. if empty,
+   * it has never been online. it is a unix timestamp in string form.
+   * If this has the same value as last_updated, it means that it is currently online. */
   last_online?: number;
-  /** the date the status of the server was last updated at. it updates every five minutes, so you may send requests as soon as it has expired. */
+  /** the date the status of the server was last updated at.
+   * It updates every five minutes, so you may send requests as soon as it has expired. */
   last_updated: number;
   /** the time it took to process the original request, in nanoseconds. */
   duration: number;
