@@ -108,6 +108,7 @@ a[route] {
       transform-origin: bottom center;
 
       > #content {
+        backdrop-filter: blur(2px);
         &::-webkit-scrollbar {
           width: 0.5rem;
           height: 0.5rem;
