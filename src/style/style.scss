@@ -338,3 +338,43 @@ select {
   height: 100%;
   font-size: 100%;
 }
+
+label {
+  cursor: pointer;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  $checkbox-size: 1em;
+
+  cursor: pointer;
+  appearance: none !important;
+  width: $checkbox-size;
+  height: $checkbox-size;
+  outline: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  background-image: url(../assets/img/checkbox.webp);
+  background-size: calc(#{$checkbox-size * 3} + 3px);
+  background-repeat: no-repeat;
+
+  &:not(:hover) {
+    &:not(:checked) {
+      background-position: 0 0;
+    }
+
+    &:checked {
+      background-position: 0 -#{$checkbox-size};
+    }
+  }
+
+  &:hover {
+    &:not(:checked) {
+      background-position: -#{$checkbox-size} 0;
+    }
+
+    &:checked {
+      background-position: -#{$checkbox-size} -#{$checkbox-size};
+    }
+  }
+}
