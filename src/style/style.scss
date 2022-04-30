@@ -12,8 +12,7 @@ img.bi {
 }
 
 * {
-  color-scheme: dark !important;
-  color: black;
+  color-scheme: light !important;
   font-family: "Noto Sans", sans-serif;
   text-rendering: optimizeLegibility;
   image-rendering: pixelated;
@@ -213,6 +212,12 @@ dialog[open] {
     grid-area: text;
   }
 
+  .disallow,
+  .allow {
+    padding: globals.$padding #{globals.$padding * 2};
+    cursor: pointer;
+  }
+
   .disallow {
     grid-area: disallow;
     background-color: transparent;
@@ -221,20 +226,15 @@ dialog[open] {
       width: 1px;
       style: solid;
       color: globals.$dark-gray;
+      radius: 0;
     }
-    cursor: pointer;
   }
 
   .allow {
     grid-area: allow;
     background-color: globals.$dark-green;
     color: black;
-    border: {
-      width: 1px;
-      style: solid;
-      color: globals.$dark-gray;
-    }
-    cursor: pointer;
+    border: none;
   }
 
   > * {
@@ -250,4 +250,57 @@ dialog[open] {
 // selection color
 ::selection {
   background: hsl(255, 43%, 80%);
+}
+
+input[type="submit"] {
+  grid-area: allow;
+  background-color: globals.$dark-green;
+  color: black;
+  border: none;
+  padding: globals.$padding #{globals.$padding * 2};
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"] {
+  cursor: text;
+}
+
+#placeholder,
+::placeholder,
+::-webkit-input-placeholder,
+:-ms-input-placeholder,
+::-ms-input-placeholder {
+  color: gainsboro !important;
+  opacity: 1; // Firefox
+}
+
+select {
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+  background-color: transparent;
+  backdrop-filter: blur(globals.$padding);
+  color: black;
+  border: {
+    width: 1px;
+    style: solid;
+    color: globals.$dark-gray;
+    radius: 0;
+  }
+  height: 100%;
+  font-size: 100%;
 }
