@@ -24,7 +24,7 @@
     "pb": "photon \"./dist\""
   },
   "devDependencies": {
-    "@parcel/transformer-postcss": "2.3.x",
+    "@parcel/transformer-postcss": "2.5.x",
     "@parcel/transformer-sass": "2.3.x",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
