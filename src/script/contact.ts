@@ -1,5 +1,49 @@
 import { addDisposableEventListener } from "@frank-mayer/magic";
 
+const jobDescriptionMap = new Map([
+  [
+    "developer",
+    [
+      'Wir entwickeln eigene Plugins mit <a target="_blank" href="https://kotlinlang.org/">Kotlin</a>.',
+      "Unsere Webseite ist mit HTML,",
+      '<a target="_blank" href="https://sass-lang.com">Sass</a> und',
+      '<a target="_blank" href="https://www.typescriptlang.org">TypeScript</a> geschrieben.',
+      "Verbessere bestehende Software, erstelle neue und unterstütze die Admins bei Einrichtungen.",
+    ].join(" "),
+  ],
+  [
+    "administrator",
+    [
+      "Kümmere Dich darum, dass alle Server und Datenbanken so laufen wie sie sollen und",
+      "verhindere Ausfallzeiten sowie Datenverluste.",
+      "Halte die allgemeine Infrastruktur auf dem aktuellen Stand der Technik.",
+      "Sorge für die Sicherheit der Datenbanken und Server.",
+    ].join(" "),
+  ],
+  [
+    "builder",
+    "Hilf beim Aufbau von Bauwerken und Landschaft auf dem Server.",
+  ],
+  [
+    "moderator",
+    [
+      "Unterstütze die Spieler bei Problemen und",
+      "vermittle zwischen Spielern und Admins.",
+    ].join(" "),
+  ],
+  [
+    "content-creator",
+    [
+      "Wir brauchen immer neue Ideen um regelmäßig neuen Content für Unsere Spieler liefern zu kännen.",
+      "Entwickle Ideen und setze diese in Zusammenarbeit mit unseren Entwicklern um.",
+    ].join(" "),
+  ],
+  [
+    "other",
+    "Du kannst das Team anderweitig unterstützen? Kontaktiere uns!",
+  ],
+]);
+
 const update = (values: Map<string, string>) => {
   console.clear();
   for (const [key, value] of values) {
@@ -45,4 +89,17 @@ export const contact = () => {
       });
     }
   }
+
+  const jobApplicationSelectEl = document.getElementById("job-application-select") as HTMLSelectElement;
+  const descriptionEl = document.getElementById("description") as HTMLElement;
+
+  const updateDescription = () => {
+    descriptionEl.innerHTML = jobDescriptionMap.has(jobApplicationSelectEl.value) ?
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      jobDescriptionMap.get(jobApplicationSelectEl.value)! :
+      "";
+  };
+
+  addDisposableEventListener(jobApplicationSelectEl, "change", updateDescription);
+  updateDescription();
 };

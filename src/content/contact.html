@@ -18,6 +18,14 @@
   </fieldset>
 
   <fieldset>
+    <legend>Wer bist Du?</legend>
+
+    <label
+      >Name <input type="text" name="name" placeholder="Dein Name"
+    /></label>
+  </fieldset>
+
+  <fieldset>
     <legend>Wie können wir Dich erreichen?</legend>
 
     <label
@@ -36,7 +44,7 @@
 
     <textarea
       name="emergency-message-content"
-      placeholder="Was möchtest Du uns mitteilen?"
+      placeholder="Schreibe etwas"
       required
     ></textarea>
   </fieldset>
@@ -46,11 +54,10 @@
 
     <label>
       Stelle
-      <select name="application-job" required>
+      <select name="application-job" id="job-application-select" required>
         <optgroup label="IT">
           <option value="developer">Software Entwickler</option>
           <option value="administrator">Administrator</option>
-          <option value="graphic-design">Grafik Designer</option>
         </optgroup>
         <optgroup label="In Game (Minecraft)">
           <option value="builder" selected>Bauarbeiter</option>
@@ -60,6 +67,8 @@
         <option value="other">Sonstiges</option>
       </select>
     </label>
+
+    <p id="description"></p>
 
     <textarea name="application-content" placeholder="Bemerkung"></textarea>
   </fieldset>
