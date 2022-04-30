@@ -4,6 +4,21 @@
 @import "../../node_modules/normalize.css/normalize.css";
 @import "discordWidget";
 
+@font-face {
+  font-family: "Circular Book";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Circular Book"),
+    url("../assets/fonts/lineto-circular-pro-book.woff") format("woff");
+}
+@font-face {
+  font-family: "Circular Book";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Circular Bold"),
+    url("../assets/fonts/lineto-circular-pro-bold.woff") format("woff");
+}
+
 // bootstrap icons
 img.bi {
   height: 1em;
@@ -13,7 +28,7 @@ img.bi {
 
 * {
   color-scheme: light !important;
-  font-family: "Noto Sans", sans-serif;
+  font-family: globals.$default-font;
   text-rendering: optimizeLegibility;
   image-rendering: pixelated;
   shape-rendering: geometricPrecision;
@@ -130,7 +145,7 @@ a[route] {
 .rules,
 .rules > li ol,
 .rules > li ul {
-  padding: 0 0 0 1.5em;
+  padding: 0 0 0 2.75em;
   list-style-position: outside;
 }
 .rules {
@@ -264,8 +279,14 @@ input[type="submit"] {
 input[type="text"],
 input[type="tel"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+button {
   cursor: text;
+  outline: none !important;
+
+  &:focus {
+    outline: none !important;
+  }
 }
 
 #placeholder,
@@ -299,7 +320,7 @@ select {
     width: 1px;
     style: solid;
     color: globals.$dark-gray;
-    radius: 0;
+    radius: 0 !important;
   }
   height: 100%;
   font-size: 100%;
