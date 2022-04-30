@@ -148,14 +148,27 @@ a[route] {
   padding: 0 0 0 2.75em;
   list-style-position: outside;
 }
+
+@counter-style para {
+  system: extends decimal;
+  prefix: "§";
+}
+
 .rules {
-  list-style-type: decimal;
+  list-style: para;
 
   > li ol {
-    list-style-type: upper-roman;
+    list-style-type: decimal;
+    padding-left: 1em;
 
     > li ol {
-      list-style-type: lower-roman;
+      list-style-type: lower-alpha;
+      padding-left: 1em;
+
+      > li ol {
+        list-style-type: lower-roman;
+        padding-left: 1em;
+      }
     }
   }
 }
