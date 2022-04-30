@@ -217,16 +217,15 @@ lt-mirror {
 }
 
 dialog[open] {
-  background-color: rgb(198, 198, 198);
-  border: {
-    width: 1px;
-    style: solid;
-    color: black;
-    radius: globals.$padding;
-  }
-  box-shadow: inset 2px 2px 0px 2px #ffffff,
-    inset -2px -2px 0px 2px globals.$dark-gray;
-  color: globals.$dark-gray !important;
+  background-image: url(../assets/img/options_background.png);
+  background-size: 128px;
+  background-repeat: repeat;
+  color: white !important;
+  filter: none;
+  box-shadow: 0px 4px 32px 4px black;
+  border: none;
+  outline: none;
+  padding: globals.$padding globals.$padding * 2;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -248,30 +247,14 @@ dialog[open] {
 
   .disallow {
     grid-area: disallow;
-    background-color: transparent;
-    color: globals.$dark-gray;
-    border: {
-      width: 1px;
-      style: solid;
-      color: globals.$dark-gray;
-      radius: 0;
-    }
   }
 
   .allow {
     grid-area: allow;
-    background-color: globals.$dark-green;
-    color: black;
-    border: none;
-  }
-
-  > * {
-    display: block;
   }
 
   &::backdrop {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
   }
 }
 
@@ -280,13 +263,30 @@ dialog[open] {
   background: hsl(255, 43%, 80%);
 }
 
-input[type="submit"] {
-  grid-area: allow;
-  background-color: globals.$dark-green;
-  color: black;
-  border: none;
-  padding: globals.$padding #{globals.$padding * 2};
+input[type="submit"],
+button {
+  border: none !important;
+  outline: none !important;
   cursor: pointer;
+  color: white;
+
+  width: 100%;
+  display: block;
+
+  padding: globals.$padding globals.$padding * 2;
+
+  background-color: transparent;
+  background-image: url(../assets/img/widgets.webp);
+  background-repeat: no-repeat;
+  background-size: 128% 1500%;
+
+  &:not(:hover) {
+    background-position: 0 28.03%;
+  }
+
+  &:hover {
+    background-position: 0 36.4%;
+  }
 }
 
 input[type="text"],
@@ -307,7 +307,7 @@ button {
 ::-webkit-input-placeholder,
 :-ms-input-placeholder,
 ::-ms-input-placeholder {
-  color: gainsboro !important;
+  color: globals.$dark-gray !important;
   opacity: 1; // Firefox
 }
 

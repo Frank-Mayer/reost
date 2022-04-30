@@ -14,7 +14,7 @@
   width: fit-content;
 
   #content {
-    width: calc(#{$width} - #{$width * 0.12});
+    width: calc(#{$width} - #{$width * 0.14});
     height: calc(#{$height} - #{$height * 0.15});
     overflow: auto;
     padding: 0 0 globals.$padding 0;
