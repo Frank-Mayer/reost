@@ -4,7 +4,7 @@
 #book {
   background-image: url(../assets/img/book_landscape.webp);
   background-repeat: no-repeat;
-  $height: 85vh;
+  $height: 95vh;
   $width: math.div($height, 290) * 357;
   background-size: $width $height;
   width: $width !important;
