@@ -12,6 +12,8 @@ img.bi {
 }
 
 * {
+  color-scheme: dark !important;
+  color: black;
   font-family: "Noto Sans", sans-serif;
   text-rendering: optimizeLegibility;
   image-rendering: pixelated;
@@ -185,4 +187,67 @@ fieldset {
 
 lt-mirror {
   display: none !important;
+}
+
+dialog[open] {
+  background-color: rgb(198, 198, 198);
+  border: {
+    width: 1px;
+    style: solid;
+    color: black;
+    radius: globals.$padding;
+  }
+  box-shadow: inset 2px 2px 0px 2px #ffffff,
+    inset -2px -2px 0px 2px globals.$dark-gray;
+  color: globals.$dark-gray !important;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr min-content;
+  gap: globals.$padding;
+  grid-template-areas:
+    "text text"
+    "disallow allow";
+
+  .text {
+    grid-area: text;
+  }
+
+  .disallow {
+    grid-area: disallow;
+    background-color: transparent;
+    color: globals.$dark-gray;
+    border: {
+      width: 1px;
+      style: solid;
+      color: globals.$dark-gray;
+    }
+    cursor: pointer;
+  }
+
+  .allow {
+    grid-area: allow;
+    background-color: globals.$dark-green;
+    color: black;
+    border: {
+      width: 1px;
+      style: solid;
+      color: globals.$dark-gray;
+    }
+    cursor: pointer;
+  }
+
+  > * {
+    display: block;
+  }
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+  }
+}
+
+// selection color
+::selection {
+  background: hsl(255, 43%, 80%);
 }

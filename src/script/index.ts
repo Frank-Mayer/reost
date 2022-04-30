@@ -1,6 +1,6 @@
 import { disposeNode } from "@frank-mayer/magic";
 import type { RoutedEvent } from "photon-re";
-import { contact } from "./Contact";
+import { contact } from "./contact";
 import { DiscordWidget } from "./DiscordWidget";
 import { ServerData } from "./ServerData";
 
@@ -95,6 +95,6 @@ const removeSplash = () => {
 };
 
 setTimeout(() => {
-  onRouted((contentEl.dataset.route as string).split("/").filter(Boolean).join("/"));
+  onRouted((contentEl.dataset.route ?? "").split("/").filter(Boolean).join("/"));
   removeSplash();
 });
