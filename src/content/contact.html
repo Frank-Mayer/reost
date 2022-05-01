@@ -1,6 +1,7 @@
 <form action="https://reost.de/api/message" method="post" id="contact">
+  <p>* Pflichtfelder</p>
   <fieldset id="reason">
-    <legend>Warum möchtest Du Kontakt aufnehmen?</legend>
+    <legend>Warum möchtest Du Kontakt aufnehmen?*</legend>
 
     <label>
       <input name="reason" type="radio" value="emergency-message" required />
@@ -14,10 +15,10 @@
   </fieldset>
 
   <fieldset>
-    <legend>Wer bist Du?</legend>
+    <legend>Wer bist Du?*</legend>
 
     <label
-      >Name <input type="text" name="name" placeholder="Dein Name"
+      >Name <input type="text" name="name" placeholder="Dein Name" required
     /></label>
   </fieldset>
 
@@ -25,10 +26,13 @@
     <legend>Wie können wir Dich erreichen?</legend>
 
     <label
-      >E-Mail <input type="email" name="email" placeholder="max@mustermann.de"
-    /></label>
-    <label
-      >Telefon <input type="tel" name="phone" placeholder="+49 123 4567890"
+      >E-Mail*
+      <input
+        type="email"
+        name="email"
+        placeholder="max@mustermann.de"
+        required
+        autocomplete="email"
     /></label>
     <label
       >Discord <input type="text" name="discord" placeholder="username#1234"
@@ -36,7 +40,7 @@
   </fieldset>
 
   <fieldset data-reason="emergency-message" hidden>
-    <legend>Was möchtest Du uns mitteilen?</legend>
+    <legend>Was möchtest Du uns mitteilen?*</legend>
 
     <textarea
       name="emergency-message-content"
@@ -49,7 +53,7 @@
     <legend>Bewerbung</legend>
 
     <label>
-      Stelle
+      Stelle*
       <select name="application-job" id="job-application-select" required>
         <optgroup label="IT">
           <option value="developer">Software Entwickler</option>

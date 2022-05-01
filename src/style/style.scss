@@ -3,6 +3,7 @@
 
 @import "../../node_modules/normalize.css/normalize.css";
 @import "discordWidget";
+@import "input";
 
 @font-face {
   font-family: "Circular Book";
@@ -110,6 +111,7 @@ a[route] {
       transform-origin: bottom center;
 
       > #content {
+        overflow-x: hidden;
         backdrop-filter: blur(2px);
         &::-webkit-scrollbar {
           width: 0.5rem;
@@ -264,120 +266,4 @@ dialog[open] {
 // selection color
 ::selection {
   background: hsl(255, 43%, 80%);
-}
-
-input[type="submit"],
-button {
-  border: none !important;
-  outline: none !important;
-  cursor: pointer;
-  color: white;
-
-  width: 100%;
-  display: block;
-
-  padding: globals.$padding globals.$padding * 2;
-
-  background-color: transparent;
-  background-image: url(../assets/img/widgets.webp);
-  background-repeat: no-repeat;
-  background-size: 128% 1500%;
-
-  &:not(:hover) {
-    background-position: 0 28.03%;
-  }
-
-  &:hover {
-    background-position: 0 36.4%;
-  }
-}
-
-input[type="text"],
-input[type="tel"],
-input[type="password"],
-input[type="email"],
-button {
-  cursor: text;
-  outline: none !important;
-
-  &:focus {
-    outline: none !important;
-  }
-}
-
-#placeholder,
-::placeholder,
-::-webkit-input-placeholder,
-:-ms-input-placeholder,
-::-ms-input-placeholder {
-  color: globals.$dark-gray !important;
-  opacity: 1; // Firefox
-}
-
-select {
-  cursor: pointer;
-}
-
-textarea {
-  width: 100%;
-  resize: none;
-}
-
-input[type="text"],
-input[type="tel"],
-input[type="password"],
-input[type="email"],
-textarea,
-select {
-  background-color: transparent;
-  backdrop-filter: blur(globals.$padding);
-  color: black;
-  border: {
-    width: 1px;
-    style: solid;
-    color: globals.$dark-gray;
-    radius: 0 !important;
-  }
-  height: 100%;
-  font-size: 100%;
-}
-
-label {
-  cursor: pointer;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  $checkbox-size: 1em;
-
-  cursor: pointer;
-  appearance: none !important;
-  width: $checkbox-size;
-  height: $checkbox-size;
-  outline: none !important;
-  background-color: transparent !important;
-  border: none !important;
-  background-image: url(../assets/img/checkbox.webp);
-  background-size: calc(#{$checkbox-size * 3} + 3px);
-  background-repeat: no-repeat;
-
-  &:not(:hover) {
-    &:not(:checked) {
-      background-position: 0 0;
-    }
-
-    &:checked {
-      background-position: 0 -#{$checkbox-size};
-    }
-  }
-
-  &:hover {
-    &:not(:checked) {
-      background-position: -#{$checkbox-size} 0;
-    }
-
-    &:checked {
-      background-position: -#{$checkbox-size} -#{$checkbox-size};
-    }
-  }
 }
