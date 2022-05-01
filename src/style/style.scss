@@ -10,6 +10,7 @@
   font-weight: 400;
   src: local("Circular Book"),
     url("../assets/fonts/lineto-circular-pro-book.woff") format("woff");
+  font-display: swap;
 }
 @font-face {
   font-family: "Circular Book";
@@ -17,6 +18,7 @@
   font-weight: 700;
   src: local("Circular Bold"),
     url("../assets/fonts/lineto-circular-pro-bold.woff") format("woff");
+  font-display: swap;
 }
 
 // bootstrap icons
