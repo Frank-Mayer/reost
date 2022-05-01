@@ -19,7 +19,7 @@ export const message = functions.https.onRequest((request, response) => {
   const data: messages.SendData = {
     from: "Reost <no-reply@reost.de>",
     to: recipients,
-    subject: "Message from Reost",
+    subject: "Message from Reost " + new Date().toLocaleString("de-DE"),
     text: json,
     html: `<pre>${json}</pre>`,
     "h:Reply-To": "no-reply@reost.de",
