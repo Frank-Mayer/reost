@@ -70,7 +70,13 @@
       }
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "/api/message",
+        "function": "message"
+      }
+    ]
   },
   "functions": {
     "predeploy": [
