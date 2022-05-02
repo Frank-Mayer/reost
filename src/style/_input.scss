@@ -7,6 +7,11 @@ button {
   cursor: pointer;
   color: white;
   image-rendering: pixelated;
+  max-width: 512px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
 
   width: 100%;
   display: block;
