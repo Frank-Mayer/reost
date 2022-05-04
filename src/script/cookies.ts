@@ -4,46 +4,52 @@ import { analytics } from "./analytics";
 // #region CookieStore
 
 declare type cookieOptions = {
-  domain: string | null;
-  expires: number | null;
+  domain?: string;
+  expires?: number;
   name: string;
   path: string;
-  sameSite: string;
+  sameSite: "lax"|"strict"|"none";
   secure: boolean;
   value: string;
 };
 
 declare interface CookieStore {
-  onchange: (event: Event) => void;
+  onchange(event: Event) : void;
 
   /**
    * Gets a single cookie with the matching name.
    */
-  get: (name: string) => Promise<cookieOptions>;
+  get(name: string): Promise<cookieOptions>;
 
   /**
    * Gets all cookies with a matching name.
    */
-  getAll: {
-    (name: string): Promise<{ [key: string]: cookieOptions }>;
-    (options: cookieOptions): Promise<{ [key: string]: cookieOptions }>;
-  };
+  getAll(name: string): Promise<{ [key: string]: cookieOptions }>;
 
   /**
-   * Sets a cookie with the given name and value or options.
+   * Gets all cookies with a matching options.
    */
-  set: {
-    (name: string, value: string): Promise<void>;
-    (options: cookieOptions): Promise<void>;
-  };
+  getAll(options: cookieOptions): Promise<{ [key: string]: cookieOptions }>;
 
   /**
-   * Deletes a cookie with a matching name or options.
+   * Sets a cookie with the given name and value.
    */
-  delete: {
-    (name: string): Promise<void>;
-    (options: cookieOptions): Promise<void>;
-  };
+  set(name: string, value: string): Promise<void>;
+
+  /**
+   * Sets a cookie with the given options.
+   */
+  set(options: cookieOptions): Promise<void>;
+
+  /**
+   * Deletes a cookie with a matching name.
+   */
+  delete(name: string): Promise<void>;
+
+  /**
+   * Deletes a cookie with a matching options.
+   */
+  delete(options: cookieOptions): Promise<void>;
 }
 
 declare const cookieStore: CookieStore | undefined;
@@ -75,7 +81,15 @@ declare const cookieStore: CookieStore | undefined;
   addDisposableEventListener(allowButton, "click", async() => {
     if (cookieStore) {
       analytics.app.automaticDataCollectionEnabled = true;
-      await cookieStore.set("allow-cookies", "true");
+      await cookieStore.set({
+        domain: window.location.hostname,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 365,
+        name: "allow-cookies",
+        path: "/",
+        sameSite: "lax",
+        secure: true,
+        value: "true",
+      });
     }
     dialogEl.close();
     disposeNode(dialogEl);
@@ -88,7 +102,15 @@ declare const cookieStore: CookieStore | undefined;
   addDisposableEventListener(disallowButton, "click", async() => {
     if (cookieStore) {
       analytics.app.automaticDataCollectionEnabled = false;
-      await cookieStore.set("allow-cookies", "false");
+      await cookieStore.set({
+        domain: window.location.hostname,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 365,
+        name: "allow-cookies",
+        path: "/",
+        sameSite: "lax",
+        secure: true,
+        value: "false",
+      });
     }
     dialogEl.close();
     disposeNode(dialogEl);
