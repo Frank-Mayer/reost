@@ -1,14 +1,16 @@
 import * as functions from "firebase-functions";
 import * as mailgun from "mailgun-js";
-import type { messages } from "mailgun-js";
+import type { messages, Mailgun } from "mailgun-js";
 
 const domain = "sandbox057dcab9050145cc8d2daa076a6adc70.mailgun.org";
 
-const recipients = ["mail@frank-mayer.io"];
+const recipients = ["mail@frank-mayer.io", "Easysix@easysix.de"];
 
-let mg: mailgun.Mailgun | undefined = undefined;
+let mg: Mailgun | undefined = undefined;
 
 const maxIdRand = 36 ** 2 - 1;
+
+const dateOptions: Intl.DateTimeFormatOptions = { timeZone: "Europe/Berlin" };
 
 export const message = functions.https.onRequest((request, response) => {
   const ticketId =
@@ -16,16 +18,31 @@ export const message = functions.https.onRequest((request, response) => {
     Math.round(Math.random() * maxIdRand).toString(36) +
     Date.now().toString(36);
 
-  if (!mg) {
+  if (mg === undefined) {
     mg = mailgun({
       apiKey: process.env.MAILGUN_API_KEY ?? "",
       domain,
     });
   }
 
-  const json = JSON.stringify(request.body, null, 2);
+  const obj: { [key: string]: any } = {};
 
-  const dateTime = new Date().toLocaleString("de-DE");
+  for (const key of Object.keys(request.body)) {
+    const val = request.body[key];
+    const typeofValue = typeof val;
+
+    if (
+      (typeofValue === "string" && val.length > 0) ||
+      typeofValue === "number" ||
+      typeofValue === "boolean" ||
+      (typeofValue === "object" && val !== null)
+    ) {
+      obj[key] = request.body[key];
+    }
+  }
+  const json = JSON.stringify(obj, null, 2);
+
+  const dateTime = new Date().toLocaleString("de-DE", dateOptions);
 
   const data: messages.SendData = {
     from: "Reost <no-reply@reost.de>",
