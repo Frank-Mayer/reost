@@ -411,10 +411,17 @@
     domhandler "^4.3.0"
     entities "^3.0.1"
 
-"@frank-mayer/magic@^3.0.0", "@frank-mayer/magic@^3.3.0":
+"@frank-mayer/magic@^3.0.0":
   version "3.3.0"
   resolved "https://registry.npmjs.org/@frank-mayer/magic/-/magic-3.3.0.tgz"
   integrity sha512-JFmI8xXJBij0Ih08oH+g49BMbwN7mfe62W5XsiKj8d522H4to8+tGYL9taTWumfObckXG7sr8yEPFUDDp4ElEg==
+  dependencies:
+    tslib "^2.3.1"
+
+"@frank-mayer/magic@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@frank-mayer/magic/-/magic-4.0.0.tgz#4262123bfb9d9300adf1724947ef44024794384a"
+  integrity sha512-2c8c9bj/1zEHS6W2Opu5MDbrBFK0EQ5OsSlivT6Orf/IOdVs7E/CDyrNpgbciGExjl/YC/ulY+SBqFF9pNMIPA==
   dependencies:
     tslib "^2.3.1"
 
