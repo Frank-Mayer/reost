@@ -25,6 +25,7 @@ export const message = functions.https.onRequest((request, response) => {
     });
   }
 
+  let ok = false;
   const obj: { [key: string]: any } = {};
 
   for (const key of Object.keys(request.body)) {
@@ -38,25 +39,33 @@ export const message = functions.https.onRequest((request, response) => {
       (typeofValue === "object" && val !== null)
     ) {
       obj[key] = request.body[key];
+      if (key === "email") {
+        ok = true;
+      }
     }
   }
-  const json = JSON.stringify(obj, null, 2);
 
-  const dateTime = new Date().toLocaleString("de-DE", dateOptions);
+  if (ok) {
+    const json = JSON.stringify(obj, null, 2);
 
-  const data: messages.SendData = {
-    from: "Reost <no-reply@reost.de>",
-    to: recipients,
-    subject: "Reost " + ticketId,
-    text: ticketId + "\n\n" + json,
-    html: `<p>${dateTime}</p><br/><pre>${json}</pre>`,
-    "h:Reply-To": "no-reply@reost.de",
-  };
+    const dateTime = new Date().toLocaleString("de-DE", dateOptions);
 
-  mg.messages().send(data, (error, body) => {
-    console.log(error);
-    console.log(body);
-  });
+    const data: messages.SendData = {
+      from: "Reost <no-reply@reost.de>",
+      to: recipients,
+      subject: "Reost " + ticketId,
+      text: ticketId + "\n\n" + json,
+      html: `<p>${dateTime}</p><br/><pre>${json}</pre>`,
+      "h:Reply-To": "no-reply@reost.de",
+    };
 
-  response.redirect("https://reost.de/message-sent");
+    mg.messages().send(data, (error, body) => {
+      console.log(error);
+      console.log(body);
+    });
+
+    response.redirect("https://reost.de/message-sent");
+  } else {
+    response.redirect("https://reost.de/error");
+  }
 });
