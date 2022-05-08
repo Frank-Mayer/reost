@@ -62,6 +62,7 @@
     "keyword-spacing": "error",
     "space-infix-ops": "error",
     "indent": [2, 2],
+    "no-var": "error",
     "@typescript-eslint/no-explicit-any": "off"
   }
 }
