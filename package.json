@@ -19,11 +19,12 @@
   "scripts": {
     "lint": "eslint --fix --ext .ts .",
     "dev": "parcel serve \"src/**/*.html\"",
-    "clean": "rm -rf ./.parcel-cache && rm -rf ./dist",
+    "clean": "rm -rf ./.parcel-cache && rm -rf ./dist/*",
     "build": "parcel build \"src/index.html\" \"src/**/*.html\" \"src/hotlink-io/*\" --no-source-maps --no-cache --public-url \"https://reost.de/\"",
-    "pb": "photon \"./dist\""
+    "pb": "photon \"./dist\" && node --experimental-specifier-resolution=node ./html-proc.mjs"
   },
   "devDependencies": {
+    "@frank-mayer/yahp": "^0.0.1",
     "@parcel/transformer-postcss": "2.3.x",
     "@parcel/transformer-sass": "2.3.x",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
