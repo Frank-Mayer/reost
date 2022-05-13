@@ -16,25 +16,6 @@ export type mcColor =
   | "yellow"
   | "white";
 
-export const mcColorCssMap = new Map<mcColor, string>([
-  ["white", "#ffffff"],
-  ["dark_blue", "#0000aa"],
-  ["dark_green", "#00aa00"],
-  ["dark_aqua", "#00aaaa"],
-  ["dark_red", "#aa0000"],
-  ["dark_purple", "#aa00aa"],
-  ["gold", "#ffaa00"],
-  ["gray", "#aaaaaa"],
-  ["dark_gray", "#555555"],
-  ["blue", "#5555ff"],
-  ["green", "#55ff55"],
-  ["aqua", "#55ffff"],
-  ["red", "#ff5555"],
-  ["light_purple", "#ff55ff"],
-  ["yellow", "#ffff55"],
-  ["white", "#ffffff"],
-]);
-
 export interface MCApi {
   /** the status of the request, typically success
    * unless a poor request is made or my server is having internal troubles.

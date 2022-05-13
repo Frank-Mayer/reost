@@ -1,4 +1,3 @@
-import { mcColorCssMap } from "./lib/mcapi";
 import type { MCApi } from "./lib/mcapi";
 
 export class ServerData {
@@ -24,17 +23,6 @@ export class ServerData {
       } else {
         throw new Error(`${response.status} ${response.statusText}`);
       }
-    }
-  }
-
-  public async setMotd(el: HTMLElement) {
-    el.innerHTML = "";
-
-    for (const motdEl of (await this.getData()).motd_json.extra) {
-      const span = document.createElement("span");
-      span.style.color = mcColorCssMap.get(motdEl.color) ?? "black";
-      span.innerText = motdEl.text;
-      el.appendChild(span);
     }
   }
 
