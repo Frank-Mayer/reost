@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@frank-mayer/magic": "^4.0.0",
-    "bootstrap-icons": "^1.8.1",
+    "bootstrap-icons": "^1.8.2",
     "firebase": "^9.7.0",
     "normalize.css": "^8.0.1",
     "photon-re": "^0.3.3"
