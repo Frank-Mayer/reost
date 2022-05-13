@@ -29,7 +29,7 @@
     "@octokit/rest": "^18.12.0",
     "@parcel/transformer-postcss": "2.3.x",
     "@parcel/transformer-sass": "2.3.x",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.21.0",
     "autoprefixer": "^10.4.5",
     "eslint": "^8.14.0",
