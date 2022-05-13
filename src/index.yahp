@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <link rel="canonical" href="https://reost.de" />
     <meta name="og:url" content="https://reost.de" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,12 +26,8 @@
       name="keywords"
       content="deutsch, minecraft server, minecraft reost, minecraft 1.18 server, minecraft mmo rpg, minecraft rpg server"
     />
-    <meta name="google" content="nositelinkssearchbox" />
-
     <title>Reost</title>
-
     <link rel="canonical" href="https://reost.de" />
-
     <link rel="shortcut icon" href="./assets/img/icon.webp" type="image/webp" />
   </head>
   <body>
