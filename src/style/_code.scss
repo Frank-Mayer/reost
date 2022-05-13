@@ -1,0 +1,15 @@
+@use "globals";
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+code {
+  font-family: globals.$mono-font !important;
+  background-color: rgba(black, 0.2);
+  color: black;
+  border-radius: 4px;
+  padding: 2px 8px;
+}

@@ -1,6 +1,19 @@
 import { existsSync, promises as fs } from "fs";
 import { join } from "path";
 import { yahp } from "@frank-mayer/yahp";
+import showdown from "showdown";
+
+const md = new showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true,
+  noHeaderId: true,
+  parseImgDimensions: true,
+  ghCodeBlocks: true,
+  emoji: true,
+  underline: true,
+});
 
 // eslint-disable-next-line space-before-function-paren
 const fromDir = async (startPath) => {
@@ -16,13 +29,16 @@ const fromDir = async (startPath) => {
       await fromDir(filename);
     } else if (filename.endsWith(".yahp")) {
       console.debug(`Found input file ${filename}`);
-      const source = await fs.readFile(filename, "utf-8");
-      console.debug(`${filename} read`);
-      const out = await yahp(source);
-      console.debug(`${filename} parsed`);
-      const newFileName = filename.substring(0, filename.length - 4) + "html";
-      await fs.writeFile(newFileName, out);
-      console.debug(`${newFileName} written`);
+      await fs.writeFile(
+        filename.substring(0, filename.length - 4) + "html",
+        await yahp(await fs.readFile(filename, "utf-8"))
+      );
+    } else if (filename.endsWith(".md")) {
+      console.debug(`Found input file ${filename}`);
+      await fs.writeFile(
+        filename.substring(0, filename.length - 2) + "html",
+        md.makeHtml(await fs.readFile(filename, "utf-8"))
+      );
     }
   }
 };
