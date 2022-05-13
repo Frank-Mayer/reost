@@ -91,7 +91,17 @@
     <section id="snap">
       <div id="title">
         <h1>Reost</h1>
-        <p id="motd"></p>
+        <p id="motd">
+          <fetch
+            var="serverData"
+            as="json"
+            from="'https://api.mcsrvstat.us/2/reost.de'"
+          >
+            <script eval>
+              return this.serverData.motd.html.join("<br/>");
+            </script>
+          </fetch>
+        </p>
         <p>
           <img
             decoding="async"

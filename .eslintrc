@@ -63,6 +63,8 @@
     "space-infix-ops": "error",
     "indent": [2, 2],
     "no-var": "error",
+    "require-await": "error",
+    "no-return-await": "error",
     "@typescript-eslint/no-explicit-any": "off"
   }
 }

@@ -3,7 +3,6 @@
   "repository": "https://github.com/Reost-MC/reost-website.git",
   "author": "Frank Mayer <frank.mayer1907@protonmail.com>",
   "license": "MIT",
-  "private": false,
   "postcss": {
     "plugins": {
       "autoprefixer": {}
@@ -20,11 +19,14 @@
     "lint": "eslint --fix --ext .ts .",
     "dev": "parcel serve \"src/**/*.html\"",
     "clean": "rm -rf ./.parcel-cache && rm -rf ./dist/*",
+    "pre-b": "node ./html-proc.mjs",
     "build": "parcel build \"src/index.html\" \"src/**/*.html\" \"src/hotlink-io/*\" --no-source-maps --no-cache --public-url \"https://reost.de/\"",
-    "pb": "photon \"./dist\" && node --experimental-specifier-resolution=node ./html-proc.mjs"
+    "test": "parcel build \"src/index.html\" \"src/**/*.html\" \"src/hotlink-io/*\" --no-source-maps --no-cache && node --experimental-specifier-resolution=node ./html-proc.mjs",
+    "post-b": "photon \"./dist\""
   },
   "devDependencies": {
-    "@frank-mayer/yahp": "^0.0.1",
+    "@frank-mayer/yahp": "^0.2.1",
+    "@octokit/rest": "^18.12.0",
     "@parcel/transformer-postcss": "2.3.x",
     "@parcel/transformer-sass": "2.3.x",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
@@ -41,7 +43,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "@frank-mayer/magic": "^3.3.0",
+    "@frank-mayer/magic": "^4.0.0",
     "bootstrap-icons": "^1.8.1",
     "firebase": "^9.7.0",
     "normalize.css": "^8.0.1",

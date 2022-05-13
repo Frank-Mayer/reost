@@ -7,11 +7,6 @@ import { ServerData } from "./ServerData";
 const minecraftServerData = new ServerData("reost.de");
 const discordWidget = new DiscordWidget("467053516066652160");
 
-const motd = document.getElementById("motd");
-if (motd) {
-  minecraftServerData.setMotd(motd);
-}
-
 const contentEl = document.getElementById("content") as HTMLElement;
 
 const onRouted = (route: string) => {
