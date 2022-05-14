@@ -29,10 +29,10 @@
     "@octokit/rest": "^18.12.0",
     "@parcel/transformer-postcss": "2.3.x",
     "@parcel/transformer-sass": "2.3.x",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "autoprefixer": "^10.4.5",
-    "eslint": "^8.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.15.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.26.0",
     "parcel": "2.3.x",
@@ -45,8 +45,8 @@
   },
   "dependencies": {
     "@frank-mayer/magic": "^4.0.0",
-    "bootstrap-icons": "^1.8.1",
-    "firebase": "^9.7.0",
+    "bootstrap-icons": "^1.8.2",
+    "firebase": "^9.8.1",
     "normalize.css": "^8.0.1",
     "photon-re": "^0.3.3"
   }
