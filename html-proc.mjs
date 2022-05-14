@@ -20,7 +20,7 @@ const processDir = "./src";
 /**
  * @type {Array<string>}
  */
-const gitignore = [];
+const gitignore = ["# this file is auto-generated", "# do not edit manually!"];
 
 /**
  * @param {string} path
