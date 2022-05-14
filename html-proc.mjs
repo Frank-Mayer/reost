@@ -1,5 +1,5 @@
 import { existsSync, promises as fs } from "fs";
-import { join, resolve, relative } from "path";
+import { join, relative } from "path";
 import { yahp } from "@frank-mayer/yahp";
 import showdown from "showdown";
 
