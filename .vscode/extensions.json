@@ -4,6 +4,8 @@
     "ms-vscode.vscode-typescript-next",
     "syler.sass-indented",
     "toba.vsfire",
-    "rvest.vs-code-prettier-eslint"
+    "rvest.vs-code-prettier-eslint",
+    "adamvoss.vscode-languagetool",
+    "adamvoss.vscode-languagetool-de"
   ]
 }

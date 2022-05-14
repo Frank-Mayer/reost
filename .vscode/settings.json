@@ -20,5 +20,8 @@
   },
   "files.exclude": {
     "node_modules": true
-  }
+  },
+  "languageTool.enabled": true,
+  "languageTool.language": "de",
+  "cSpell.words": ["Echtgeld", "Rudeltiere", "Teamspeak"]
 }
