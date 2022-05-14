@@ -4,11 +4,16 @@
   "author": "Frank Mayer <frank.mayer1907@protonmail.com>",
   "license": "MIT",
   "browserslist": [
-    "last 5 and_chr versions",
-    "last 5 chrome versions",
-    "last 5 opera versions",
-    "last 5 ios_saf versions",
-    "last 5 safari versions"
+    "last 5 Android versions",
+    "last 5 Chrome versions",
+    "last 5 ChromeAndroid versions",
+    "last 5 Firefox versions",
+    "last 5 FirefoxAndroid versions",
+    "last 5 Explorer versions",
+    "last 5 Opera versions",
+    "last 5 Safari versions",
+    "last 5 iOS versions",
+    "last 5 Samsung versions"
   ],
   "scripts": {
     "lint": "eslint --fix --ext .ts .",
