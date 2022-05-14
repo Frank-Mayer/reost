@@ -3,17 +3,12 @@
   "repository": "https://github.com/Reost-MC/reost-website.git",
   "author": "Frank Mayer <frank.mayer1907@protonmail.com>",
   "license": "MIT",
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
   "browserslist": [
-    "last 3 and_chr versions",
-    "last 3 chrome versions",
-    "last 3 opera versions",
-    "last 3 ios_saf versions",
-    "last 3 safari versions"
+    "last 5 and_chr versions",
+    "last 5 chrome versions",
+    "last 5 opera versions",
+    "last 5 ios_saf versions",
+    "last 5 safari versions"
   ],
   "scripts": {
     "lint": "eslint --fix --ext .ts .",
@@ -21,21 +16,20 @@
     "clean": "rm -rf ./.parcel-cache && rm -rf ./dist/*",
     "pre-b": "node ./html-proc.mjs",
     "build": "parcel build \"src/index.html\" \"src/**/*.html\" \"src/hotlink-io/*\" --no-source-maps --no-cache --public-url \"https://reost.de/\"",
-    "test": "parcel build \"src/index.html\" \"src/**/*.html\" \"src/hotlink-io/*\" --no-source-maps --no-cache && node --experimental-specifier-resolution=node ./html-proc.mjs",
     "post-b": "photon \"./dist\""
   },
   "devDependencies": {
     "@frank-mayer/yahp": "^0.2.1",
     "@octokit/rest": "^18.12.0",
-    "@parcel/transformer-postcss": "2.3.x",
-    "@parcel/transformer-sass": "2.3.x",
+    "@parcel/transformer-postcss": "2.5.0",
+    "@parcel/transformer-sass": "2.5.0",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "autoprefixer": "^10.4.7",
     "eslint": "^8.15.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.26.0",
-    "parcel": "2.3.x",
+    "parcel": "2.5.0",
     "photon-cli": "^0.4.0",
     "postcss": "^8.4.13",
     "querystring-es3": "^0.2.1",
