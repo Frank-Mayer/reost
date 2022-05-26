@@ -579,15 +579,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@frank-mayer/yahp@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "@frank-mayer/yahp@npm:0.2.1"
+"@frank-mayer/yahp@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@frank-mayer/yahp@npm:0.3.0"
   dependencies:
     "@frank-mayer/magic": ^4.0.0
     html-minifier: ^4.0.0
     jsdom: ^19.0.0
     node-fetch: ^3.2.4
-  checksum: ebb1ef2a69a1c6bcb6d0fb0da7568c2cd3c941618364b8395e0c57b5434917746d6ae3a91f34bb385074474b46541ecb22a7d46b2cc3476805d25fddcb5c96b4
+  checksum: 020a4de851e3835fdbe4c1b9fcff987e8603a5fcb5ff24cd00f5178bac77512539c97b5dd04c2d182a577032da167ea99527753af4d378111e88e891e63c42ec
   languageName: node
   linkType: hard
 
@@ -5102,7 +5102,7 @@ __metadata:
   resolution: "reost@workspace:."
   dependencies:
     "@frank-mayer/magic": ^4.0.0
-    "@frank-mayer/yahp": ^0.2.1
+    "@frank-mayer/yahp": ^0.3.0
     "@octokit/rest": ^18.12.0
     "@parcel/transformer-postcss": 2.5.0
     "@parcel/transformer-sass": 2.5.0

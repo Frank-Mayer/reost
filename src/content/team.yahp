@@ -1,11 +1,15 @@
 <h1>Das Team</h1>
 
 <div class="person">
-  <img
-    decoding="async"
-    src="https://www.mc-heads.net/head/d3e7009f11754aa790308aa9386fca3b/64"
-    alt="head"
-  />
+  <fetch
+    var="img"
+    as="dataURL"
+    from="'https://www.mc-heads.net/head/d3e7009f11754aa790308aa9386fca3b/64'"
+  >
+    <script eval>
+      return `<img src="${this.img}" alt="head" />`;
+    </script>
+  </fetch>
   <span><b>EasySIX</b> - Eigentümer</span>
   <br />
 
@@ -22,11 +26,15 @@
 </div>
 
 <div class="person">
-  <img
-    decoding="async"
-    src="https://www.mc-heads.net/head/f8963be18e974c7f8bce4af9029c0488/64"
-    alt="head"
-  />
+  <fetch
+    var="img"
+    as="dataURL"
+    from="'https://www.mc-heads.net/head/f8963be18e974c7f8bce4af9029c0488/64'"
+  >
+    <script eval>
+      return `<img src="${this.img}" alt="head" />`;
+    </script>
+  </fetch>
   <span><b>Anny</b> - Admin</span>
 
   <div class="personDetails">
@@ -42,11 +50,15 @@
 </div>
 
 <div class="person">
-  <img
-    decoding="async"
-    src="https://www.mc-heads.net/head/b44ede9900b14e5998c6dd4c696e742d/64"
-    alt="head"
-  />
+  <fetch
+    var="img"
+    as="dataURL"
+    from="'https://www.mc-heads.net/head/b44ede9900b14e5998c6dd4c696e742d/64'"
+  >
+    <script eval>
+      return `<img src="${this.img}" alt="head" />`;
+    </script>
+  </fetch>
   <span><b>Germanja</b> - Admin</span>
 
   <div class="personDetails">
@@ -62,11 +74,15 @@
 </div>
 
 <div class="person">
-  <img
-    decoding="async"
-    src="https://www.mc-heads.net/head/2fb36f12426b46109287d43c24486db4/64"
-    alt="head"
-  />
+  <fetch
+    var="img"
+    as="dataURL"
+    from="'https://www.mc-heads.net/head/2fb36f12426b46109287d43c24486db4/64'"
+  >
+    <script eval>
+      return `<img src="${this.img}" alt="head" />`;
+    </script>
+  </fetch>
   <span><b>tsukinoko_kun</b> - Programmierer</span>
 
   <div class="personDetails">
@@ -90,11 +106,15 @@
 </div>
 
 <div class="person">
-  <img
-    decoding="async"
-    src="https://www.mc-heads.net/head/de791f780c3b4a42a6ffe83a621c3be3/64"
-    alt="head"
-  />
+  <fetch
+    var="img"
+    as="dataURL"
+    from="'https://www.mc-heads.net/head/de791f780c3b4a42a6ffe83a621c3be3/64'"
+  >
+    <script eval>
+      return `<img src="${this.img}" alt="head" />`;
+    </script>
+  </fetch>
   <span><b>Majeve</b> - Baumeister</span>
 </div>
 

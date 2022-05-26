@@ -24,7 +24,7 @@
     "post-b": "photon \"./dist\""
   },
   "devDependencies": {
-    "@frank-mayer/yahp": "^0.2.1",
+    "@frank-mayer/yahp": "^0.3.0",
     "@octokit/rest": "^18.12.0",
     "@parcel/transformer-postcss": "2.5.0",
     "@parcel/transformer-sass": "2.5.0",
