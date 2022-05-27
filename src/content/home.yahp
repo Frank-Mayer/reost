@@ -65,30 +65,38 @@
               var="column"
               of="(await this.octokit.projects.listColumns({ project_id: 14438918 })).data"
             >
-              <div class="column">
-                <script eval>
-                  return `<h3>${this.column.name}</h3>`;
-                </script>
-                <for
-                  var="card"
-                  of="(await this.octokit.projects.listCards({ column_id: this.column.id })).data"
-                >
-                  <div class="card" style="margin-left: 1rem">
-                    <if condition="this.card.note">
-                      <script eval>
-                        return this.converter.makeHtml(this.card.note);
-                      </script>
-                    </if>
-                    <else>
-                      <fetch var="issue" as="json" from="this.card.content_url">
-                        <script eval>
-                          return this.converter.makeHtml(this.issue.title);
-                        </script>
-                      </fetch>
-                    </else>
+              <define
+                var="cards"
+                value="(await this.octokit.projects.listCards({ column_id: this.column.id })).data"
+              >
+                <if condition="this.cards.length">
+                  <div class="column">
+                    <script eval>
+                      return `<h3>${this.column.name}</h3>`;
+                    </script>
+                    <for var="card" of="this.cards">
+                      <div class="card" style="margin-left: 1rem">
+                        <if condition="this.card.note">
+                          <script eval>
+                            return this.converter.makeHtml(this.card.note);
+                          </script>
+                        </if>
+                        <else>
+                          <fetch
+                            var="issue"
+                            as="json"
+                            from="this.card.content_url"
+                          >
+                            <script eval>
+                              return this.converter.makeHtml(this.issue.title);
+                            </script>
+                          </fetch>
+                        </else>
+                      </div>
+                    </for>
                   </div>
-                </for>
-              </div>
+                </if>
+              </define>
             </for>
           </div>
         </define>
