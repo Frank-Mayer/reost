@@ -106,23 +106,11 @@ label {
 }
 
 // Checkbox
+$checkbox-size: 1em;
 
-input[type="checkbox"],
-input[type="radio"] {
-  $checkbox-size: 1em;
-
+input[type="checkbox"]:not([disabled]),
+input[type="radio"]:not([disabled]) {
   cursor: pointer;
-  appearance: none !important;
-  width: $checkbox-size;
-  height: $checkbox-size;
-  outline: none !important;
-  border: none !important;
-  background: {
-    color: transparent !important;
-    image: url(../assets/img/checkbox.webp);
-    size: calc(#{$checkbox-size * 3} + 3px);
-    repeat: no-repeat;
-  }
 
   &:not(:hover) {
     &:not(:checked) {
@@ -142,5 +130,33 @@ input[type="radio"] {
     &:checked {
       background-position: -#{$checkbox-size} -#{$checkbox-size};
     }
+  }
+}
+
+input[type="checkbox"][disabled],
+input[type="radio"][disabled] {
+  cursor: default;
+
+  &:not(:checked) {
+    background-position: 0 0;
+  }
+
+  &:checked {
+    background-position: 0 -#{$checkbox-size};
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none !important;
+  width: $checkbox-size;
+  height: $checkbox-size;
+  outline: none !important;
+  border: none !important;
+  background: {
+    color: transparent !important;
+    image: url(../assets/img/checkbox.webp);
+    size: calc(#{$checkbox-size * 3} + 3px);
+    repeat: no-repeat;
   }
 }

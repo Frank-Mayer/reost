@@ -36,54 +36,62 @@
 <br />
 <br />
 <import var="{Octokit}" from="@octokit/rest">
-  <define
-    var="octokit"
-    value="new this.Octokit({auth: atob('Z2hwX0hKZUpWSENnZ1hFdU9TN0VXVE1BS3gzVEhVbU42cDRIYWM1Zw==')})"
-  >
-    <define
-      var="project"
-      value="(await this.octokit.projects.get({ project_id: 14438918 })).data"
-    >
+  <import var="{Converter}" from="showdown">
+    <define var="converter" value="new this.Converter()">
       <script eval>
-        return `<h2>${this.project.name}</h2>`;
+        this.converter.setFlavor("github");
       </script>
-      <p>
-        Zuletzt aktualisiert:
-        <script eval>
-          return new Date(this.project.updated_at).toLocaleString("de-DE");
-        </script>
-      </p>
-      <div id="project">
-        <for
-          var="column"
-          of="(await this.octokit.projects.listColumns({ project_id: 14438918 })).data"
+
+      <define
+        var="octokit"
+        value="new this.Octokit({auth: atob('Z2hwX0hKZUpWSENnZ1hFdU9TN0VXVE1BS3gzVEhVbU42cDRIYWM1Zw==')})"
+      >
+        <define
+          var="project"
+          value="(await this.octokit.projects.get({ project_id: 14438918 })).data"
         >
-          <div class="column">
+          <script eval>
+            return `<h2>${this.project.name}</h2>`;
+          </script>
+          <p>
+            Zuletzt aktualisiert:
             <script eval>
-              return `<b>${this.column.name}</b>`;
+              return new Date(this.project.updated_at).toLocaleString("de-DE");
             </script>
+          </p>
+          <div id="project">
             <for
-              var="card"
-              of="(await this.octokit.projects.listCards({ column_id: this.column.id })).data"
+              var="column"
+              of="(await this.octokit.projects.listColumns({ project_id: 14438918 })).data"
             >
-              <div class="card">
-                <if condition="this.card.note">
-                  <script eval>
-                    return this.card.note;
-                  </script>
-                </if>
-                <else>
-                  <fetch var="issue" as="json" from="this.card.content_url">
-                    <script eval>
-                      return this.issue.title;
-                    </script>
-                  </fetch>
-                </else>
+              <div class="column">
+                <script eval>
+                  return `<h3>${this.column.name}</h3>`;
+                </script>
+                <for
+                  var="card"
+                  of="(await this.octokit.projects.listCards({ column_id: this.column.id })).data"
+                >
+                  <div class="card" style="margin-left: 1rem">
+                    <if condition="this.card.note">
+                      <script eval>
+                        return this.converter.makeHtml(this.card.note);
+                      </script>
+                    </if>
+                    <else>
+                      <fetch var="issue" as="json" from="this.card.content_url">
+                        <script eval>
+                          return this.converter.makeHtml(this.issue.title);
+                        </script>
+                      </fetch>
+                    </else>
+                  </div>
+                </for>
               </div>
             </for>
           </div>
-        </for>
-      </div>
+        </define>
+      </define>
     </define>
-  </define>
+  </import>
 </import>
