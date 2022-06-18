@@ -81,7 +81,7 @@ declare const cookieStore: CookieStore | undefined;
   addDisposableEventListener(allowButton, "click", async() => {
     if (cookieStore) {
       analytics.app.automaticDataCollectionEnabled = true;
-      await cookieStore.set({
+      cookieStore.set({
         domain: window.location.hostname,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 365,
         name: "allow-cookies",
@@ -89,10 +89,14 @@ declare const cookieStore: CookieStore | undefined;
         sameSite: "lax",
         secure: true,
         value: "true",
+      }).catch(console.error).finally(()=>{
+        dialogEl.close();
+        disposeNode(dialogEl);
       });
+    } else {
+      dialogEl.close();
+      disposeNode(dialogEl);
     }
-    dialogEl.close();
-    disposeNode(dialogEl);
   });
   dialogEl.appendChild(allowButton);
 
@@ -102,7 +106,7 @@ declare const cookieStore: CookieStore | undefined;
   addDisposableEventListener(disallowButton, "click", async() => {
     if (cookieStore) {
       analytics.app.automaticDataCollectionEnabled = false;
-      await cookieStore.set({
+      cookieStore.set({
         domain: window.location.hostname,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 365,
         name: "allow-cookies",
@@ -110,10 +114,14 @@ declare const cookieStore: CookieStore | undefined;
         sameSite: "lax",
         secure: true,
         value: "false",
+      }).catch(console.error).finally(()=>{
+        dialogEl.close();
+        disposeNode(dialogEl);
       });
+    } else {
+      dialogEl.close();
+      disposeNode(dialogEl);
     }
-    dialogEl.close();
-    disposeNode(dialogEl);
   });
   dialogEl.appendChild(disallowButton);
 
