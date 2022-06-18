@@ -1,4 +1,9 @@
 <form action="https://reost.de/api/message" method="post" id="contact">
+  <p>
+    Alle Daten werden auf unbestimmte Zeit bei uns Gespeichert. Zugriff haben
+    nur die obersten Admins. Mit dem Absenden erklärst du dich damit
+    einverstanden.
+  </p>
   <p>* Pflichtfelder</p>
   <fieldset id="reason">
     <legend>Warum möchtest Du Kontakt aufnehmen?*</legend>
@@ -69,6 +74,15 @@
     </label>
 
     <p id="description"></p>
+
+    <label>
+      Erfahrung*
+      <select name="application-experience" required>
+        <option value="beginner">Noob</option>
+        <option value="intermediate">Gelegenheitsspieler</option>
+        <option value="advanced">Profi</option>
+      </select>
+    </label>
 
     <textarea name="application-content" placeholder="Bemerkung"></textarea>
   </fieldset>
