@@ -78,7 +78,7 @@ declare const cookieStore: CookieStore | undefined;
   const allowButton = document.createElement("button");
   allowButton.innerText = "Alle erlauben";
   allowButton.classList.add("allow");
-  addDisposableEventListener(allowButton, "click", async() => {
+  addDisposableEventListener(allowButton, "click", () => {
     if (cookieStore) {
       analytics.app.automaticDataCollectionEnabled = true;
       cookieStore.set({
@@ -103,7 +103,7 @@ declare const cookieStore: CookieStore | undefined;
   const disallowButton = document.createElement("button");
   disallowButton.innerText = "Nur notwendige";
   disallowButton.classList.add("disallow");
-  addDisposableEventListener(disallowButton, "click", async() => {
+  addDisposableEventListener(disallowButton, "click", () => {
     if (cookieStore) {
       analytics.app.automaticDataCollectionEnabled = false;
       cookieStore.set({
