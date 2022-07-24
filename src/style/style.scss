@@ -101,9 +101,14 @@ a[route] {
 
   > #book-perspective {
     perspective: 1000px;
+    transform-style: preserve-3d;
     z-index: 2;
 
     > #book {
+      > * {
+        transform-style: flat;
+      }
+
       will-change: transform, filter;
       transition: transform 0.2s ease-out;
       transform: rotateX(calc((1 - var(--scroll-percentage)) * 45deg))
