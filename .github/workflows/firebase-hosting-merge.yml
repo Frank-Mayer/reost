@@ -12,21 +12,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Yarn Node
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: "yarn"
+          node-version: latest
       - name: Install dependencies
-        run: yarn
+        run: npm install
       - name: ESLint
-        run: yarn lint
+        run: npm run lint
       - name: Prebuild Step
-        run: yarn pre-b
+        run: npm run pre-b
       - name: Build
-        run: yarn build
+        run: npm run build
       - name: Postbuild Step
-        run: yarn post-b
+        run: npm run post-b
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

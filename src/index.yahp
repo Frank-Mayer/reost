@@ -93,7 +93,11 @@
             from="'https://api.mcsrvstat.us/2/reost.de'"
           >
             <script eval>
-              return this.serverData.motd.html.join("<br/>");
+              if (this.serverData.online) {
+                return this.serverData.motd.html.join("<br/>");
+              } else {
+                return "Offline";
+              }
             </script>
           </fetch>
         </p>
