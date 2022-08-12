@@ -1,9 +1,6 @@
 {
   "eslint.format.enable": true,
-  "eslint.packageManager": "yarn",
-  "files.associations": {
-    "*.yahp": "html"
-  },
+  "eslint.packageManager": "npm",
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
@@ -23,5 +20,8 @@
   },
   "languageTool.enabled": true,
   "languageTool.language": "de",
-  "cSpell.words": ["Echtgeld", "Rudeltiere", "Teamspeak"]
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifierEnding": "minimal"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal"
 }
