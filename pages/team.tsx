@@ -76,7 +76,7 @@ const Page: NextPage<Props> = (props) => {
   return (
     <>
       <Head>
-        <title>{title("Discord")}</title>
+        <title>{title("Team")}</title>
       </Head>
       <h2>Unser Team</h2>
       <Stack spacing="xs">
