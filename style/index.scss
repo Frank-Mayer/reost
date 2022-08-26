@@ -3,10 +3,35 @@
   prefix: "§";
 }
 
-body {
-  background-image: url("/img/wallpaper.webp");
+body.webgl canvas {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+body:not(.webgl) canvas {
+  display: none;
+  visibility: collapse;
+  pointer-events: none;
+}
+
+body:not(.webgl)::after {
+  pointer-events: none;
+  background-image: url(/img/wallpaper.webp);
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -2;
+  min-width: 100vw;
+  min-height: 100vh;
 }
