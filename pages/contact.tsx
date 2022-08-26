@@ -147,7 +147,15 @@ const Page: NextPage = () => {
             data-reason="emergency-message"
             hidden={reason !== "emergency-message"}
           >
-            <legend>Was möchtest Du uns mitteilen?*</legend>
+            <legend>
+              Was möchtest Du uns mitteilen?{" "}
+              <span
+                className="mantine-nhis4a mantine-InputWrapper-required mantine-TextInput-required"
+                aria-hidden="true"
+              >
+                *
+              </span>
+            </legend>
             <Textarea
               name="emergency-message-content"
               placeholder="Schreibe deine Nachricht hier..."
