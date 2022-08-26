@@ -180,7 +180,8 @@ const Page: NextPage = () => {
                 data={[
                   { value: "beginner", label: "Noob" },
                   { value: "intermediate", label: "Gelegenheitsspieler" },
-                  { value: "advanced", label: "Profi" },
+                  { value: "advanced", label: "Bin schon ganz gut" },
+                  { value: "pro", label: "Profi" },
                 ]}
               />
               <Textarea
