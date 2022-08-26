@@ -15,7 +15,7 @@ type Props = {
   }>;
 };
 
-const getHead = (uuid: string) => `https://mc-heads.net/head/${uuid}/64`;
+const getHead = (uuid: string) => `https://mc-heads.net/head/${uuid}/32`;
 
 const getName = async (uuid: string) => {
   const resp = await fetch(
@@ -58,7 +58,7 @@ export const getStaticProps = async (): Promise<{
           head: getHead("2fb36f12426b46109287d43c24486db4"),
           name: await getName("2fb36f12426b46109287d43c24486db4"),
           uuid: "2fb36f12426b46109287d43c24486db4",
-          homepage: "https://frank-mayer.io",
+          homepage: "frank-mayer.io",
           github: "Frank-Mayer",
         },
         {
@@ -82,33 +82,35 @@ const Page: NextPage<Props> = (props) => {
       <Stack spacing="xs">
         {props.teamMembers.map((member) => (
           <Group key={member.uuid}>
-            <Image src={member.head} alt="" height={64} width={64} />
-            <Stack spacing="xs">
+            <Image src={member.head} alt="" height={32} width={32} />
+            <Stack spacing="xs" align="flex-start">
               <Text>{member.name}</Text>
-              {member.github || member.homepage || member.instagram ? (
-                <Group spacing="xs">
-                  {member.homepage ? (
-                    <Anchor href={member.homepage} component="a">
-                      <Compass /> {member.homepage}
-                    </Anchor>
-                  ) : null}
-                  {member.instagram ? (
-                    <Anchor
-                      href={"https://www.instagram.com/" + member.instagram}
-                      component="a"
-                    >
-                      <Instagram /> {member.instagram}
-                    </Anchor>
-                  ) : null}
-                  {member.github ? (
-                    <Anchor
-                      href={"https://github.com/" + member.github}
-                      component="a"
-                    >
-                      <Github /> {member.github}
-                    </Anchor>
-                  ) : null}
-                </Group>
+              {member.homepage ? (
+                <Anchor
+                  target="_blank"
+                  href={"https://" + member.homepage}
+                  component="a"
+                >
+                  <Compass /> {member.homepage}
+                </Anchor>
+              ) : null}
+              {member.instagram ? (
+                <Anchor
+                  target="_blank"
+                  href={"https://www.instagram.com/" + member.instagram}
+                  component="a"
+                >
+                  <Instagram /> {member.instagram}
+                </Anchor>
+              ) : null}
+              {member.github ? (
+                <Anchor
+                  target="_blank"
+                  href={"https://github.com/" + member.github}
+                  component="a"
+                >
+                  <Github /> {member.github}
+                </Anchor>
               ) : null}
             </Stack>
           </Group>
