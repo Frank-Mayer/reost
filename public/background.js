@@ -87,16 +87,34 @@ try {
     }
     animate();
 
-    // #region Mouse camera rotation
-    window.addEventListener("mousemove", (ev) => {
+    /** @param {{clientX:Number, clientY:number}} ev */
+    const updateCamera = (ev) => {
       const mouseX = 1 - (ev.clientX / window.innerWidth) * 2;
       const mouseY = 1 - (ev.clientY / window.innerHeight) * 2;
       targetCameraRotation.x = (mouseY / 10) * Math.PI;
       targetCameraRotation.y = (mouseX / 10) * Math.PI;
       targetCameraPosition.z = basePosition.z - mouseY * 500;
       targetCameraPosition.x = basePosition.x - mouseX * 1000;
-    });
+    };
+
+    // #region Mouse camera rotation
+    window.addEventListener("mousemove", updateCamera);
     // #endregion
+
+    //#region Touch camera rotation
+    /** @param {TouchEvent} ev */
+    const onTouch = (ev) => {
+      const touch = Array.from(ev.touches).reduce((b, a) => {
+        a.clientX = (b.clientX + a.clientX) / 2;
+        a.clientY = (b.clientY + a.clientY) / 2;
+      });
+
+      updateCamera(touch);
+    };
+
+    document.addEventListener("touchstart", onTouch);
+    document.addEventListener("touchmove", onTouch);
+    //#endregion
 
     //#region Auto Resize
     let resizeTimeout = undefined;
