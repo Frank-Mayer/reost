@@ -6,12 +6,12 @@ const Page = () => (
     <ul>
       <li>
         <Text>
-          <Anchor target="skfb" href="https://skfb.ly/6A8Eq" component="a">
+          <Anchor target="_blank" href="https://skfb.ly/6A8Eq" component="a">
             &quot;Minecraft village&quot;
           </Anchor>{" "}
           by avatar2233 is licensed under{" "}
           <Anchor
-            target="skfb"
+            target="_blank"
             href="http://creativecommons.org/licenses/by/4.0"
             component="a"
           >
@@ -19,6 +19,20 @@ const Page = () => (
           </Anchor>
           .
         </Text>
+      </li>
+      <li>
+        Hosted at{" "}
+        <Anchor target="_blank" href="https://vercel.com">
+          Vercel
+        </Anchor>
+        .
+      </li>
+      <li>
+        Powered by{" "}
+        <Anchor target="_blank" href="https://nextjs.org">
+          Next.js
+        </Anchor>
+        .
       </li>
     </ul>
   </>

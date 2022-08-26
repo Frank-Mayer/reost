@@ -31,7 +31,7 @@ const Home: NextPage = () => {
         </p>
         <p>reost.de</p>
       </div>
-      <Anchor target="reost-map" href="https://3dmap.reost.de" component="a">
+      <Anchor target="_blank" href="https://3dmap.reost.de" component="a">
         <p>
           <b>
             Weltkarte <Compass />
