@@ -1,6 +1,13 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import { Stack, TextInput, Textarea, Radio, NativeSelect } from "@mantine/core";
+import {
+  Stack,
+  TextInput,
+  Textarea,
+  Radio,
+  NativeSelect,
+  Button,
+} from "@mantine/core";
 import Head from "next/head";
 import { title } from "../lib/view";
 
@@ -184,12 +191,25 @@ const Page: NextPage = () => {
             </Stack>
           </fieldset>
           <br />
-          <input
-            className="mantine-UnstyledButton-root mantine-Button-root mantine-10b0mw0"
-            style={{ textAlign: "center" }}
-            type="submit"
-            value="Absenden"
-          />
+          <label
+            style={{
+              width: "100%",
+              textAlign: "right",
+            }}
+          >
+            <Button>
+              <input
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "inherit",
+                  cursor: "pointer",
+                }}
+                type="submit"
+                value="Absenden"
+              />
+            </Button>
+          </label>
         </Stack>
       </form>
     </>
