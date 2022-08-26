@@ -165,6 +165,11 @@ const Page: NextPage = () => {
           <fieldset data-reason="application" hidden={reason !== "application"}>
             <legend>Bewerbung</legend>
             <Stack>
+              <p>
+                Arbeite bei uns auf freiwilliger Basis wann immer du Zeit hast.
+                Lerne aus den Erfahrungen des Teams und bringe deine Ideen mit
+                ein.
+              </p>
               <NativeSelect
                 label="Stelle"
                 name="application-job"
