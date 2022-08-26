@@ -76,15 +76,16 @@ try {
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     function animate() {
-      camera.rotation.x += (targetCameraRotation.x - camera.rotation.x) * 0.01;
-      camera.rotation.y += (targetCameraRotation.y - camera.rotation.y) * 0.01;
-      camera.rotation.z += (targetCameraRotation.z - camera.rotation.z) * 0.01;
-      camera.position.x += (targetCameraPosition.x - camera.position.x) * 0.01;
-      camera.position.y += (targetCameraPosition.y - camera.position.y) * 0.01;
-      camera.position.z += (targetCameraPosition.z - camera.position.z) * 0.01;
+      camera.rotation.x += (targetCameraRotation.x - camera.rotation.x) * 0.005;
+      camera.rotation.y += (targetCameraRotation.y - camera.rotation.y) * 0.005;
+      camera.rotation.z += (targetCameraRotation.z - camera.rotation.z) * 0.005;
+      camera.position.x += (targetCameraPosition.x - camera.position.x) * 0.005;
+      camera.position.y += (targetCameraPosition.y - camera.position.y) * 0.005;
+      camera.position.z += (targetCameraPosition.z - camera.position.z) * 0.005;
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
+
     animate();
 
     /** @param {{clientX:Number, clientY:number}} ev */
