@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import { Text, Image, Stack, Group, useMantineTheme } from "@mantine/core";
 import type { MantineColor } from "@mantine/core";
 import type { DiscordResponse, DiscordWidget } from "../lib/Discord";
+import Head from "next/head";
+import { title } from "../lib/view";
 
 type Props = {
   members: DiscordWidget["members"];
@@ -40,6 +42,9 @@ const Page: NextPage<Props> = (props) => {
 
   return (
     <>
+      <Head>
+        <title>{title("Discord")}</title>
+      </Head>
       <h2>Discord</h2>
       <p>Aktuell {props.members.length} Mitglieder online:</p>
       <Stack spacing="xs">

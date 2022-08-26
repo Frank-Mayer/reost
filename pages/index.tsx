@@ -2,10 +2,15 @@ import type { NextPage } from "next";
 import { Clipboard, Compass } from "react-bootstrap-icons";
 import copyToClipboard from "copy-to-clipboard";
 import { Anchor } from "@mantine/core";
+import { noTitle } from "../lib/view";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>{noTitle}</title>
+      </Head>
       <h2>Der Server</h2>
       <p>
         <b>Was gibt es hier?</b>

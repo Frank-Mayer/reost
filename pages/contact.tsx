@@ -1,13 +1,8 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import {
-  Stack,
-  TextInput,
-  Textarea,
-  Radio,
-  NativeSelect,
-  Button,
-} from "@mantine/core";
+import { Stack, TextInput, Textarea, Radio, NativeSelect } from "@mantine/core";
+import Head from "next/head";
+import { title } from "../lib/view";
 
 const eMailRegex =
   /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
@@ -20,6 +15,9 @@ const Page: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>{title("Kontakt")}</title>
+      </Head>
       <h2>Kontakt</h2>
       <p>
         Alle Daten werden auf unbestimmte Zeit bei uns Gespeichert. Zugriff

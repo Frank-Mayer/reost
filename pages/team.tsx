@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import { Instagram, Compass, Github } from "react-bootstrap-icons";
-import Link from "next/link";
 import { Text, Image, Stack, Group, Anchor } from "@mantine/core";
+import Head from "next/head";
+import { title } from "../lib/view";
 
 type Props = {
   teamMembers: Array<{
@@ -74,6 +75,9 @@ export const getStaticProps = async (): Promise<{
 const Page: NextPage<Props> = (props) => {
   return (
     <>
+      <Head>
+        <title>{title("Discord")}</title>
+      </Head>
       <h2>Unser Team</h2>
       <Stack spacing="xs">
         {props.teamMembers.map((member) => (

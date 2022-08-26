@@ -1,11 +1,13 @@
 import type { NextPage } from "next";
-import { Clipboard, Compass } from "react-bootstrap-icons";
-import copyToClipboard from "copy-to-clipboard";
-import Link from "next/link";
+import Head from "next/head";
+import { title } from "../lib/view";
 
 const Page: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>{title("Regeln")}</title>
+      </Head>
       <h2>Regeln</h2>
       <p>
         Die folgenden Regeln sind für jeden Spieler bindend und müssen
