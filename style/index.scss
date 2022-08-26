@@ -3,7 +3,7 @@
   prefix: "§";
 }
 
-body.webgl canvas {
+body:not(.no-webgl) canvas {
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -13,13 +13,13 @@ body.webgl canvas {
   z-index: -1;
 }
 
-body:not(.webgl) canvas {
+body.no-webgl canvas {
   display: none;
   visibility: collapse;
   pointer-events: none;
 }
 
-body:not(.webgl)::after {
+body.no-webgl::after {
   pointer-events: none;
   background-image: url(/img/wallpaper.webp);
   background-size: cover;

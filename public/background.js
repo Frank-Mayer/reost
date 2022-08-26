@@ -2,28 +2,63 @@ import * as THREE from "https://unpkg.com/three@0.143.0/build/three.module.js";
 import { GLTFLoader } from "https://unpkg.com/three@0.143.0/examples/jsm/loaders/GLTFLoader.js";
 
 const isWebGLAvailable = () => {
+  const canvas = document.createElement("canvas");
   try {
-    const canvas = document.createElement("canvas");
     return !!(
       window.WebGLRenderingContext &&
       (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
     );
   } catch (e) {
     return false;
+  } finally {
+    canvas.remove();
   }
 };
 
 const noWebGL = () => {
+  console.error("WebGL not available");
   Array.from(document.getElementsByTagName("canvas")).forEach((x) =>
     x.remove()
   );
 
-  document.body.classList.remove("webgl");
+  document.body.classList.add("no-webgl");
 };
 
 try {
   if (isWebGLAvailable()) {
-    document.body.classList.add("webgl");
+    const manager = new THREE.LoadingManager();
+    manager.onStart = function (url, itemsLoaded, itemsTotal) {
+      console.log(
+        "Started loading file: " +
+          url +
+          ".\nLoaded " +
+          itemsLoaded +
+          " of " +
+          itemsTotal +
+          " files."
+      );
+    };
+
+    manager.onLoad = function () {
+      console.log("Loading complete!");
+    };
+
+    manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+      console.log(
+        "Loading file: " +
+          url +
+          ".\nLoaded " +
+          itemsLoaded +
+          " of " +
+          itemsTotal +
+          " files."
+      );
+    };
+
+    manager.onError = function (url) {
+      console.log("There was an error loading " + url);
+      noWebGL();
+    };
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -50,7 +85,7 @@ try {
 
     scene.fog = new THREE.FogExp2(0x100f15, 0.0002);
 
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader(manager);
 
     loader.load(
       "https://reost-mc.web.app/minecraft-village/scene.gltf",
@@ -137,6 +172,7 @@ try {
   } else {
     noWebGL();
   }
-} catch {
+} catch (err) {
+  console.error(err);
   noWebGL();
 }
