@@ -31,7 +31,7 @@ const Page: NextPage = () => {
             des Grundgesetzes wird hier besonders beachtet.
           </p>
           <p>
-            Solltest Du auf unseren Servern (Minecraft, Discord, TS etc.)
+            Solltest du auf unseren Servern (Minecraft, Discord, TS etc.)
             Aussagen triffst, die diesen Gesetzen widersprechen, werden diese je
             nach Schwere zur Anzeige gebracht.
           </p>
@@ -43,12 +43,11 @@ const Page: NextPage = () => {
         </li>
         <li>
           <p>
-            Für alle von Euch erschaffenen Inhalte, in welcher Form auch immer*
+            Für alle von euch erschaffenen Inhalte, in welcher Form auch immer*
             gilt: <br />
             <sup>
-              {" "}
               *Schilder, Bauten, Teamspeak, Forum, Nicknamen, Benennung von
-              Tieren/Gegenständen usw.{" "}
+              Tieren/Gegenständen usw.
             </sup>
           </p>
           <ol>
@@ -126,7 +125,7 @@ const Page: NextPage = () => {
               Verunstaltungen: Das mutwillige Verunstalten der Welt ist
               verboten. Dazu gehört z. B. das sinnlose Abbauen oder Platzieren
               von Blöcken und insbesondere das Setzen von Lava oder Wasser.
-              Hierzu gehören auch &quot;Orientierungstürme&quot; - Blöcke, die
+              Hierzu gehören auch &quot;Orientierungstürme&quot; – Blöcke, die
               einfach in die Luft gebaut werden, um sich in der Welt einen
               Überblick zu verschaffen. Diese sind sofort wieder zu entfernen.
             </li>
@@ -150,7 +149,7 @@ const Page: NextPage = () => {
               Spieler aktiv benutzt werden. Finden wir eine alleinstehende
               Schaltung, wird der Erbauer verwarnt und die Clock abgerissen.
               Wenn Ihr etwas Bestimmtes vorhabt, könnt ihr Eure Projekte von
-              einem Teammitglied genehmigen lassen. Wir wollen Euch in Sachen
+              einem Teammitglied genehmigen lassen. Wir wollen euch in Sachen
               Redstone-Technik keine Steine in den Weg legen.
             </li>
             <li>
@@ -225,7 +224,7 @@ const Page: NextPage = () => {
           <p>
             Das Belästigen anderer Spieler ist verboten. Ihr könnt andere
             Spieler jederzeit besuchen und deren Städte erkunden, wenn diese
-            frei begehbar sind. Sollte ein Spieler Euch allerdings darum bitten,
+            frei begehbar sind. Sollte ein Spieler euch allerdings darum bitten,
             die Stadt/das Gebiet zu verlassen, ist dem folge zu leisten.
             Ausnahme hier ist das RP! Solltet ihr einen anderen Spieler
             belästigen, ihn am Bauen hindern oder die Stadt anderweitig betreten
@@ -260,7 +259,7 @@ const Page: NextPage = () => {
           <p>Betrug</p>
           <p>
             Es ist nicht erlaubt, auf welcher Art und Weise auch immer, zu
-            betrügen. Dazu zählt z. B. die Nutzung unerlaubter Tools oder die
+            betrügen. Dazu zählt z.B. die Nutzung unerlaubter Tools oder die
             Ausnutzung von Fehlern. Für Vereinbarungen, die ihr untereinander
             trefft, seid ihr selbst verantwortlich. Es ist verboten andere
             Spieler Items oder Spielinhalte für Echtgeld zu verkaufen. Hierzu
@@ -275,8 +274,8 @@ const Page: NextPage = () => {
           </p>
         </li>
         <li>
-          <p>Wir fördern Youtuber, Streamer und Contentcreators</p>
-          <p>Bei Anfragen hierzu, wendet Euch an EasySIX</p>
+          <p>Wir fördern Youtuber, Streamer und Contentcreator</p>
+          <p>Bei Anfragen hierzu, wendet euch an EasySIX</p>
         </li>
         <li>
           <p>Serverränge</p>

@@ -68,7 +68,7 @@ const Page: NextPage = () => {
       >
         <Stack>
           <fieldset id="reason">
-            <legend>Warum möchtest Du Kontakt aufnehmen?*</legend>
+            <legend>Warum möchtest du Kontakt aufnehmen?*</legend>
             <Stack>
               <Radio
                 checked={reason === "emergency-message"}
@@ -97,7 +97,7 @@ const Page: NextPage = () => {
             </Stack>
           </fieldset>
           <fieldset>
-            <legend>Wer bist Du?</legend>
+            <legend>Wer bist du?</legend>
             <TextInput
               label="Name"
               name="name"
@@ -106,7 +106,7 @@ const Page: NextPage = () => {
             />
           </fieldset>
           <fieldset>
-            <legend>Wie können wir Dich erreichen?</legend>
+            <legend>Wie können wir dich erreichen?</legend>
             <Stack>
               <TextInput
                 type="email"
@@ -148,7 +148,7 @@ const Page: NextPage = () => {
             hidden={reason !== "emergency-message"}
           >
             <legend>
-              Was möchtest Du uns mitteilen?{" "}
+              Was möchtest du uns mitteilen?{" "}
               <span
                 className="mantine-nhis4a mantine-InputWrapper-required mantine-TextInput-required"
                 aria-hidden="true"
