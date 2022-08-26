@@ -23,32 +23,37 @@ const noWebGL = () => {
 
 try {
   if (isWebGLAvailable()) {
+    document.body.classList.add("webgl");
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       90,
       window.innerWidth / window.innerHeight,
       0.1,
-      100000
+      10000
     );
     camera.position.x = -7000;
     camera.position.y = 2000;
     // camera.position.z = -1000;
 
+    const targetCameraPosition = camera.position.clone();
+    const targetCameraRotation = camera.rotation.clone();
+
     const basePosition = camera.position.clone();
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.75);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.45);
     dirLight.position.set(-1, 2, 4).normalize();
     scene.add(dirLight);
 
-    const light = new THREE.AmbientLight(0x404040, 0.45);
+    const light = new THREE.AmbientLight(0x404040, 0.25);
     scene.add(light);
 
-    scene.fog = new THREE.FogExp2(0x100f15, 0.0001);
+    scene.fog = new THREE.FogExp2(0x100f15, 0.0002);
 
     const loader = new GLTFLoader();
 
     loader.load(
-      "https://9d2b5e49e3a1a66b6693d10905d3e691.r2.cloudflarestorage.com/reost-de/scene.gltf",
+      "https://reost-mc.web.app/minecraft-village/scene.gltf",
       function (gltf) {
         scene.add(gltf.scene);
       },
@@ -68,8 +73,15 @@ try {
 
     renderer.gammaOutput = true;
     renderer.gammaFactor = 2.2;
+    renderer.outputEncoding = THREE.sRGBEncoding;
 
     function animate() {
+      camera.rotation.x += (targetCameraRotation.x - camera.rotation.x) * 0.01;
+      camera.rotation.y += (targetCameraRotation.y - camera.rotation.y) * 0.01;
+      camera.rotation.z += (targetCameraRotation.z - camera.rotation.z) * 0.01;
+      camera.position.x += (targetCameraPosition.x - camera.position.x) * 0.01;
+      camera.position.y += (targetCameraPosition.y - camera.position.y) * 0.01;
+      camera.position.z += (targetCameraPosition.z - camera.position.z) * 0.01;
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
@@ -79,10 +91,10 @@ try {
     window.addEventListener("mousemove", (ev) => {
       const mouseX = 1 - (ev.clientX / window.innerWidth) * 2;
       const mouseY = 1 - (ev.clientY / window.innerHeight) * 2;
-      camera.rotation.x = (mouseY / 10) * Math.PI;
-      camera.rotation.y = (mouseX / 10) * Math.PI;
-      camera.position.z = basePosition.z - mouseY * 500;
-      camera.position.x = basePosition.x - mouseX * 1000;
+      targetCameraRotation.x = (mouseY / 10) * Math.PI;
+      targetCameraRotation.y = (mouseX / 10) * Math.PI;
+      targetCameraPosition.z = basePosition.z - mouseY * 500;
+      targetCameraPosition.x = basePosition.x - mouseX * 1000;
     });
     // #endregion
 
@@ -103,8 +115,6 @@ try {
       }, 250);
     });
     //#endregion
-
-    document.body.classList.add("webgl");
   } else {
     noWebGL();
   }
