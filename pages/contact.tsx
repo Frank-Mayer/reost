@@ -41,16 +41,29 @@ const Page: NextPage = () => {
         Pflichtfelder
       </p>
       <form
-        action="http://localhost:3000/api/message"
+        action="/api/message"
         method="post"
         id="contact"
         name="contact-form"
         target="_blank"
-        onSubmit={(ev) => {
-          window.setTimeout(() => {
-            (ev.target as any)?.reset();
-            ev.currentTarget?.reset();
-          }, 500);
+        onSubmit={async (ev) => {
+          ev.preventDefault();
+          const form = ev.target as HTMLFormElement;
+          const formData = new FormData(form);
+
+          const resp = await fetch(form.action, {
+            method: "POST",
+            redirect: "follow",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.fromEntries(formData.entries())),
+          });
+
+          if (resp.ok) {
+            form.reset();
+            alert("Nachricht wurde erfolgreich versendet!");
+          } else {
+            alert("Ein Fehler ist aufgetreten!");
+          }
         }}
       >
         <Stack>
