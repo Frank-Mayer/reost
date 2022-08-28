@@ -61,6 +61,7 @@ export const Shell = (props: {
                     fontSize: 24,
                   }}
                   href={href}
+                  target={href.startsWith("https://") ? "_blank" : "_self"}
                   component="a"
                 >
                   {label}

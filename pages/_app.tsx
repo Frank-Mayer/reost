@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             { href: "/rules", label: "Regeln" },
             { href: "/team", label: "Team" },
             { href: "/contact", label: "Kontakt" },
+            { href: "https://wiki.reost.de", label: "Wiki" },
             { href: "/credits", label: "Credits" },
           ]}
         >
