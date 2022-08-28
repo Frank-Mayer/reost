@@ -34,6 +34,12 @@ const Page = () => (
         </Anchor>
         .
       </li>
+      <li>
+        <Anchor target="_blank" href="https://cloud.google.com/cdn">
+          Google Cloud
+        </Anchor>{" "}
+        CDN.
+      </li>
     </ul>
   </>
 );
