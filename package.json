@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
-    "@mantine/core": "^5.2.3",
+    "@mantine/core": "^5.2.4",
     "@mantine/hooks": "^5.2.3",
     "copy-to-clipboard": "^3.3.2",
     "mailgun-js": "^0.22.0",
