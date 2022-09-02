@@ -107,7 +107,6 @@ try {
     document.body.appendChild(renderer.domElement);
 
     renderer.gammaOutput = true;
-    renderer.gammaFactor = 2.2;
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     function animate() {
