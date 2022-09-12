@@ -1,6 +1,8 @@
 import * as THREE from "https://unpkg.com/three@0.143.0/build/three.module.js";
 import { GLTFLoader } from "https://unpkg.com/three@0.143.0/examples/jsm/loaders/GLTFLoader.js";
 
+let active = false;
+
 const isWebGLAvailable = () => {
   const canvas = document.createElement("canvas");
   try {
@@ -20,12 +22,13 @@ const noWebGL = () => {
   Array.from(document.getElementsByTagName("canvas")).forEach((x) =>
     x.remove()
   );
-
-  document.body.classList.add("no-webgl");
+  active = false;
+  document.body.classList.remove("webgl");
 };
 
 try {
   if (isWebGLAvailable()) {
+    console.info("WebGL available");
     const manager = new THREE.LoadingManager();
     manager.onStart = function (url, itemsLoaded, itemsTotal) {
       console.log(
@@ -41,6 +44,9 @@ try {
 
     manager.onLoad = function () {
       console.log("Loading complete!");
+      active = true;
+      animate();
+      document.body.classList.add("webgl");
     };
 
     manager.onProgress = function (url, itemsLoaded, itemsTotal) {
@@ -110,6 +116,10 @@ try {
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     function animate() {
+      if (!active) {
+        return;
+      }
+
       camera.rotation.x += (targetCameraRotation.x - camera.rotation.x) * 0.005;
       camera.rotation.y += (targetCameraRotation.y - camera.rotation.y) * 0.005;
       camera.rotation.z += (targetCameraRotation.z - camera.rotation.z) * 0.005;
@@ -120,10 +130,12 @@ try {
       renderer.render(scene, camera);
     }
 
-    animate();
-
     /** @param {{clientX:Number, clientY:number}} ev */
     const updateCamera = (ev) => {
+      if (!active) {
+        return;
+      }
+
       const mouseX = 1 - (ev.clientX / window.innerWidth) * 2;
       const mouseY = 1 - (ev.clientY / window.innerHeight) * 2;
       targetCameraRotation.x = (mouseY / 10) * Math.PI;
@@ -139,6 +151,10 @@ try {
     //#region Touch camera rotation
     /** @param {TouchEvent} ev */
     const onTouch = (ev) => {
+      if (!active) {
+        return;
+      }
+
       const touch = Array.from(ev.touches).reduce((b, a) => {
         a.clientX = (b.clientX + a.clientX) / 2;
         a.clientY = (b.clientY + a.clientY) / 2;
@@ -154,6 +170,10 @@ try {
     //#region Auto Resize
     let resizeTimeout = undefined;
     window.addEventListener("resize", () => {
+      if (!active) {
+        return;
+      }
+
       if (resizeTimeout) {
         clearTimeout(resizeTimeout);
         resizeTimeout = undefined;

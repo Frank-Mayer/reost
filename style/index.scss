@@ -3,23 +3,34 @@
   prefix: "§";
 }
 
-body:not(.no-webgl) canvas {
+:root,
+html,
+body {
+  overflow: hidden !important;
+}
+
+main {
+  overflow-y: auto !important;
+  height: 100vh;
+}
+
+body.webgl canvas {
   pointer-events: none;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
 }
 
-body.no-webgl canvas {
+body:not(.webgl) canvas {
   display: none;
   visibility: collapse;
   pointer-events: none;
 }
 
-body.no-webgl::after {
+body::after {
   pointer-events: none;
   background-image: url(/img/wallpaper.webp);
   background-size: cover;
@@ -27,11 +38,21 @@ body.no-webgl::after {
   background-repeat: no-repeat;
   content: "";
   position: fixed;
+  display: block;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -2;
-  min-width: 100vw;
-  min-height: 100vh;
+  z-index: -1;
+
+  will-change: opacity;
+  transition: opacity 1s ease-in-out;
+}
+
+body:not(.webgl)::after {
+  opacity: 1;
+}
+
+body.webgl::after {
+  opacity: 0;
 }
