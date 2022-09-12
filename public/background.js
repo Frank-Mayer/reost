@@ -88,7 +88,7 @@ try {
     const loader = new GLTFLoader(manager);
 
     loader.load(
-      "https://reost-mc.web.app/minecraft-village/scene.gltf",
+      "https://cdn.reost.de/minecraft-village/scene.gltf",
       function (gltf) {
         scene.add(gltf.scene);
       },
