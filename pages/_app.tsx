@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           { href: "/contact", label: "Kontakt" },
           { href: "https://wiki.reost.de", label: "Wiki" },
           { href: "/credits", label: "Credits" },
+          { href: "/impressum", label: "Impressum" },
         ]}
       >
         <Component {...pageProps} />
