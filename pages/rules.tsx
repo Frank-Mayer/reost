@@ -32,7 +32,7 @@ const Page: NextPage = () => {
           </p>
           <p>
             Solltest du auf unseren Servern (Minecraft, Discord, TS etc.)
-            Aussagen triffst, die diesen Gesetzen widersprechen, werden diese je
+            Aussagen trwffen, die diesen Gesetzen widersprechen, werden diese je
             nach Schwere zur Anzeige gebracht.
           </p>
           <p>
