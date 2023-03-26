@@ -27,7 +27,7 @@ const Page: NextPage = () => {
       </Head>
       <h2>Kontakt</h2>
       <p>Wir haben aktuell Probleme mit unserem Kontaktformular. Ein Techniker ist dabei das Problem zu beheben.</p>
-      <p>Versuche uns doch über Discord zu erreichen.</p>
+      <p><a href="https://discord.gg/rdQ6Gct">Versuche uns doch über Discord zu erreichen.</a></p>
     </>
   );
 
