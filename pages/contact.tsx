@@ -26,6 +26,17 @@ const Page: NextPage = () => {
         <title>{title("Kontakt")}</title>
       </Head>
       <h2>Kontakt</h2>
+      <p>Wir haben aktuell Probleme mit unserem Kontaktformular. Ein Techniker ist dabei das Problem zu beheben.</p>
+      <p><a href="https://discord.gg/rdQ6Gct">Versuche uns doch über Discord zu erreichen.</a></p>
+    </>
+  );
+
+  /*return (
+    <>
+      <Head>
+        <title>{title("Kontakt")}</title>
+      </Head>
+      <h2>Kontakt</h2>
       <p>
         Alle Daten werden auf unbestimmte Zeit bei uns Gespeichert. Zugriff
         haben nur die obersten Admins. Mit dem Absenden erklärst du dich damit
@@ -240,7 +251,7 @@ const Page: NextPage = () => {
         </Stack>
       </form>
     </>
-  );
+  );*/
 };
 
 export default Page;
