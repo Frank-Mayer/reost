@@ -17,8 +17,9 @@ const { title } = Astro.props;
         <title>Reost – {title}</title>
     </head>
     <body>
-        <video class="back" src="/img/back.webm" playsinline autoplay muted loop
-        ></video>
+        <video class="back" playsinline autoplay="autoplay" muted loop>
+            <source src="/img/back.webm" type="video/webm" />
+        </video>
         <header>
             <h1>Reost</h1>
 
