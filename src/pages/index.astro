@@ -13,7 +13,13 @@ import Layout from "../layouts/Layout.astro";
         appearance: none;
 
         &.copied {
-            color: green;
+            color: limegreen;
+            &::before {
+                content: "Copied ";
+            }
+            &::after {
+                content: " ✔";
+            }
         }
     }
 </style>
@@ -36,7 +42,7 @@ import Layout from "../layouts/Layout.astro";
                     document.body.removeChild(input);
                 }
                 el.classList.add("copied");
-                setTimeout(() => el.classList.remove("copied"), 1000);
+                setTimeout(() => el.classList.remove("copied"), 1500);
             }
         });
     }

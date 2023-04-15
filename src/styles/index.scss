@@ -13,8 +13,6 @@
 *:before,
 *:after {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
     border: none;
     outline: none;
 }
@@ -32,16 +30,16 @@ head * {
 
 @media (hover: hover) {
     body {
-        &::before {
-            $delta: 8px;
+        .back {
+            $delta: 2px;
             will-change: transform;
             transform: translate(
                 calc(var(--cursor-x) * #{$delta}),
                 calc((var(--cursor-y)) * #{$delta})
             );
-            inset: #{0 - $delta};
-            width: calc(100vw + #{multiply($delta, 2)});
-            height: calc(100vh + #{multiply($delta, 2)});
+            inset: #{0 - $delta} !important;
+            width: calc(100vw + #{multiply($delta, 2)}) !important;
+            height: calc(100vh + #{multiply($delta, 2)}) !important;
 
             filter: blur(
                 calc(
@@ -52,10 +50,12 @@ head * {
         }
 
         &::after {
-            $delta: -16px;
+            $delta: -4px;
             will-change: translate, rotate;
-            translate: calc(var(--cursor-x) * #{$delta}),
-                calc((var(--cursor-y) - 1) * #{$delta});
+            transform: translate(
+                calc(var(--cursor-x) * #{$delta}),
+                calc((var(--cursor-y) - 1) * #{$delta})
+            ) !important;
             filter: blur(
                 calc(
                     (1px * var(--cursor-x) * var(--cursor-x)) +
@@ -67,21 +67,17 @@ head * {
 }
 
 body {
-    &::before {
-        $w: 779;
-        $h: 1269;
-        content: "";
+    .back {
+        object-fit: cover;
         z-index: -2;
         display: block;
         position: fixed;
-        background-image: url("/img/back.avif"), url("/img/back.webp");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
         inset: 0;
         width: 100vw;
         height: 100vh;
+        cursor: none;
+        user-select: none;
+        pointer-events: none;
     }
 
     &::after {
@@ -102,7 +98,7 @@ body {
         background-position: center;
 
         animation: wind 7.5s ease-in-out infinite;
-        transform-origin: 50% 100%;
+        transform-origin: 50% 150%;
     }
 }
 
@@ -118,8 +114,10 @@ body {
     }
 }
 
+button,
 .button {
     text-decoration: none;
+    display: inline-block;
     background: rgba(theme.$foreground, 0.2);
     box-shadow: 0 8px 32px 0 rgba(theme.$accent, 0.37);
     backdrop-filter: blur(4px);
@@ -136,12 +134,27 @@ body {
     }
 }
 
+a {
+    color: theme.$accent;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+    &:hover {
+        color: theme.$foreground;
+    }
+}
+
 h1 {
     display: block;
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
     margin: 1rem 0;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 1rem;
 }
 
 nav {
