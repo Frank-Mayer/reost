@@ -80,6 +80,10 @@ body {
         pointer-events: none;
     }
 
+    img.back {
+        z-index: -3;
+    }
+
     &::after {
         $w: 779;
         $h: 1269;
