@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Home">
+    <h2>Was gibt es hier?</h2>
+    <p>Citybuild, Rollplay, MMO, Quests und Freebuild</p>
+    <p>Visit us at <button data-copy="reost.de">reost.de</button></p>
+</Layout>
+
+<style lang="scss">
+    button[data-copy] {
+        appearance: none;
+
+        &.copied {
+            color: limegreen;
+            &::before {
+                content: "Copied ";
+            }
+            &::after {
+                content: " ✔";
+            }
+        }
+    }
+</style>
+
+<script>
+    const copyEls = Array.from(document.querySelectorAll("button[data-copy]"));
+
+    for (const el of copyEls) {
+        el.addEventListener("click", () => {
+            const text = el.getAttribute("data-copy");
+            if (text) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text);
+                } else {
+                    const input = document.createElement("input");
+                    input.value = text;
+                    document.body.appendChild(input);
+                    input.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(input);
+                }
+                el.classList.add("copied");
+                setTimeout(() => el.classList.remove("copied"), 1500);
+            }
+        });
+    }
+</script>

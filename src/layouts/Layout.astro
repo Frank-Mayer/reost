@@ -1,0 +1,40 @@
+---
+import "../styles/index.scss";
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Reost – {title}</title>
+    </head>
+    <body>
+        <video class="back" src="/img/back.webm" playsinline autoplay muted loop
+        ></video>
+        <header>
+            <h1>Reost</h1>
+
+            <nav>
+                <a class="button" href="/">Home</a>
+                <a class="button" href="/discord">Discord</a>
+                <a class="button" href="/rules">Regeln</a>
+                <a class="button" href="/team">Team</a>
+                <a class="button" href="/contact">Kontakt</a>
+                <a class="button" href="//wiki.reost.de">Wiki</a>
+                <a class="button" href="/impressum">Impressum</a>
+            </nav>
+        </header>
+        <main>
+            <slot />
+        </main>
+        <script src="../scripts/cursor-pos.ts"></script>
+    </body>
+</html>

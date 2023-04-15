@@ -1,0 +1,174 @@
+@use "theme";
+@use "sass:math";
+
+@function multiply($a, $b) {
+    @return $a * $b;
+}
+
+@function abs($a) {
+    @return "(" + $a + " * -" + $a + ")";
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+head,
+head * {
+    display: none;
+}
+
+:root {
+    background-color: theme.$background;
+    color: theme.$foreground;
+    font-family: "Poppins", sans-serif;
+}
+
+@media (hover: hover) {
+    body {
+        .back {
+            $delta: 2px;
+            will-change: transform;
+            transform: translate(
+                calc(var(--cursor-x) * #{$delta}),
+                calc((var(--cursor-y)) * #{$delta})
+            );
+            inset: #{0 - $delta} !important;
+            width: calc(100vw + #{multiply($delta, 2)}) !important;
+            height: calc(100vh + #{multiply($delta, 2)}) !important;
+
+            filter: blur(
+                calc(
+                    (1px * (0.5 - var(--cursor-x) * var(--cursor-x))) +
+                        (1px * (0.5 - var(--cursor-y) * var(--cursor-y)))
+                )
+            );
+        }
+
+        &::after {
+            $delta: -4px;
+            will-change: translate, rotate;
+            transform: translate(
+                calc(var(--cursor-x) * #{$delta}),
+                calc((var(--cursor-y) - 1) * #{$delta})
+            ) !important;
+            filter: blur(
+                calc(
+                    (1px * var(--cursor-x) * var(--cursor-x)) +
+                        (1px * var(--cursor-y) * var(--cursor-y))
+                )
+            );
+        }
+    }
+}
+
+body {
+    .back {
+        object-fit: cover;
+        z-index: -2;
+        display: block;
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        cursor: none;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    &::after {
+        $w: 779;
+        $h: 1269;
+        content: "";
+        z-index: -1;
+        height: 75vh;
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: calc(50vw - 17.5vmin);
+        aspect-ratio: #{$w}/#{$h};
+        background-image: url("/img/back_layer_01.avif"),
+            url("/img/back_layer_01.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        animation: wind 7.5s ease-in-out infinite;
+        transform-origin: 50% 150%;
+    }
+}
+
+@keyframes wind {
+    0% {
+        rotate: 0deg;
+    }
+    50% {
+        rotate: 1.5deg;
+    }
+    100% {
+        rotate: 0deg;
+    }
+}
+
+button,
+.button {
+    text-decoration: none;
+    display: inline-block;
+    background: rgba(theme.$foreground, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(theme.$accent, 0.37);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(theme.$foreground, 0.18);
+    border-radius: 10px;
+    color: theme.$foreground;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    &:hover {
+        background: rgba(theme.$foreground, 0.4);
+    }
+}
+
+a {
+    color: theme.$accent;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+    &:hover {
+        color: theme.$foreground;
+    }
+}
+
+h1 {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    ul,
+    ol,
+    li {
+        list-style: none;
+    }
+}
