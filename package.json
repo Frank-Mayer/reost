@@ -1,23 +1,24 @@
 {
-  "name": "reost-de",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/ts-plugin": "^0.4.4",
-    "astro": "^2.2.3",
-    "copy-to-clipboard": "^3.3.3",
-    "sass": "^1.62.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "cssnano": "^6.0.0",
-    "typescript": "^5.0.4"
-  }
+    "name": "reost-de",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/sitemap": "^1.2.2",
+        "@astrojs/ts-plugin": "^0.4.4",
+        "astro": "^2.2.3",
+        "copy-to-clipboard": "^3.3.3",
+        "sass": "^1.62.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.14",
+        "cssnano": "^6.0.0",
+        "typescript": "^5.0.4"
+    }
 }
