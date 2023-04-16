@@ -31,7 +31,7 @@ head * {
 @media (hover: hover) {
     body {
         .back {
-            $delta: 2px;
+            $delta: 4px;
             will-change: transform;
             transform: translate(
                 calc(var(--cursor-x) * #{$delta}),
@@ -50,7 +50,7 @@ head * {
         }
 
         &::after {
-            $delta: -4px;
+            $delta: -8px;
             will-change: translate, rotate;
             transform: translate(
                 calc(var(--cursor-x) * #{$delta}),
