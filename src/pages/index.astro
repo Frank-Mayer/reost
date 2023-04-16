@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Home">
     <h2>Was gibt es hier?</h2>
     <p>Citybuild, Rollplay, MMO, Quests und Freebuild</p>
-    <p>Visit us at <button data-copy="reost.de">reost.de</button></p>
+    <p>Besuche uns jetzt auf <button data-copy="reost.de">reost.de</button></p>
 </Layout>
 
 <style lang="scss">
@@ -14,9 +14,6 @@ import Layout from "../layouts/Layout.astro";
 
         &.copied {
             color: limegreen;
-            &::before {
-                content: "Copied ";
-            }
             &::after {
                 content: " ✔";
             }
