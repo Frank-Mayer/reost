@@ -113,8 +113,8 @@ body {
         left: calc(50vw - 17.5vmin);
         aspect-ratio: #{$w}/#{$h};
         background-color: transparent;
-        background-image: url("/img/back_layer_01.avif"),
-            url("/img/back_layer_01.webp");
+        background-image: url(../img/back_layer_01.avif),
+            url(../img/back_layer_01.webp);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

@@ -1,8 +1,9 @@
 ---
 import stylesUrl from "../styles/index.scss?url";
 import backImgUrl from "../img/back.webp?url";
-import backVideoUrl from "../img/back.webm?url";
-import backLayer01Url from "../img/back_layer_01.webp?url";
+import backVidUrl from "../img/back.webm?url";
+import backLayer01WebpUrl from "../img/back_layer_01.webp?url";
+import backLayer01AvifUrl from "../img/back_layer_01.avif?url";
 
 export interface Props {
     title: string;
@@ -21,11 +22,11 @@ const { title } = Astro.props;
         <title>Reost – {title}</title>
         <link rel="preload" href={stylesUrl} as="style" />
         <link rel="preload" href={backImgUrl} as="image" />
-        <link rel="preload" href={backLayer01Url} as="image" />
+        <link rel="preload" href={backLayer01WebpUrl} as="image" />
         <link rel="stylesheet" href={stylesUrl} />
     </head>
     <body>
-        <img class="back" src="/img/back.webp" alt="" />
+        <img class="back" src={backImgUrl} alt="" />
         <video
             class="back"
             playsinline
@@ -35,7 +36,7 @@ const { title } = Astro.props;
             loop
             onloadeddata="this.classList.toggle('loaded', true)"
         >
-            <source src="/img/back.webm" type="video/webm" />
+            <source src={backVidUrl} type="video/webm" />
         </video>
         <header>
             <h1>Reost</h1>
