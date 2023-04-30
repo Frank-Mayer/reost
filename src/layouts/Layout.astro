@@ -1,5 +1,9 @@
 ---
-import "../styles/index.scss";
+import stylesUrl from "../styles/index.scss?url";
+import backImgUrl from "../img/back.webp?url";
+import backVideoUrl from "../img/back.webm?url";
+import backLayer01Url from "../img/back_layer_01.webp?url";
+
 export interface Props {
     title: string;
 }
@@ -15,10 +19,22 @@ const { title } = Astro.props;
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
         <title>Reost – {title}</title>
+        <link rel="preload" href={stylesUrl} as="style" />
+        <link rel="preload" href={backImgUrl} as="image" />
+        <link rel="preload" href={backLayer01Url} as="image" />
+        <link rel="stylesheet" href={stylesUrl} />
     </head>
     <body>
         <img class="back" src="/img/back.webp" alt="" />
-        <video class="back" playsinline autoplay="autoplay" muted loop>
+        <video
+            class="back"
+            playsinline
+            autoplay="autoplay"
+            preload="auto"
+            muted
+            loop
+            onloadeddata="this.classList.toggle('loaded', true)"
+        >
             <source src="/img/back.webm" type="video/webm" />
         </video>
         <header>

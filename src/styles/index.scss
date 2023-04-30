@@ -17,6 +17,11 @@
     outline: none;
 }
 
+:root {
+    --cursor-x: 0;
+    --cursor-y: 0;
+}
+
 head,
 head * {
     display: none;
@@ -25,7 +30,7 @@ head * {
 :root {
     background-color: theme.$background;
     color: theme.$foreground;
-    font-family: "Poppins", sans-serif;
+    font-family: sans-serif;
 }
 
 @media (hover: hover) {
@@ -69,7 +74,6 @@ head * {
 body {
     .back {
         object-fit: cover;
-        z-index: -2;
         display: block;
         position: fixed;
         top: 0;
@@ -87,6 +91,16 @@ body {
         z-index: -3;
     }
 
+    video.back {
+        z-index: -2;
+        transition: opacity 3s ease-out;
+        transition-delay: 3s;
+
+        &:not(.loaded) {
+            opacity: 0 !important;
+        }
+    }
+
     &::after {
         $w: 779;
         $h: 1269;
@@ -98,6 +112,7 @@ body {
         bottom: 0;
         left: calc(50vw - 17.5vmin);
         aspect-ratio: #{$w}/#{$h};
+        background-color: transparent;
         background-image: url("/img/back_layer_01.avif"),
             url("/img/back_layer_01.webp");
         background-size: contain;
@@ -183,5 +198,6 @@ nav {
 @supports (-webkit-touch-callout: none) {
     video.back {
         display: none !important;
+        visibility: collapse !important;
     }
 }
