@@ -14,7 +14,7 @@
         "@astrojs/ts-plugin": "^0.4.4",
         "astro": "^2.2.3",
         "copy-to-clipboard": "^3.3.3",
-        "sass": "^1.62.0"
+        "sass": "^1.63.3"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.14",
