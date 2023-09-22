@@ -142,7 +142,6 @@ button,
     text-decoration: none;
     display: inline-block;
     background: rgba(theme.$foreground, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(theme.$accent, 0.37);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(theme.$foreground, 0.18);
     border-radius: 10px;
@@ -154,6 +153,15 @@ button,
     transition: background 0.3s ease-out;
     &:hover {
         background: rgba(theme.$foreground, 0.4);
+    }
+}
+
+.link {
+    text-decoration: underline;
+    color: theme.$foreground;
+    transition: color 0.3s ease-out;
+    &:hover {
+        color: theme.$accent;
     }
 }
 

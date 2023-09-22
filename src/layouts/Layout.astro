@@ -3,7 +3,6 @@ import "../styles/index.scss";
 import backImgUrl from "../img/back.webp?url";
 import backVidUrl from "../img/back.webm?url";
 import backLayer01WebpUrl from "../img/back_layer_01.webp?url";
-import backLayer01AvifUrl from "../img/back_layer_01.avif?url";
 
 export interface Props {
     title: string;
@@ -46,12 +45,22 @@ const { title } = Astro.props;
                 <a class="button" href="/team">Team</a>
                 <a class="button" href="/contact">Kontakt</a>
                 <a class="button" href="//wiki.reost.de">Wiki</a>
-                <a class="button" href="/impressum">Impressum</a>
             </nav>
+
         </header>
         <main>
+            <form action="https://api.reost.de/authorize" method="GET">
+                <input class="button" type="text" name="login" placeholder="Username" />
+                <input type="hidden" name="client_id" value="reost" />
+                <input class="button" type="submit" value="Login" />
+            </form> 
+            <br />
             <slot />
         </main>
+        <footer>
+            <h2>Rechtliches</h2>
+            <a class="link" href="/impressum">Impressum</a>
+        </footer>
         <script src="../scripts/cursor-pos.ts"></script>
     </body>
 </html>
